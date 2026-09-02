@@ -1,0 +1,31 @@
+{{ define "main" }}
+  <main id="conteudo" class="ep-secao">
+    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+    {{ with .Content }}<div class="ep-abertura">{{ . }}</div>{{ end }}
+
+    <div class="ep-grade" style="margin-top:2rem;">
+      {{ range .Pages }}
+        <article class="ep-item">
+          {{ with .Resources.GetMatch "capa.*" }}
+            {{ $c := .Fill "800x600 Smart q82 webp" }}
+            <div class="ep-item__foto">
+              <img
+                class="ep-pincel-1"
+                src="{{ $c.RelPermalink }}"
+                width="{{ $c.Width }}"
+                height="{{ $c.Height }}"
+                alt=""
+                loading="lazy"
+              />
+            </div>
+          {{ end }}
+          <h3 class="ep-item__titulo">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h3>
+          <p class="ep-item__resumo">{{ .Params.resumo | default .Summary }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </main>
+{{ end }}
+

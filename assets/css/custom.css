@@ -898,3 +898,15 @@ body::before {
 .ep-equipe {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
 }
+
+/* ---------------------------------------------------------------
+   FULL-BLEED (Fase 5) — estende para a faixa da agenda e o rodapé,
+   que também ficavam presos no container do Congo.
+   --------------------------------------------------------------- */
+
+.ep-faixa,
+.ep-rodape {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}

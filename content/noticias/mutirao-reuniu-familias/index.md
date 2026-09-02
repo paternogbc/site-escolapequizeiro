@@ -1,10 +1,8 @@
 +++
-title = "Festa da Colheita"
-data_evento = 2026-06-04T09:00:00-03:00
-horario = "9h às 14h"
-local = "Pátio central da escola"
-festa = true
-resumo = "Colheita do milho, comida de festa e apresentação das turmas."
+title = "Mutirão de plantio reuniu 40 famílias no viveiro"
+date = 2026-07-10
+categorias = ["Comunidade"]
+draft = false
 +++
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

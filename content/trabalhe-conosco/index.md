@@ -3,4 +3,8 @@ title = "Trabalhe conosco"
 layout = "simple"
 +++
 
-Vagas abertas e como enviar seu currículo.
+![O dia a dia da equipe](foto.jpg)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
