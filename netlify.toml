@@ -2,8 +2,8 @@
 command = 'hugo'
 publish = 'public'
 
-[build.environment]
-HUGO_VERSION = '0.148.0'
+[build]
+  command = "git submodule update --init --recursive && hugo"
 
 [context]
 [context.branch-deploy]
