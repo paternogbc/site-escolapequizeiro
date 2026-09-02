@@ -1,0 +1,36 @@
+{{ define "main" }}
+  {{ $agora := now }}
+  {{ $todos := .Pages.ByParam "data_evento" }}
+  {{ $proximos := where $todos "Params.data_evento" "ge" $agora }}
+  {{ $passados := where $todos "Params.data_evento" "lt" $agora }}
+
+  <main id="conteudo" class="ep-secao ep-secao--estreita">
+    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+    {{ with .Content }}<div class="ep-abertura">{{ . }}</div>{{ end }}
+
+    <h2>Próximos encontros</h2>
+    {{ if $proximos }}
+      <ul class="ep-agenda">
+        {{ range $proximos }}
+          {{ partial "evento-item.html" . }}
+        {{ end }}
+      </ul>
+    {{ else }}
+      <p class="ep-item__resumo">
+        Ainda não há datas marcadas. Escreva para a secretaria e avisamos você
+        quando a próxima festa for definida.
+      </p>
+    {{ end }}
+
+    {{ if $passados }}
+      {{ partial "divisor.html" . }}
+      <h2>Já aconteceu</h2>
+      <ul class="ep-agenda">
+        {{ range $passados.Reverse }}
+          {{ partial "evento-item.html" . }}
+        {{ end }}
+      </ul>
+    {{ end }}
+  </main>
+{{ end }}
+

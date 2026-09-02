@@ -1,0 +1,13 @@
+{{/*
+  Depoimento de uma família ou educador.
+
+  Uso:
+    {{< depoimento quem="Ana, mãe da Clara (Turma Buriti)" >}}
+    Aqui a Clara aprendeu a esperar a chuva chegar.
+    {{< /depoimento >}}
+*/}}
+<blockquote class="ep-depoimento">
+  <p>{{ .Inner | markdownify }}</p>
+  {{ with .Get "quem" }}<footer>{{ . }}</footer>{{ end }}
+</blockquote>
+

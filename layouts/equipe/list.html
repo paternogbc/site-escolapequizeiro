@@ -1,0 +1,35 @@
+{{ define "main" }}
+  <main id="conteudo" class="ep-secao">
+    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+    {{ with .Content }}<div class="ep-abertura">{{ . }}</div>{{ end }}
+
+    {{/* Agrupa por "grupo" do front matter: Professores, Cuidado da terra,
+         Secretaria, Cozinha. A ordem vem de "ordem_grupo". */}}
+    {{ range .Pages.GroupByParam "grupo" }}
+      <h2>{{ .Key }}</h2>
+      <div class="ep-equipe" style="margin-bottom:3rem;">
+        {{ range .Pages.ByWeight }}
+          <article class="ep-pessoa">
+            {{ with .Resources.GetMatch "retrato.*" }}
+              {{ $r := .Fill "500x666 Smart q82 webp" }}
+              <div class="ep-pessoa__foto">
+                <img
+                  class="ep-pincel-2"
+                  src="{{ $r.RelPermalink }}"
+                  width="{{ $r.Width }}"
+                  height="{{ $r.Height }}"
+                  alt="{{ $.Title }}"
+                  loading="lazy"
+                />
+              </div>
+            {{ end }}
+            <h3 class="ep-pessoa__nome">{{ .Title }}</h3>
+            <p class="ep-pessoa__papel">{{ .Params.papel }}</p>
+            {{ with .Params.bio }}<p class="ep-pessoa__bio">{{ . }}</p>{{ end }}
+          </article>
+        {{ end }}
+      </div>
+    {{ end }}
+  </main>
+{{ end }}
+

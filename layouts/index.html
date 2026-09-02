@@ -1,0 +1,172 @@
+{{ define "main" }}
+
+  {{/* ---------- HERO ---------- */}}
+  {{/* Se assets/video/hero.mp4 existir, ele vira o plano de fundo do
+       hero — vídeo nativo em HTML5 (autoplay, mudo, em loop, sem
+       nenhum player visível), do jeito que aparece nos sites de
+       referência. Sem o vídeo, cai de volta para a foto estática. */}}
+  {{ $heroVideo := resources.Get "video/hero.mp4" }}
+  {{ $hero := resources.Get "img/hero-cerrado.jpg" }}
+  {{ $poster := "" }}
+  {{ with $hero }}{{ $poster = (.Resize "2000x q80 webp").RelPermalink }}{{ end }}
+
+  <section class="ep-hero">
+    {{ if $heroVideo }}
+      <video
+        class="ep-hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="{{ $poster }}"
+        aria-hidden="true"
+      >
+        <source src="{{ $heroVideo.RelPermalink }}" type="video/mp4" />
+      </video>
+      <script>
+        (function () {
+          var v = document.currentScript.previousElementSibling;
+          if (
+            v &&
+            v.tagName === "VIDEO" &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ) {
+            v.removeAttribute("autoplay");
+            v.pause();
+          }
+        })();
+      </script>
+    {{ else if $hero }}
+      {{ $g := $hero.Resize "2000x q80 webp" }}
+      <img
+        class="ep-hero__foto"
+        src="{{ $g.RelPermalink }}"
+        alt="Vento no capim dourado do Cerrado ao entardecer"
+        width="{{ $g.Width }}"
+        height="{{ $g.Height }}"
+        fetchpriority="high"
+      />
+    {{ end }}
+    <div class="ep-hero__texto">
+      <h1>A escola começa no chão de terra vermelha</h1>
+      <p>
+        Pedagogia Waldorf em meio ao Cerrado, onde a criança aprende com as
+        mãos, com as estações e com quem vive por perto.
+      </p>
+    </div>
+  </section>
+
+  {{/* ---------- MISSÃO ---------- */}}
+  <section id="conteudo" class="ep-secao ep-secao--estreita ep-mancha">
+    {{ with .Site.GetPage "/nossa-terra" }}
+      <h2 class="ep-secao__titulo">{{ .Title }}</h2>
+      <div class="ep-abertura">{{ .Summary }}</div>
+      <p style="margin-top:1.5rem;">
+        <a href="{{ .RelPermalink }}">Conheça nossa história e nossos princípios</a>
+      </p>
+    {{ end }}
+  </section>
+
+  {{ partial "divisor.html" . }}
+
+  {{/* ---------- PROJETOS ---------- */}}
+  <section class="ep-secao">
+    <h2 class="ep-secao__titulo">O que estamos fazendo</h2>
+    <p class="ep-secao__resumo">
+      Cada turma cuida de um trabalho que dura o ano inteiro — da horta
+      agroflorestal ao ateliê de tecelagem.
+    </p>
+    <div class="ep-grade">
+      {{ range first 3 (where .Site.RegularPages "Section" "projetos") }}
+        <article class="ep-item">
+          {{ with .Resources.GetMatch "capa.*" }}
+            {{ $c := .Fill "800x600 Smart q82 webp" }}
+            <div class="ep-item__foto">
+              <img
+                class="ep-pincel-1"
+                src="{{ $c.RelPermalink }}"
+                width="{{ $c.Width }}"
+                height="{{ $c.Height }}"
+                alt=""
+                loading="lazy"
+              />
+            </div>
+          {{ end }}
+          <h3 class="ep-item__titulo">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h3>
+          <p class="ep-item__resumo">{{ .Params.resumo | default .Summary }}</p>
+        </article>
+      {{ end }}
+    </div>
+    <p style="margin-top:2.5rem;">
+      <a href="/projetos/">Ver todos os projetos</a>
+    </p>
+  </section>
+
+  {{/* ---------- AGENDA ---------- */}}
+  <section class="ep-faixa">
+    <div class="ep-secao ep-secao--estreita">
+      <h2 class="ep-secao__titulo">Próximos encontros</h2>
+      <p class="ep-secao__resumo">
+        Festas sazonais, mutirões e dias abertos para quem quiser conhecer a
+        escola.
+      </p>
+      {{ $proximos := first 4 (where (where .Site.RegularPages "Section" "eventos") "Params.data_evento" "ge" now) }}
+      {{ if $proximos }}
+        <ul class="ep-agenda">
+          {{ range $proximos.ByParam "data_evento" }}
+            {{ partial "evento-item.html" . }}
+          {{ end }}
+        </ul>
+        <p style="margin-top:2rem;"><a href="/agenda/">Agenda completa</a></p>
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* ---------- DEPOIMENTO ---------- */}}
+  <section class="ep-secao ep-secao--estreita">
+    {{ with .Site.Data.depoimento_destaque }}
+      <blockquote class="ep-depoimento">
+        <p>{{ .texto }}</p>
+        <footer>{{ .quem }}</footer>
+      </blockquote>
+    {{ end }}
+  </section>
+
+  {{ partial "divisor.html" . }}
+
+  {{/* ---------- NOTÍCIAS ---------- */}}
+  <section class="ep-secao">
+    <h2 class="ep-secao__titulo">Notícias da escola</h2>
+    <div class="ep-grade">
+      {{ range first 3 (where .Site.RegularPages "Section" "noticias") }}
+        <article class="ep-item">
+          {{ with .Resources.GetMatch "capa.*" }}
+            {{ $c := .Fill "800x600 Smart q82 webp" }}
+            <div class="ep-item__foto">
+              <img
+                class="ep-pincel-3"
+                src="{{ $c.RelPermalink }}"
+                width="{{ $c.Width }}"
+                height="{{ $c.Height }}"
+                alt=""
+                loading="lazy"
+              />
+            </div>
+          {{ end }}
+          <time class="ep-data" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "02 de January" }}
+          </time>
+          <h3 class="ep-item__titulo">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h3>
+          <p class="ep-item__resumo">{{ .Summary }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+{{ end }}
+

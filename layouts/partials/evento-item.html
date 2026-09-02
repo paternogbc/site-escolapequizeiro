@@ -1,0 +1,32 @@
+{{/* Um item da agenda. Recebe uma página da seção "eventos". */}}
+{{ $data := .Params.data_evento }}
+{{ $passado := lt $data now }}
+
+<li class="ep-evento{{ if $passado }} ep-evento--passado{{ end }}">
+  <time class="ep-evento__data" datetime="{{ $data.Format "2006-01-02" }}">
+    <span class="ep-evento__dia">{{ $data.Format "02" }}</span>
+    <span class="ep-evento__mes">
+      {{ $data.Format "Jan" | lower }} · {{ $data.Format "2006" }}
+    </span>
+  </time>
+
+  <div>
+    <h3 class="ep-evento__titulo">
+      {{ if .Content }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ else }}
+        {{ .Title }}
+      {{ end }}
+      {{ if .Params.festa }}<span class="ep-selo">festa sazonal</span>{{ end }}
+    </h3>
+    <p class="ep-evento__local">
+      {{ with .Params.horario }}{{ . }}{{ end }}
+      {{ if and .Params.horario .Params.local }} · {{ end }}
+      {{ with .Params.local }}{{ . }}{{ end }}
+    </p>
+    {{ with .Params.resumo }}
+      <p class="ep-item__resumo" style="margin-top:.4rem;">{{ . }}</p>
+    {{ end }}
+  </div>
+</li>
+

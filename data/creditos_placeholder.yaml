@@ -1,0 +1,18 @@
+# As imagens e o vídeo atuais são placeholders do banco Pexels
+# (licença livre, sem exigência de crédito) — trocar por fotos e
+# vídeos da própria escola assim que possível.
+fotos:
+  - arquivo: "assets/img/hero-cerrado.jpg"
+    fonte: "Pexels — Stephen Leonardi"
+    url: "https://www.pexels.com/photo/golden-field-of-grass-at-sunset-30122023/"
+  - arquivo: "content/projetos/agrofloresta/capa.jpg"
+    fonte: "Pexels — Jonathan Petersson"
+    url: "https://www.pexels.com/photo/brown-and-green-grass-field-during-sunset-1237119/"
+  - arquivo: "content/noticias/matriculas-2027-abertas/capa.jpg"
+    fonte: "Pexels — Serinus"
+    url: "https://www.pexels.com/photo/silhouette-of-grass-during-sunset-4016697/"
+video:
+  arquivo: "assets/video/hero.mp4"
+  fonte: "Pexels — Nunun Dy"
+  url: "https://www.pexels.com/video/grassland-and-the-wind-18152930/"
+

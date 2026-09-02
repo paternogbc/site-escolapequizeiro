@@ -1,0 +1,22 @@
+{{/*
+  Números do ano — lidos de data/numeros.yaml para que a
+  secretaria possa atualizar sem mexer em markdown.
+
+  Uso: {{< numeros >}}
+*/}}
+
+{{ $dados := .Site.Data.numeros }}
+{{ if $dados }}
+  <dl class="ep-numeros">
+    {{ range $dados.itens }}
+      <div>
+        <dt class="ep-numero__valor">{{ .valor }}</dt>
+        <dd class="ep-numero__rotulo">{{ .rotulo }}</dd>
+      </div>
+    {{ end }}
+  </dl>
+  {{ with $dados.nota }}
+    <p class="ep-item__resumo" style="margin-top:1.5rem;">{{ . }}</p>
+  {{ end }}
+{{ end }}
+

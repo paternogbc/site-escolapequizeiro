@@ -1,0 +1,870 @@
+/* ===============================================================
+   Escola Waldorf Rural Pequizeiro
+   Folha de estilo personalizada — carregada automaticamente
+   pelo Congo a partir de assets/css/custom.css
+
+   IMPORTANTE: o Tailwind do Congo é pré-compilado quando o tema
+   é publicado. Classes Tailwind novas escritas nos NOSSOS layouts
+   NÃO serão geradas. Por isso todo componente próprio usa classes
+   com prefixo .ep- definidas aqui em CSS puro.
+
+   Sumário
+   1. Tokens
+   2. Tipografia
+   3. Texturas e bordas de aquarela
+   4. Cabeçalho e navegação
+   5. Hero
+   6. Seções e divisores
+   7. Cartões: projetos, notícias
+   8. Galeria + lightbox
+   9. Agenda de eventos
+   10. Equipe
+   11. Depoimentos e números
+   12. Rodapé
+   13. Acessibilidade e impressão
+   =============================================================== */
+
+/* ---------------------------------------------------------------
+   1. TOKENS
+   --------------------------------------------------------------- */
+
+:root {
+  /* Paleta em hex, para uso direto (o Congo usa as versões RGB) */
+  --ep-papel: #efeee3;
+  --ep-papel-claro: #f9f8f2;
+  --ep-tinta: #2a2119;
+  --ep-tinta-suave: #585244;
+  --ep-latossolo: #a33b22;
+  --ep-latossolo-escuro: #702716;
+  --ep-capim: #d9a03c;
+  --ep-folha: #5a6b4a;
+  --ep-folha-clara: #8a9b76;
+  --ep-ceu: #8fa9b8;
+
+  /* Escala tipográfica — razão 1.25 (terça maior) a partir de 1rem */
+  --ep-t--1: 0.8rem;
+  --ep-t-0: 1rem;
+  --ep-t-1: 1.25rem;
+  --ep-t-2: 1.563rem;
+  --ep-t-3: 1.953rem;
+  --ep-t-4: 2.441rem;
+  --ep-t-5: 3.052rem;
+  --ep-t-6: 3.815rem;
+
+  /* Ritmo vertical */
+  --ep-espaco: 1.5rem;
+  --ep-secao: clamp(3.5rem, 8vw, 7rem);
+
+  /* Medida de leitura */
+  --ep-medida: 66ch;
+
+  /* Sombra única do projeto: quase inexistente, cor de terra.
+     Nada de rgba(0,0,0,.1) genérico. */
+  --ep-sombra: 0 2px 18px -8px rgba(112, 39, 22, 0.28);
+}
+
+.dark {
+  --ep-papel: #1a140f;
+  --ep-papel-claro: #221b14;
+  --ep-tinta: #efeee3;
+  --ep-tinta-suave: #c7c2af;
+}
+
+/* ---------------------------------------------------------------
+   2. TIPOGRAFIA
+   Fraunces  -> títulos (variável: eixos SOFT e WONK dão o traço manual)
+   Karla     -> texto corrido
+   Carregadas em layouts/partials/extend-head.html
+   --------------------------------------------------------------- */
+
+body,
+.prose {
+  font-family: "Karla", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ep-tinta);
+  background-color: var(--ep-papel);
+}
+
+h1,
+h2,
+h3,
+h4,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.ep-display {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 40;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  color: var(--ep-tinta);
+  text-wrap: balance;
+}
+
+h1,
+.prose h1 {
+  font-size: var(--ep-t-5);
+}
+h2,
+.prose h2 {
+  font-size: var(--ep-t-3);
+  margin-top: 2.5em;
+}
+h3,
+.prose h3 {
+  font-size: var(--ep-t-2);
+}
+
+/* Texto de abertura: um pouco maior, respirando mais.
+   Usar <p class="ep-abertura"> ou o shortcode {{< abertura >}} */
+.ep-abertura {
+  font-size: var(--ep-t-1);
+  line-height: 1.6;
+  color: var(--ep-tinta-suave);
+  max-width: 58ch;
+}
+
+/* Citação poética — usada nas páginas de missão e pedagogia.
+   Sem aspas decorativas gigantes; o recuo e o traço já bastam. */
+.ep-verso {
+  font-family: "Fraunces", Georgia, serif;
+  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 36;
+  font-style: italic;
+  font-size: var(--ep-t-2);
+  line-height: 1.4;
+  color: var(--ep-latossolo);
+  border-left: 3px solid var(--ep-capim);
+  padding-left: 1.25rem;
+  margin: 2.5rem 0;
+  max-width: 46ch;
+}
+
+.ep-verso cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: "Karla", sans-serif;
+  font-style: normal;
+  font-size: var(--ep-t--1);
+  color: var(--ep-tinta-suave);
+}
+
+/* Comprimento de linha controlado em todo texto corrido */
+.prose p,
+.prose li {
+  max-width: var(--ep-medida);
+}
+
+a {
+  color: var(--ep-latossolo);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--ep-latossolo-escuro);
+}
+
+/* ---------------------------------------------------------------
+   3. TEXTURAS E BORDAS DE AQUARELA
+   O gesto central do site. Máscaras SVG inline criam bordas
+   irregulares de pincel em fotos e seções — no lugar de
+   border-radius uniforme.
+   --------------------------------------------------------------- */
+
+/* Papel: ruído sutil aplicado ao fundo do corpo.
+   feTurbulence gera a textura sem custo de imagem. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* Borda de pincel — três variações para que imagens vizinhas
+   não fiquem idênticas. Aplicar .ep-pincel-1/2/3 */
+.ep-pincel-1,
+.ep-pincel-2,
+.ep-pincel-3 {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.ep-pincel-1 {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C18,1 34,4 52,2 C70,0 86,3 98,7 C99,25 100,48 98,70 C99,86 97,94 96,98 C78,99 60,96 42,98 C26,100 12,97 3,95 C1,76 0,54 2,32 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C18,1 34,4 52,2 C70,0 86,3 98,7 C99,25 100,48 98,70 C99,86 97,94 96,98 C78,99 60,96 42,98 C26,100 12,97 3,95 C1,76 0,54 2,32 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.ep-pincel-2 {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M4,3 C22,6 40,1 58,4 C74,7 90,2 97,5 C100,22 98,44 99,64 C100,82 96,92 98,97 C80,95 62,99 44,96 C28,93 12,98 2,96 C0,78 3,56 1,36 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M4,3 C22,6 40,1 58,4 C74,7 90,2 97,5 C100,22 98,44 99,64 C100,82 96,92 98,97 C80,95 62,99 44,96 C28,93 12,98 2,96 C0,78 3,56 1,36 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.ep-pincel-3 {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M1,8 C20,3 38,7 56,3 C72,0 88,5 99,2 C97,20 100,42 98,62 C100,80 95,90 97,99 C78,97 58,94 40,99 C24,96 10,99 2,97 C4,78 0,58 3,38 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M1,8 C20,3 38,7 56,3 C72,0 88,5 99,2 C97,20 100,42 98,62 C100,80 95,90 97,99 C78,97 58,94 40,99 C24,96 10,99 2,97 C4,78 0,58 3,38 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+/* Mancha de aquarela atrás de um bloco de texto.
+   Usar com moderação: no máximo uma por página. */
+.ep-mancha {
+  position: relative;
+  isolation: isolate;
+}
+
+.ep-mancha::before {
+  content: "";
+  position: absolute;
+  inset: -2rem -3rem;
+  z-index: -1;
+  background: radial-gradient(
+      ellipse 60% 50% at 30% 40%,
+      rgba(217, 160, 60, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 60% at 75% 60%,
+      rgba(163, 59, 34, 0.1),
+      transparent 70%
+    );
+  filter: blur(6px);
+}
+
+/* ---------------------------------------------------------------
+   4. CABEÇALHO E NAVEGAÇÃO
+   --------------------------------------------------------------- */
+
+.ep-cabecalho {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ep-espaco);
+  padding: 1.25rem clamp(1rem, 4vw, 3rem);
+}
+
+.ep-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Fraunces", serif;
+  font-variation-settings: "SOFT" 60, "WONK" 1;
+  font-size: var(--ep-t-1);
+  font-weight: 600;
+  color: var(--ep-tinta);
+  text-decoration: none;
+  line-height: 1.05;
+}
+
+.ep-marca img {
+  height: 2.75rem;
+  width: auto;
+}
+
+.ep-marca small {
+  display: block;
+  font-family: "Karla", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--ep-tinta-suave);
+}
+
+.ep-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.35rem;
+  align-items: center;
+}
+
+.ep-nav a {
+  font-size: 0.95rem;
+  color: var(--ep-tinta);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.ep-nav a:hover,
+.ep-nav a[aria-current="page"] {
+  border-bottom-color: var(--ep-capim);
+  color: var(--ep-latossolo);
+}
+
+/* Botão de visita — único botão sólido do site */
+.ep-botao {
+  display: inline-block;
+  background: var(--ep-latossolo);
+  color: var(--ep-papel-claro);
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M2,5 C25,1 55,3 97,2 C99,12 98,28 98,37 C70,39 40,37 3,38 C1,28 2,14 2,5 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M2,5 C25,1 55,3 97,2 C99,12 98,28 98,37 C70,39 40,37 3,38 C1,28 2,14 2,5 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.ep-botao:hover {
+  background: var(--ep-latossolo-escuro);
+  color: var(--ep-papel-claro);
+}
+
+/* ---------------------------------------------------------------
+   5. HERO
+   Foto sangrando com borda inferior aquarelada e título sobreposto.
+   --------------------------------------------------------------- */
+
+.ep-hero {
+  position: relative;
+  min-height: min(76vh, 640px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+}
+
+.ep-hero__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Véu de terra: escurece o pé da imagem para o texto ler bem */
+.ep-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(42, 33, 25, 0.72) 0%,
+    rgba(42, 33, 25, 0.35) 42%,
+    rgba(42, 33, 25, 0) 72%
+  );
+}
+
+.ep-hero__texto {
+  position: relative;
+  z-index: 2;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 5vw, 4rem) clamp(4rem, 9vw, 7rem);
+  max-width: 34ch;
+}
+
+.ep-hero__texto h1 {
+  color: var(--ep-papel-claro);
+  font-size: clamp(2.2rem, 6vw, var(--ep-t-6));
+  font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 72;
+}
+
+.ep-hero__texto p {
+  color: var(--ep-papel);
+  font-size: var(--ep-t-1);
+  margin-top: 1rem;
+  max-width: 40ch;
+}
+
+/* Borda de aquarela no pé do hero, feita com máscara.
+   Fica sobre a foto e "rasga" a imagem contra o papel. */
+.ep-hero {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'%3E%3Cpath d='M0,0 H1200 V560 C1120,584 1040,556 950,572 C860,588 780,560 690,576 C600,592 520,564 430,578 C340,592 250,562 160,576 C100,585 50,570 0,580 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'%3E%3Cpath d='M0,0 H1200 V560 C1120,584 1040,556 950,572 C860,588 780,560 690,576 C600,592 520,564 430,578 C340,592 250,562 160,576 C100,585 50,570 0,580 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+/* ---------------------------------------------------------------
+   6. SEÇÕES E DIVISORES
+   --------------------------------------------------------------- */
+
+.ep-secao {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--ep-secao);
+  padding-inline: clamp(1rem, 5vw, 4rem);
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.ep-secao--estreita {
+  max-width: 760px;
+}
+
+/* Faixa de cor para quebrar o ritmo do papel.
+   Usada no máximo duas vezes por página. */
+.ep-faixa {
+  background: linear-gradient(
+    180deg,
+    rgba(90, 107, 74, 0.09),
+    rgba(217, 160, 60, 0.07)
+  );
+}
+
+.ep-secao__titulo {
+  font-size: var(--ep-t-3);
+  margin-bottom: 0.5rem;
+}
+
+/* Subtítulo explicativo, em vez de "eyebrow" em caixa alta */
+.ep-secao__resumo {
+  color: var(--ep-tinta-suave);
+  max-width: 54ch;
+  margin-bottom: 2.5rem;
+}
+
+/* Divisor pintado à mão entre seções */
+.ep-divisor {
+  display: block;
+  width: 100%;
+  height: 26px;
+  color: var(--ep-capim);
+  opacity: 0.6;
+  margin-block: 0.5rem;
+}
+
+/* ---------------------------------------------------------------
+   7. CARTÕES: PROJETOS E NOTÍCIAS
+   Sem caixa, sem sombra, sem raio uniforme. A foto mascarada é
+   quem delimita o item. Hierarquia vem do tamanho da foto.
+   --------------------------------------------------------------- */
+
+.ep-grade {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+}
+
+.ep-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ep-item__foto {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.ep-item__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.ep-item:hover .ep-item__foto img {
+  transform: scale(1.03);
+}
+
+.ep-item__titulo {
+  font-size: var(--ep-t-1);
+  margin: 0;
+}
+
+.ep-item__titulo a {
+  text-decoration: none;
+  color: var(--ep-tinta);
+}
+
+.ep-item__titulo a:hover {
+  color: var(--ep-latossolo);
+}
+
+.ep-item__resumo {
+  font-size: 0.95rem;
+  color: var(--ep-tinta-suave);
+  margin: 0;
+}
+
+/* Data de notícia — informação real, não decoração */
+.ep-data {
+  font-size: var(--ep-t--1);
+  color: var(--ep-folha);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------
+   8. GALERIA + LIGHTBOX
+   --------------------------------------------------------------- */
+
+.ep-galeria {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  grid-auto-flow: dense;
+}
+
+.ep-galeria button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  display: block;
+}
+
+.ep-galeria img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Uma em cada cinco fotos ocupa o dobro — quebra a monotonia
+   da grade sem exigir marcação extra */
+.ep-galeria > *:nth-child(5n + 1) {
+  grid-column: span 2;
+}
+
+.ep-galeria > *:nth-child(5n + 1) img {
+  aspect-ratio: 16 / 10;
+}
+
+.ep-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  place-items: center;
+  background: rgba(26, 20, 15, 0.94);
+  padding: clamp(1rem, 5vw, 4rem);
+}
+
+.ep-lightbox[open],
+.ep-lightbox.aberto {
+  display: grid;
+}
+
+.ep-lightbox img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+}
+
+.ep-lightbox figcaption {
+  color: var(--ep-papel);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.ep-lightbox__fechar,
+.ep-lightbox__nav {
+  position: absolute;
+  background: none;
+  border: 0;
+  color: var(--ep-papel);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.75rem;
+}
+
+.ep-lightbox__fechar {
+  top: 0.5rem;
+  right: 0.75rem;
+}
+.ep-lightbox__nav--ant {
+  left: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ep-lightbox__nav--prox {
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ---------------------------------------------------------------
+   9. AGENDA DE EVENTOS
+   Lista, não calendário de grade: numa escola pequena a
+   sequência importa mais que o mês fechado.
+   --------------------------------------------------------------- */
+
+.ep-agenda {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid rgba(116, 110, 94, 0.28);
+}
+
+.ep-evento {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding-block: 1.4rem;
+  border-bottom: 1px solid rgba(116, 110, 94, 0.28);
+}
+
+.ep-evento__data {
+  font-family: "Fraunces", serif;
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  line-height: 1;
+  color: var(--ep-latossolo);
+}
+
+.ep-evento__dia {
+  display: block;
+  font-size: var(--ep-t-3);
+  font-weight: 700;
+}
+
+.ep-evento__mes {
+  display: block;
+  font-family: "Karla", sans-serif;
+  font-size: var(--ep-t--1);
+  color: var(--ep-tinta-suave);
+  margin-top: 0.15rem;
+}
+
+.ep-evento__titulo {
+  font-size: var(--ep-t-1);
+  margin: 0 0 0.25rem;
+}
+
+.ep-evento__local {
+  font-size: 0.9rem;
+  color: var(--ep-tinta-suave);
+  margin: 0;
+}
+
+/* Evento já ocorrido, quando a lista mostra o histórico */
+.ep-evento--passado {
+  opacity: 0.55;
+}
+
+/* Marcador de festa sazonal — o que diferencia uma escola Waldorf */
+.ep-selo {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ep-folha);
+  border: 1px solid currentColor;
+  padding: 0.1rem 0.5rem;
+  margin-left: 0.5rem;
+  vertical-align: 0.15em;
+}
+
+/* ---------------------------------------------------------------
+   10. EQUIPE
+   --------------------------------------------------------------- */
+
+.ep-equipe {
+  display: grid;
+  gap: 2.5rem 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+}
+
+.ep-pessoa__foto {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.ep-pessoa__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92);
+}
+
+.ep-pessoa__nome {
+  font-size: var(--ep-t-1);
+  margin: 0;
+}
+
+.ep-pessoa__papel {
+  font-size: 0.9rem;
+  color: var(--ep-folha);
+  margin: 0.15rem 0 0.5rem;
+}
+
+.ep-pessoa__bio {
+  font-size: 0.92rem;
+  color: var(--ep-tinta-suave);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------
+   11. DEPOIMENTOS E NÚMEROS DO ANO
+   --------------------------------------------------------------- */
+
+.ep-depoimento {
+  max-width: 52ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ep-depoimento p {
+  font-family: "Fraunces", serif;
+  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 40;
+  font-size: var(--ep-t-2);
+  line-height: 1.35;
+  color: var(--ep-tinta);
+}
+
+.ep-depoimento footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--ep-tinta-suave);
+}
+
+.ep-numeros {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  text-align: left;
+}
+
+.ep-numero__valor {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 60;
+  font-size: var(--ep-t-4);
+  line-height: 1;
+  color: var(--ep-latossolo);
+}
+
+.ep-numero__rotulo {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.92rem;
+  color: var(--ep-tinta-suave);
+  max-width: 22ch;
+}
+
+/* ---------------------------------------------------------------
+   12. RODAPÉ
+   --------------------------------------------------------------- */
+
+.ep-rodape {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--ep-secao);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 5vw, 4rem);
+  background: rgba(90, 107, 74, 0.1);
+  border-top: 2px solid var(--ep-capim);
+}
+
+.ep-rodape__grade {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.ep-rodape h3 {
+  font-size: var(--ep-t-0);
+  margin-bottom: 0.6rem;
+}
+
+.ep-rodape a {
+  color: var(--ep-tinta);
+  text-decoration: none;
+  display: block;
+  padding-block: 0.15rem;
+  font-size: 0.95rem;
+}
+
+.ep-rodape a:hover {
+  color: var(--ep-latossolo);
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------
+   13. ACESSIBILIDADE E IMPRESSÃO
+   --------------------------------------------------------------- */
+
+/* Foco sempre visível, na cor da terra */
+:focus-visible {
+  outline: 3px solid var(--ep-latossolo);
+  outline-offset: 3px;
+}
+
+/* Pular para o conteúdo */
+.ep-pular {
+  position: absolute;
+  left: -9999px;
+}
+
+.ep-pular:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 999;
+  background: var(--ep-papel-claro);
+  padding: 0.75rem 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Em telas estreitas as máscaras pesam e a agenda aperta */
+@media (max-width: 480px) {
+  .ep-evento {
+    grid-template-columns: 4rem 1fr;
+    gap: 1rem;
+  }
+  .ep-galeria > *:nth-child(5n + 1) {
+    grid-column: span 1;
+  }
+  .ep-galeria > *:nth-child(5n + 1) img {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media print {
+  body::before,
+  .ep-hero::after,
+  .ep-nav {
+    display: none;
+  }
+  .ep-pincel-1,
+  .ep-pincel-2,
+  .ep-pincel-3,
+  .ep-hero {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+
+/* ---------------------------------------------------------------
+   HERO EM VÍDEO — adicionado pela Fase 3
+   --------------------------------------------------------------- */
+
+.ep-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}

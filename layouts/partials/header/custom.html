@@ -1,0 +1,30 @@
+{{/* Cabeçalho próprio — ativado por header.layout = "custom" */}}
+
+<a class="ep-pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="ep-cabecalho">
+  <a class="ep-marca" href="{{ .Site.Home.RelPermalink }}">
+    {{ with resources.Get "img/logo-pequizeiro.svg" }}
+      <img src="{{ .RelPermalink }}" alt="" width="44" height="44" />
+    {{ end }}
+    <span>
+      Escola Pequizeiro
+      <small>Pedagogia Waldorf no Cerrado</small>
+    </span>
+  </a>
+
+  <nav class="ep-nav" aria-label="Navegação principal">
+    {{ range .Site.Menus.main }}
+      {{ if .Params.destaque }}
+        <a class="ep-botao" href="{{ .URL }}">{{ .Name }}</a>
+      {{ else }}
+        <a
+          href="{{ .URL }}"
+          {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}
+          >{{ .Name }}</a
+        >
+      {{ end }}
+    {{ end }}
+  </nav>
+</header>
+

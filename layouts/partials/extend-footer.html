@@ -1,0 +1,9 @@
+{{ with resources.Get "js/lightbox.js" }}
+  {{ $js := . | minify | fingerprint }}
+  <script
+    src="{{ $js.RelPermalink }}"
+    integrity="{{ $js.Data.Integrity }}"
+    defer
+  ></script>
+{{ end }}
+

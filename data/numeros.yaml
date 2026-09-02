@@ -1,0 +1,11 @@
+# Números do ano — aparecem com o shortcode {{< numeros >}}
+itens:
+  - valor: "62"
+    rotulo: "crianças, da educação infantil ao fundamental II"
+  - valor: "1,8 ha"
+    rotulo: "de cerrado nativo preservado dentro do terreno"
+  - valor: "340"
+    rotulo: "mudas nativas plantadas pelas turmas em 2026"
+  - valor: "8"
+    rotulo: "festas sazonais por ano, abertas às famílias"
+nota: "Dados de agosto de 2026."

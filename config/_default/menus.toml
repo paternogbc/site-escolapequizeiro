@@ -1,0 +1,59 @@
+# Nomes inspirados no Cerrado, mas legíveis para quem chega pela
+# primeira vez. Cada item diz o que a pessoa vai encontrar.
+
+[[main]]
+name = "Nossa terra"
+pageRef = "/nossa-terra"
+weight = 10
+
+[[main]]
+name = "Como aprendemos"
+pageRef = "/pedagogia"
+weight = 20
+
+[[main]]
+name = "Projetos"
+pageRef = "/projetos"
+weight = 30
+
+[[main]]
+name = "Nosso quintal"
+pageRef = "/quintal"
+weight = 40
+
+[[main]]
+name = "Agenda"
+pageRef = "/agenda"
+weight = 50
+
+[[main]]
+name = "Notícias"
+pageRef = "/noticias"
+weight = 60
+
+[[main]]
+name = "Gente"
+pageRef = "/gente"
+weight = 70
+
+[[main]]
+name = "Visite a escola"
+pageRef = "/visite"
+weight = 80
+params = { destaque = true }
+
+[[footer]]
+name = "Matrículas"
+pageRef = "/visite"
+weight = 10
+
+[[footer]]
+name = "Trabalhe conosco"
+pageRef = "/trabalhe-conosco"
+weight = 20
+
+[[footer]]
+name = "Contato"
+pageRef = "/visite"
+weight = 30
+

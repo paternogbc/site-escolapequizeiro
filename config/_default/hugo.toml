@@ -1,0 +1,20 @@
+baseURL = "https://escolapequizeiro.com.br/"
+languageCode = "pt-BR"
+title = "Escola Waldorf Rural Pequizeiro"
+theme = "congo"
+
+enableRobotsTXT = true
+enableEmoji = true
+summaryLength = 30
+
+[pagination]
+pagerSize = 12
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[imaging]
+resampleFilter = "Lanczos"
+quality = 82
+anchor = "Smart"
+

@@ -1,0 +1,47 @@
+{{/*
+  Galeria de fotos a partir dos recursos da própria página
+  (page bundle). O Hugo gera as miniaturas — nenhuma imagem
+  precisa ser cortada à mão.
+
+  Uso no markdown:
+    {{< galeria >}}                    todas as imagens do bundle
+    {{< galeria filtro="festa-*" >}}   só as que casam com o padrão
+
+  As legendas vêm do campo "title" do arquivo, se houver, ou do
+  nome do arquivo tratado.
+*/}}
+
+{{ $filtro := .Get "filtro" | default "**.{jpg,jpeg,png,webp}" }}
+{{ $fotos := .Page.Resources.Match $filtro }}
+
+{{ if $fotos }}
+  <div class="ep-galeria" data-galeria>
+    {{ range $i, $foto := $fotos }}
+      {{ $mini := $foto.Fill "600x600 Smart q80 webp" }}
+      {{ $grande := $foto.Resize "1800x q85 webp" }}
+      {{ $legenda := or $foto.Title (path.BaseName $foto.Name | replaceRE "[-_]" " " | title) }}
+      <button
+        type="button"
+        data-grande="{{ $grande.RelPermalink }}"
+        data-legenda="{{ $legenda }}"
+        aria-label="Ampliar: {{ $legenda }}"
+      >
+        <img
+          class="ep-pincel-{{ add 1 (mod $i 3) }}"
+          src="{{ $mini.RelPermalink }}"
+          width="{{ $mini.Width }}"
+          height="{{ $mini.Height }}"
+          alt="{{ $legenda }}"
+          loading="lazy"
+          decoding="async"
+        />
+      </button>
+    {{ end }}
+  </div>
+{{ else }}
+  <p class="ep-item__resumo">
+    Nenhuma foto nesta pasta ainda. Coloque os arquivos ao lado do
+    <code>index.md</code> desta página.
+  </p>
+{{ end }}
+

@@ -1,0 +1,62 @@
+{{/*
+  Vídeo responsivo.
+
+  Uso com YouTube/Vimeo (quando o vídeo já está hospedado lá):
+    {{< video youtube="ID_DO_VIDEO" titulo="Festa da Colheita 2026" >}}
+    {{< video vimeo="123456789" titulo="Um dia na escola" >}}
+
+  Uso com vídeo próprio, nativo, sem player externo — coloque o
+  arquivo .mp4 ao lado do index.md desta página e use:
+    {{< video src="festa.mp4" titulo="Festa da Colheita 2026" >}}
+*/}}
+
+{{ $yt := .Get "youtube" }}
+{{ $vm := .Get "vimeo" }}
+{{ $srcNome := .Get "src" }}
+{{ $titulo := .Get "titulo" | default "Vídeo da escola" }}
+
+{{ if $srcNome }}
+  {{ $v := .Page.Resources.GetMatch $srcNome }}
+  <figure style="margin: 2rem 0;">
+    {{ with $v }}
+      <video
+        controls
+        preload="metadata"
+        style="width:100%; height:auto; display:block;"
+      >
+        <source src="{{ .RelPermalink }}" type="video/mp4" />
+      </video>
+    {{ else }}
+      <p class="ep-item__resumo">
+        Não encontrei o arquivo "{{ $srcNome }}" nesta pasta.
+      </p>
+    {{ end }}
+    <figcaption class="ep-item__resumo" style="margin-top:.6rem;">{{ $titulo }}</figcaption>
+  </figure>
+{{ else }}
+  <figure style="margin: 2rem 0;">
+    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+      {{ if $yt }}
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/{{ $yt }}?rel=0"
+          title="{{ $titulo }}"
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
+          allowfullscreen
+          style="position:absolute; inset:0; width:100%; height:100%; border:0;"
+        ></iframe>
+      {{ else if $vm }}
+        <iframe
+          src="https://player.vimeo.com/video/{{ $vm }}?dnt=1"
+          title="{{ $titulo }}"
+          loading="lazy"
+          allow="fullscreen; picture-in-picture"
+          allowfullscreen
+          style="position:absolute; inset:0; width:100%; height:100%; border:0;"
+        ></iframe>
+      {{ end }}
+    </div>
+    <figcaption class="ep-item__resumo" style="margin-top:.6rem;">{{ $titulo }}</figcaption>
+  </figure>
+{{ end }}
+

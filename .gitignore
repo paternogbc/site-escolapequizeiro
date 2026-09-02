@@ -1,0 +1,7 @@
+/public/
+/resources/
+.hugo_build.lock
+/originais/
+.Rproj.user
+.Rhistory
+.RData
