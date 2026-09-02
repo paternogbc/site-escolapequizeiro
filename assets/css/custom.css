@@ -868,3 +868,33 @@ body::before {
   object-fit: cover;
   z-index: 0;
 }
+
+/* ---------------------------------------------------------------
+   FULL-BLEED — escapa do container centralizado do Congo para
+   elementos que devem ocupar a largura inteira da janela.
+   --------------------------------------------------------------- */
+
+.ep-hero,
+.ep-cabecalho {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* ---------------------------------------------------------------
+   CORREÇÃO — auto-fill criava colunas vazias e invisíveis quando
+   havia poucos itens (ex.: uma galeria com 1 só foto). auto-fit
+   faz os itens existentes esticarem para ocupar o espaço.
+   --------------------------------------------------------------- */
+
+.ep-grade {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+}
+
+.ep-galeria {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.ep-equipe {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}

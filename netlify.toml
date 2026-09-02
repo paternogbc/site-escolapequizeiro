@@ -1,17 +1,15 @@
 [build]
-command = 'hugo'
-publish = 'public'
+  command = "hugo --gc --minify"
+  publish = "public"
 
-[build]
-  command = "git submodule update --init --recursive && hugo"
+[build.environment]
+  HUGO_VERSION = "0.158.0"
 
-[context]
-[context.branch-deploy]
-command = 'hugo -F -b $DEPLOY_PRIME_URL'
+[context.production.environment]
+  HUGO_ENV = "production"
 
 [context.deploy-preview]
-command = 'hugo -F -b $DEPLOY_PRIME_URL'
+  command = "hugo -F -b $DEPLOY_PRIME_URL"
 
-[context.production]
-[context.production.environment]
-HUGO_ENV = 'production'
+[context.branch-deploy]
+  command = "hugo -F -b $DEPLOY_PRIME_URL"
