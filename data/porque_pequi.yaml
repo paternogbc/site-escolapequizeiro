@@ -1,0 +1,18 @@
+cards:
+  - titulo: "Pedagogia Waldorf"
+    texto: "Educar o ser humano por inteiro: pensar, sentir e agir, respeitando o tempo de cada fase."
+    imagem: "natureza.jpg"
+    link: "/a-escola/pedagogia-waldorf/"
+  - titulo: "Contato com a natureza"
+    texto: "No coração do Jardim Botânico, o Cerrado entra na rotina — não como passeio, mas como cotidiano."
+    imagem: "trilha.jpg"
+    link: "/a-escola/permacultura/"
+  - titulo: "Alimentação saudável"
+    texto: "Refeições pensadas com a mesma atenção que dedicamos à pedagogia, muitas vezes colhidas na horta."
+    imagem: "horta.jpg"
+    link: "/vida-no-pequi/"
+  - titulo: "Gestão colaborativa"
+    texto: "Escola associativa: famílias e educadores dividem a responsabilidade por meio de comissões."
+    imagem: "arvore.jpg"
+    link: "/quem-faz-a-escola/gestao-colaborativa/"
+

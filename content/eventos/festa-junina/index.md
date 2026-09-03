@@ -1,10 +1,10 @@
 +++
 title = "Festa Junina"
-data_evento = 2026-10-27T16:00:00-03:00
+data_evento = 2026-10-13T16:00:00-03:00
 horario = "16h às 20h"
-local = "Pátio central da escola"
+local = "Escola Waldorf Rural Pequizeiro"
 festa = true
-resumo = "Quadrilha, comidas típicas e fogueira — aberta a toda a comunidade."
+resumo = "Aberta às famílias da comunidade escolar."
 +++
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

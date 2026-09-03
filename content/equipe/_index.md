@@ -1,7 +1,6 @@
 +++
-title = "Gente"
+title = "Nossa Equipe"
 description = "Quem cuida da escola todos os dias."
-url = "/gente/"
 +++
 
-Professores, cozinha, secretaria e quem cuida da terra.
+Educadoras, cozinha, secretaria e quem cuida da terra.

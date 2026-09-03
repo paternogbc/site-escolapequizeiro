@@ -1,36 +1,47 @@
+/* ---------------------------------------------------------------
+   Esquema de cores — mood board da Proposta de Estrutura:
+   verde da mata e do musgo (identidade Waldorf/natureza),
+   acento terracota (terra do Cerrado), marrom terra de apoio,
+   areia e branco como fundos neutros.
+   Formato do Congo: RGB separado por vírgula.
+   --------------------------------------------------------------- */
+
 :root {
+  /* Neutros — areia e branco */
   --color-neutral: 255, 255, 255;
-  --color-neutral-50: 249, 248, 242;
-  --color-neutral-100: 239, 238, 227;
-  --color-neutral-200: 226, 223, 208;
-  --color-neutral-300: 199, 194, 175;
-  --color-neutral-400: 154, 148, 129;
-  --color-neutral-500: 116, 110, 94;
-  --color-neutral-600: 88, 82, 68;
-  --color-neutral-700: 63, 56, 44;
-  --color-neutral-800: 42, 33, 25;
-  --color-neutral-900: 26, 20, 15;
+  --color-neutral-50: 253, 251, 247;   /* #FDFBF7 branco quente */
+  --color-neutral-100: 245, 240, 230;  /* #F5F0E6 areia */
+  --color-neutral-200: 232, 224, 208;  /* #E8E0D0 */
+  --color-neutral-300: 206, 194, 172;  /* #CEC2AC */
+  --color-neutral-400: 158, 144, 122;  /* #9E907A */
+  --color-neutral-500: 118, 105, 88;   /* #766958 */
+  --color-neutral-600: 92, 78, 62;     /* #5C4E3E marrom terra */
+  --color-neutral-700: 71, 60, 48;     /* #473C30 */
+  --color-neutral-800: 52, 44, 35;     /* #342C23 */
+  --color-neutral-900: 35, 29, 23;     /* #231D17 */
 
-  --color-primary-50: 252, 240, 235;
-  --color-primary-100: 247, 219, 208;
-  --color-primary-200: 235, 181, 160;
-  --color-primary-300: 217, 139, 111;
-  --color-primary-400: 191, 98, 68;
-  --color-primary-500: 163, 59, 34;
-  --color-primary-600: 138, 48, 27;
-  --color-primary-700: 112, 39, 22;
-  --color-primary-800: 88, 32, 19;
-  --color-primary-900: 66, 25, 16;
+  /* Primária — verde de mata / musgo */
+  --color-primary-50: 240, 245, 238;
+  --color-primary-100: 223, 234, 218;
+  --color-primary-200: 190, 211, 181;
+  --color-primary-300: 152, 183, 141;
+  --color-primary-400: 113, 150, 102;
+  --color-primary-500: 74, 111, 66;    /* #4A6F42 verde mata */
+  --color-primary-600: 61, 92, 55;
+  --color-primary-700: 49, 74, 44;
+  --color-primary-800: 38, 57, 34;
+  --color-primary-900: 28, 42, 25;
 
-  --color-secondary-50: 253, 248, 236;
-  --color-secondary-100: 250, 238, 210;
-  --color-secondary-200: 244, 220, 165;
-  --color-secondary-300: 236, 197, 113;
-  --color-secondary-400: 226, 175, 76;
-  --color-secondary-500: 217, 160, 60;
-  --color-secondary-600: 186, 132, 42;
-  --color-secondary-700: 150, 104, 32;
-  --color-secondary-800: 115, 79, 26;
-  --color-secondary-900: 87, 60, 21;
+  /* Secundária — terracota do Cerrado */
+  --color-secondary-50: 252, 241, 234;
+  --color-secondary-100: 248, 224, 209;
+  --color-secondary-200: 240, 191, 162;
+  --color-secondary-300: 228, 154, 115;
+  --color-secondary-400: 213, 119, 76;
+  --color-secondary-500: 190, 89, 47;  /* #BE592F terracota */
+  --color-secondary-600: 162, 74, 38;
+  --color-secondary-700: 131, 59, 30;
+  --color-secondary-800: 102, 46, 24;
+  --color-secondary-900: 78, 35, 18;
 }
 

@@ -1,9 +1,9 @@
 +++
-title = "Mutirão de plantio"
-data_evento = 2026-09-23T08:00:00-03:00
-horario = "8h às 12h"
+title = "Festa da Primavera"
+data_evento = 2026-11-17T15:00:00-03:00
+horario = "15h às 18h"
 local = "Escola Waldorf Rural Pequizeiro"
-festa = false
+festa = true
 resumo = "Aberta às famílias da comunidade escolar."
 +++
 

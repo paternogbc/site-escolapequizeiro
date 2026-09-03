@@ -1,27 +1,13 @@
 /* ===============================================================
    Escola Waldorf Rural Pequizeiro
-   Folha de estilo personalizada — carregada automaticamente
-   pelo Congo a partir de assets/css/custom.css
+   Folha de estilo — refeita a partir da identidade real da escola.
 
-   IMPORTANTE: o Tailwind do Congo é pré-compilado quando o tema
-   é publicado. Classes Tailwind novas escritas nos NOSSOS layouts
-   NÃO serão geradas. Por isso todo componente próprio usa classes
-   com prefixo .ep- definidas aqui em CSS puro.
+   Direção: lazure Waldorf. Aquarela em arco-íris pastel sobre
+   creme quente; tipografia arredondada; bordas de pincel.
 
-   Sumário
-   1. Tokens
-   2. Tipografia
-   3. Texturas e bordas de aquarela
-   4. Cabeçalho e navegação
-   5. Hero
-   6. Seções e divisores
-   7. Cartões: projetos, notícias
-   8. Galeria + lightbox
-   9. Agenda de eventos
-   10. Equipe
-   11. Depoimentos e números
-   12. Rodapé
-   13. Acessibilidade e impressão
+   IMPORTANTE: o Tailwind do Congo é pré-compilado. Classes
+   Tailwind novas nos NOSSOS layouts não são geradas. Por isso
+   todo componente próprio usa classes .ep- em CSS puro.
    =============================================================== */
 
 /* ---------------------------------------------------------------
@@ -29,20 +15,23 @@
    --------------------------------------------------------------- */
 
 :root {
-  /* Paleta em hex, para uso direto (o Congo usa as versões RGB) */
-  --ep-papel: #efeee3;
-  --ep-papel-claro: #f9f8f2;
-  --ep-tinta: #2a2119;
-  --ep-tinta-suave: #585244;
-  --ep-latossolo: #a33b22;
-  --ep-latossolo-escuro: #702716;
-  --ep-capim: #d9a03c;
-  --ep-folha: #5a6b4a;
-  --ep-folha-clara: #8a9b76;
-  --ep-ceu: #8fa9b8;
+  /* Base */
+  --ep-creme: #f7f2e4;
+  --ep-creme-claro: #fcf9f0;
+  --ep-tinta: #5a3a2e;        /* marrom dos títulos */
+  --ep-tinta-corpo: #6b4a3a;  /* marrom do texto */
+  --ep-terracota: #c8641e;    /* laranja de destaque */
+  --ep-telha: #9b2b24;        /* vermelho do subtítulo */
 
-  /* Escala tipográfica — razão 1.25 (terça maior) a partir de 1rem */
-  --ep-t--1: 0.8rem;
+  /* Lazure — as aquarelas pastel do fundo */
+  --ep-pessego: #f6c9a8;
+  --ep-amarelo: #f5e3a8;
+  --ep-verde: #bfd9b0;
+  --ep-turquesa: #a8d2d4;
+  --ep-lavanda: #c4b9da;
+
+  /* Escala tipográfica — razão 1.25 */
+  --ep-t--1: 0.82rem;
   --ep-t-0: 1rem;
   --ep-t-1: 1.25rem;
   --ep-t-2: 1.563rem;
@@ -51,30 +40,14 @@
   --ep-t-5: 3.052rem;
   --ep-t-6: 3.815rem;
 
-  /* Ritmo vertical */
   --ep-espaco: 1.5rem;
   --ep-secao: clamp(3.5rem, 8vw, 7rem);
-
-  /* Medida de leitura */
   --ep-medida: 66ch;
-
-  /* Sombra única do projeto: quase inexistente, cor de terra.
-     Nada de rgba(0,0,0,.1) genérico. */
-  --ep-sombra: 0 2px 18px -8px rgba(112, 39, 22, 0.28);
-}
-
-.dark {
-  --ep-papel: #1a140f;
-  --ep-papel-claro: #221b14;
-  --ep-tinta: #efeee3;
-  --ep-tinta-suave: #c7c2af;
+  --ep-raio: 18px;   /* cantos suaves, como o cartão da peça */
 }
 
 /* ---------------------------------------------------------------
    2. TIPOGRAFIA
-   Fraunces  -> títulos (variável: eixos SOFT e WONK dão o traço manual)
-   Karla     -> texto corrido
-   Carregadas em layouts/partials/extend-head.html
    --------------------------------------------------------------- */
 
 body,
@@ -82,61 +55,40 @@ body,
   font-family: "Karla", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: var(--ep-tinta);
-  background-color: var(--ep-papel);
+  color: var(--ep-tinta-corpo);
+  background-color: var(--ep-creme);
 }
 
-h1,
-h2,
-h3,
-h4,
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
+h1, h2, h3, h4,
+.prose h1, .prose h2, .prose h3, .prose h4,
 .ep-display {
   font-family: "Fraunces", Georgia, "Times New Roman", serif;
-  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 40;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.12;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
   color: var(--ep-tinta);
   text-wrap: balance;
 }
 
-h1,
-.prose h1 {
-  font-size: var(--ep-t-5);
-}
-h2,
-.prose h2 {
-  font-size: var(--ep-t-3);
-  margin-top: 2.5em;
-}
-h3,
-.prose h3 {
-  font-size: var(--ep-t-2);
-}
+h1, .prose h1 { font-size: var(--ep-t-5); }
+h2, .prose h2 { font-size: var(--ep-t-3); margin-top: 2.2em; }
+h3, .prose h3 { font-size: var(--ep-t-2); }
 
-/* Texto de abertura: um pouco maior, respirando mais.
-   Usar <p class="ep-abertura"> ou o shortcode {{< abertura >}} */
 .ep-abertura {
   font-size: var(--ep-t-1);
   line-height: 1.6;
-  color: var(--ep-tinta-suave);
+  color: var(--ep-terracota);
+  font-weight: 600;
   max-width: 58ch;
 }
 
-/* Citação poética — usada nas páginas de missão e pedagogia.
-   Sem aspas decorativas gigantes; o recuo e o traço já bastam. */
+/* Citação — usa o vermelho telha, como o "FERIADO" da peça */
 .ep-verso {
   font-family: "Fraunces", Georgia, serif;
-  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 36;
-  font-style: italic;
   font-size: var(--ep-t-2);
   line-height: 1.4;
-  color: var(--ep-latossolo);
-  border-left: 3px solid var(--ep-capim);
+  color: var(--ep-telha);
+  border-left: 4px solid var(--ep-pessego);
   padding-left: 1.25rem;
   margin: 2.5rem 0;
   max-width: 46ch;
@@ -148,49 +100,70 @@ h3,
   font-family: "Karla", sans-serif;
   font-style: normal;
   font-size: var(--ep-t--1);
-  color: var(--ep-tinta-suave);
+  color: var(--ep-tinta-corpo);
 }
 
-/* Comprimento de linha controlado em todo texto corrido */
 .prose p,
-.prose li {
-  max-width: var(--ep-medida);
-}
+.prose li { max-width: var(--ep-medida); }
 
 a {
-  color: var(--ep-latossolo);
+  color: var(--ep-terracota);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
-a:hover {
-  color: var(--ep-latossolo-escuro);
-}
+a:hover { color: var(--ep-telha); }
 
 /* ---------------------------------------------------------------
-   3. TEXTURAS E BORDAS DE AQUARELA
-   O gesto central do site. Máscaras SVG inline criam bordas
-   irregulares de pincel em fotos e seções — no lugar de
-   border-radius uniforme.
+   3. LAZURE — o fundo aquarelado em arco-íris pastel
+   Camadas de gradiente radial, bem suaves, fixas na janela.
+   É o gesto central do site: substitui o fundo chapado.
    --------------------------------------------------------------- */
 
-/* Papel: ruído sutil aplicado ao fundo do corpo.
-   feTurbulence gera a textura sem custo de imagem. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background:
+    radial-gradient(ellipse 70% 45% at 12% 8%, rgba(246, 201, 168, 0.55), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 88% 6%, rgba(245, 227, 168, 0.5), transparent 60%),
+    radial-gradient(ellipse 65% 45% at 92% 45%, rgba(168, 210, 212, 0.45), transparent 62%),
+    radial-gradient(ellipse 70% 45% at 8% 62%, rgba(191, 217, 176, 0.45), transparent 62%),
+    radial-gradient(ellipse 80% 45% at 50% 98%, rgba(196, 185, 218, 0.5), transparent 65%);
+  filter: blur(2px);
 }
 
-/* Borda de pincel — três variações para que imagens vizinhas
-   não fiquem idênticas. Aplicar .ep-pincel-1/2/3 */
-.ep-pincel-1,
-.ep-pincel-2,
-.ep-pincel-3 {
+/* Textura de papel por cima do lazure */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Conteúdo acima das camadas de fundo */
+main, header, footer, section { position: relative; z-index: 1; }
+
+/* Cartão creme — como o bloco de texto da peça original.
+   Usado nas seções de leitura para o texto não flutuar
+   direto sobre o lazure. */
+.ep-cartao {
+  background: rgba(252, 249, 240, 0.86);
+  border-radius: var(--ep-raio);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  backdrop-filter: blur(4px);
+}
+
+/* ---------------------------------------------------------------
+   4. BORDAS DE PINCEL
+   --------------------------------------------------------------- */
+
+.ep-pincel-1, .ep-pincel-2, .ep-pincel-3 {
   display: block;
   width: 100%;
   height: auto;
@@ -200,51 +173,37 @@ body::before {
 .ep-pincel-1 {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C18,1 34,4 52,2 C70,0 86,3 98,7 C99,25 100,48 98,70 C99,86 97,94 96,98 C78,99 60,96 42,98 C26,100 12,97 3,95 C1,76 0,54 2,32 Z' fill='%23000'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C18,1 34,4 52,2 C70,0 86,3 98,7 C99,25 100,48 98,70 C99,86 97,94 96,98 C78,99 60,96 42,98 C26,100 12,97 3,95 C1,76 0,54 2,32 Z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
 }
 
 .ep-pincel-2 {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M4,3 C22,6 40,1 58,4 C74,7 90,2 97,5 C100,22 98,44 99,64 C100,82 96,92 98,97 C80,95 62,99 44,96 C28,93 12,98 2,96 C0,78 3,56 1,36 Z' fill='%23000'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M4,3 C22,6 40,1 58,4 C74,7 90,2 97,5 C100,22 98,44 99,64 C100,82 96,92 98,97 C80,95 62,99 44,96 C28,93 12,98 2,96 C0,78 3,56 1,36 Z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
 }
 
 .ep-pincel-3 {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M1,8 C20,3 38,7 56,3 C72,0 88,5 99,2 C97,20 100,42 98,62 C100,80 95,90 97,99 C78,97 58,94 40,99 C24,96 10,99 2,97 C4,78 0,58 3,38 Z' fill='%23000'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M1,8 C20,3 38,7 56,3 C72,0 88,5 99,2 C97,20 100,42 98,62 C100,80 95,90 97,99 C78,97 58,94 40,99 C24,96 10,99 2,97 C4,78 0,58 3,38 Z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
 }
 
-/* Mancha de aquarela atrás de um bloco de texto.
-   Usar com moderação: no máximo uma por página. */
-.ep-mancha {
-  position: relative;
-  isolation: isolate;
-}
+/* Mancha de aquarela pontual — no máximo uma por página */
+.ep-mancha { position: relative; isolation: isolate; }
 
 .ep-mancha::before {
   content: "";
   position: absolute;
   inset: -2rem -3rem;
   z-index: -1;
-  background: radial-gradient(
-      ellipse 60% 50% at 30% 40%,
-      rgba(217, 160, 60, 0.16),
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 50% 60% at 75% 60%,
-      rgba(163, 59, 34, 0.1),
-      transparent 70%
-    );
-  filter: blur(6px);
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(246, 201, 168, 0.45), transparent 70%),
+    radial-gradient(ellipse 50% 60% at 75% 60%, rgba(168, 210, 212, 0.35), transparent 70%);
+  filter: blur(8px);
 }
 
 /* ---------------------------------------------------------------
-   4. CABEÇALHO E NAVEGAÇÃO
+   5. CABEÇALHO
    --------------------------------------------------------------- */
 
 .ep-cabecalho {
@@ -255,33 +214,47 @@ body::before {
   justify-content: space-between;
   gap: var(--ep-espaco);
   padding: 1.25rem clamp(1rem, 4vw, 3rem);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .ep-marca {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-family: "Fraunces", serif;
-  font-variation-settings: "SOFT" 60, "WONK" 1;
-  font-size: var(--ep-t-1);
-  font-weight: 600;
+  gap: 0.85rem;
   color: var(--ep-tinta);
   text-decoration: none;
-  line-height: 1.05;
 }
 
 .ep-marca img {
-  height: 2.75rem;
+  height: 3.25rem;
   width: auto;
+  color: var(--ep-tinta);
 }
 
-.ep-marca small {
-  display: block;
+.ep-marca__texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.ep-marca__texto small {
   font-family: "Karla", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--ep-tinta-suave);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ep-tinta-corpo);
+}
+
+.ep-marca__texto strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ep-tinta);
 }
 
 .ep-nav {
@@ -292,7 +265,8 @@ body::before {
 }
 
 .ep-nav a {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
+  font-weight: 600;
   color: var(--ep-tinta);
   text-decoration: none;
   padding-bottom: 2px;
@@ -301,36 +275,32 @@ body::before {
 
 .ep-nav a:hover,
 .ep-nav a[aria-current="page"] {
-  border-bottom-color: var(--ep-capim);
-  color: var(--ep-latossolo);
+  border-bottom-color: var(--ep-pessego);
+  color: var(--ep-terracota);
 }
 
-/* Botão de visita — único botão sólido do site */
+/* Botão — cantos arredondados, como o cartão da peça */
 .ep-botao {
   display: inline-block;
-  background: var(--ep-latossolo);
-  color: var(--ep-papel-claro);
-  font-family: "Karla", sans-serif;
+  background: var(--ep-terracota);
+  color: var(--ep-creme-claro);
+  font-family: "Fraunces", Georgia, serif;
   font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.6rem 1.2rem;
-  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.55rem 1.35rem;
   border: none;
+  border-radius: 999px;
   cursor: pointer;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M2,5 C25,1 55,3 97,2 C99,12 98,28 98,37 C70,39 40,37 3,38 C1,28 2,14 2,5 Z' fill='%23000'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M2,5 C25,1 55,3 97,2 C99,12 98,28 98,37 C70,39 40,37 3,38 C1,28 2,14 2,5 Z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  text-decoration: none;
 }
 
 .ep-botao:hover {
-  background: var(--ep-latossolo-escuro);
-  color: var(--ep-papel-claro);
+  background: var(--ep-telha);
+  color: var(--ep-creme-claro);
 }
 
 /* ---------------------------------------------------------------
-   5. HERO
-   Foto sangrando com borda inferior aquarelada e título sobreposto.
+   6. HERO
    --------------------------------------------------------------- */
 
 .ep-hero {
@@ -339,9 +309,16 @@ body::before {
   display: grid;
   align-items: end;
   overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'%3E%3Cpath d='M0,0 H1200 V560 C1120,584 1040,556 950,572 C860,588 780,560 690,576 C600,592 520,564 430,578 C340,592 250,562 160,576 C100,585 50,570 0,580 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'%3E%3Cpath d='M0,0 H1200 V560 C1120,584 1040,556 950,572 C860,588 780,560 690,576 C600,592 520,564 430,578 C340,592 250,562 160,576 C100,585 50,570 0,580 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
 }
 
-.ep-hero__foto {
+.ep-hero__foto,
+.ep-hero__video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -350,7 +327,6 @@ body::before {
   z-index: 0;
 }
 
-/* Véu de terra: escurece o pé da imagem para o texto ler bem */
 .ep-hero::after {
   content: "";
   position: absolute;
@@ -358,9 +334,9 @@ body::before {
   z-index: 1;
   background: linear-gradient(
     to top,
-    rgba(42, 33, 25, 0.72) 0%,
-    rgba(42, 33, 25, 0.35) 42%,
-    rgba(42, 33, 25, 0) 72%
+    rgba(90, 58, 46, 0.75) 0%,
+    rgba(90, 58, 46, 0.35) 42%,
+    rgba(90, 58, 46, 0) 72%
   );
 }
 
@@ -372,98 +348,73 @@ body::before {
 }
 
 .ep-hero__texto h1 {
-  color: var(--ep-papel-claro);
+  color: var(--ep-creme-claro);
   font-size: clamp(2.2rem, 6vw, var(--ep-t-6));
-  font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 72;
+  font-weight: 800;
 }
 
 .ep-hero__texto p {
-  color: var(--ep-papel);
+  color: var(--ep-creme);
   font-size: var(--ep-t-1);
   margin-top: 1rem;
   max-width: 40ch;
 }
 
-/* Borda de aquarela no pé do hero, feita com máscara.
-   Fica sobre a foto e "rasga" a imagem contra o papel. */
-.ep-hero {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'%3E%3Cpath d='M0,0 H1200 V560 C1120,584 1040,556 950,572 C860,588 780,560 690,576 C600,592 520,564 430,578 C340,592 250,562 160,576 C100,585 50,570 0,580 Z' fill='%23000'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'%3E%3Cpath d='M0,0 H1200 V560 C1120,584 1040,556 950,572 C860,588 780,560 690,576 C600,592 520,564 430,578 C340,592 250,562 160,576 C100,585 50,570 0,580 Z' fill='%23000'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-}
-
 /* ---------------------------------------------------------------
-   6. SEÇÕES E DIVISORES
+   7. SEÇÕES E DIVISORES
    --------------------------------------------------------------- */
 
 .ep-secao {
-  position: relative;
-  z-index: 1;
   padding-block: var(--ep-secao);
   padding-inline: clamp(1rem, 5vw, 4rem);
   max-width: 1180px;
   margin-inline: auto;
 }
 
-.ep-secao--estreita {
-  max-width: 760px;
-}
+.ep-secao--estreita { max-width: 760px; }
 
-/* Faixa de cor para quebrar o ritmo do papel.
-   Usada no máximo duas vezes por página. */
+/* Faixa de cor — lazure suave, largura cheia */
 .ep-faixa {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   background: linear-gradient(
     180deg,
-    rgba(90, 107, 74, 0.09),
-    rgba(217, 160, 60, 0.07)
+    rgba(191, 217, 176, 0.35),
+    rgba(168, 210, 212, 0.3)
   );
 }
 
-.ep-secao__titulo {
-  font-size: var(--ep-t-3);
-  margin-bottom: 0.5rem;
-}
+.ep-secao__titulo { font-size: var(--ep-t-3); margin-bottom: 0.5rem; }
 
-/* Subtítulo explicativo, em vez de "eyebrow" em caixa alta */
 .ep-secao__resumo {
-  color: var(--ep-tinta-suave);
+  color: var(--ep-tinta-corpo);
   max-width: 54ch;
   margin-bottom: 2.5rem;
 }
 
-/* Divisor pintado à mão entre seções */
 .ep-divisor {
   display: block;
   width: 100%;
   height: 26px;
-  color: var(--ep-capim);
-  opacity: 0.6;
+  color: var(--ep-pessego);
+  opacity: 0.85;
   margin-block: 0.5rem;
 }
 
 /* ---------------------------------------------------------------
-   7. CARTÕES: PROJETOS E NOTÍCIAS
-   Sem caixa, sem sombra, sem raio uniforme. A foto mascarada é
-   quem delimita o item. Hierarquia vem do tamanho da foto.
+   8. CARTÕES: PROJETOS E NOTÍCIAS
    --------------------------------------------------------------- */
 
 .ep-grade {
   display: grid;
   gap: clamp(1.75rem, 4vw, 3rem);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
 }
 
-.ep-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+.ep-item { display: flex; flex-direction: column; gap: 0.75rem; }
 
-.ep-item__foto {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
+.ep-item__foto { aspect-ratio: 4 / 3; overflow: hidden; }
 
 .ep-item__foto img {
   width: 100%;
@@ -472,72 +423,50 @@ body::before {
   transition: transform 400ms ease;
 }
 
-.ep-item:hover .ep-item__foto img {
-  transform: scale(1.03);
-}
+.ep-item:hover .ep-item__foto img { transform: scale(1.03); }
 
-.ep-item__titulo {
-  font-size: var(--ep-t-1);
-  margin: 0;
-}
+.ep-item__titulo { font-size: var(--ep-t-1); margin: 0; }
 
-.ep-item__titulo a {
-  text-decoration: none;
-  color: var(--ep-tinta);
-}
-
-.ep-item__titulo a:hover {
-  color: var(--ep-latossolo);
-}
+.ep-item__titulo a { text-decoration: none; color: var(--ep-tinta); }
+.ep-item__titulo a:hover { color: var(--ep-terracota); }
 
 .ep-item__resumo {
   font-size: 0.95rem;
-  color: var(--ep-tinta-suave);
+  color: var(--ep-tinta-corpo);
   margin: 0;
 }
 
-/* Data de notícia — informação real, não decoração */
 .ep-data {
   font-size: var(--ep-t--1);
-  color: var(--ep-folha);
+  color: var(--ep-telha);
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* ---------------------------------------------------------------
-   8. GALERIA + LIGHTBOX
+   9. GALERIA + LIGHTBOX
    --------------------------------------------------------------- */
 
 .ep-galeria {
   display: grid;
   gap: 0.9rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   grid-auto-flow: dense;
 }
 
 .ep-galeria button {
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: zoom-in;
-  display: block;
+  padding: 0; border: 0; background: none; cursor: zoom-in; display: block;
 }
 
 .ep-galeria img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-/* Uma em cada cinco fotos ocupa o dobro — quebra a monotonia
-   da grade sem exigir marcação extra */
-.ep-galeria > *:nth-child(5n + 1) {
-  grid-column: span 2;
-}
-
-.ep-galeria > *:nth-child(5n + 1) img {
-  aspect-ratio: 16 / 10;
-}
+.ep-galeria > *:nth-child(5n + 1) { grid-column: span 2; }
+.ep-galeria > *:nth-child(5n + 1) img { aspect-ratio: 16 / 10; }
 
 .ep-lightbox {
   position: fixed;
@@ -545,66 +474,40 @@ body::before {
   z-index: 100;
   display: none;
   place-items: center;
-  background: rgba(26, 20, 15, 0.94);
+  background: rgba(45, 28, 22, 0.94);
   padding: clamp(1rem, 5vw, 4rem);
 }
 
-.ep-lightbox[open],
-.ep-lightbox.aberto {
-  display: grid;
-}
+.ep-lightbox[open], .ep-lightbox.aberto { display: grid; }
 
-.ep-lightbox img {
-  max-width: 100%;
-  max-height: 82vh;
-  object-fit: contain;
-}
+.ep-lightbox img { max-width: 100%; max-height: 82vh; object-fit: contain; }
 
 .ep-lightbox figcaption {
-  color: var(--ep-papel);
+  color: var(--ep-creme);
   font-size: 0.95rem;
   margin-top: 1rem;
   text-align: center;
 }
 
-.ep-lightbox__fechar,
-.ep-lightbox__nav {
+.ep-lightbox__fechar, .ep-lightbox__nav {
   position: absolute;
-  background: none;
-  border: 0;
-  color: var(--ep-papel);
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0.75rem;
+  background: none; border: 0;
+  color: var(--ep-creme);
+  font-size: 2rem; line-height: 1;
+  cursor: pointer; padding: 0.75rem;
 }
 
-.ep-lightbox__fechar {
-  top: 0.5rem;
-  right: 0.75rem;
-}
-.ep-lightbox__nav--ant {
-  left: 0.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.ep-lightbox__nav--prox {
-  right: 0.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
+.ep-lightbox__fechar { top: 0.5rem; right: 0.75rem; }
+.ep-lightbox__nav--ant { left: 0.25rem; top: 50%; transform: translateY(-50%); }
+.ep-lightbox__nav--prox { right: 0.25rem; top: 50%; transform: translateY(-50%); }
 
 /* ---------------------------------------------------------------
-   9. AGENDA DE EVENTOS
-   Lista, não calendário de grade: numa escola pequena a
-   sequência importa mais que o mês fechado.
+   10. AGENDA
    --------------------------------------------------------------- */
 
 .ep-agenda {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid rgba(116, 110, 94, 0.28);
+  list-style: none; padding: 0; margin: 0;
+  border-top: 2px solid rgba(246, 201, 168, 0.7);
 }
 
 .ep-evento {
@@ -613,120 +516,101 @@ body::before {
   gap: 1.5rem;
   align-items: baseline;
   padding-block: 1.4rem;
-  border-bottom: 1px solid rgba(116, 110, 94, 0.28);
+  border-bottom: 2px solid rgba(246, 201, 168, 0.7);
 }
 
 .ep-evento__data {
-  font-family: "Fraunces", serif;
-  font-variation-settings: "SOFT" 40, "WONK" 1;
+  font-family: "Fraunces", Georgia, serif;
   line-height: 1;
-  color: var(--ep-latossolo);
+  color: var(--ep-terracota);
 }
 
-.ep-evento__dia {
-  display: block;
-  font-size: var(--ep-t-3);
-  font-weight: 700;
-}
+.ep-evento__dia { display: block; font-size: var(--ep-t-3); font-weight: 800; }
 
 .ep-evento__mes {
   display: block;
   font-family: "Karla", sans-serif;
   font-size: var(--ep-t--1);
-  color: var(--ep-tinta-suave);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ep-tinta-corpo);
   margin-top: 0.15rem;
 }
 
-.ep-evento__titulo {
-  font-size: var(--ep-t-1);
-  margin: 0 0 0.25rem;
-}
+.ep-evento__titulo { font-size: var(--ep-t-1); margin: 0 0 0.25rem; }
 
-.ep-evento__local {
-  font-size: 0.9rem;
-  color: var(--ep-tinta-suave);
-  margin: 0;
-}
+.ep-evento__local { font-size: 0.9rem; color: var(--ep-tinta-corpo); margin: 0; }
 
-/* Evento já ocorrido, quando a lista mostra o histórico */
-.ep-evento--passado {
-  opacity: 0.55;
-}
+.ep-evento--passado { opacity: 0.5; }
 
-/* Marcador de festa sazonal — o que diferencia uma escola Waldorf */
 .ep-selo {
   display: inline-block;
-  font-size: 0.72rem;
+  font-family: "Karla", sans-serif;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--ep-folha);
-  border: 1px solid currentColor;
-  padding: 0.1rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ep-telha);
+  background: rgba(246, 201, 168, 0.55);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
   margin-left: 0.5rem;
   vertical-align: 0.15em;
 }
 
 /* ---------------------------------------------------------------
-   10. EQUIPE
+   11. EQUIPE
    --------------------------------------------------------------- */
 
 .ep-equipe {
   display: grid;
   gap: 2.5rem 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
 }
 
-.ep-pessoa__foto {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  margin-bottom: 0.85rem;
-}
+.ep-pessoa__foto { aspect-ratio: 3 / 4; overflow: hidden; margin-bottom: 0.85rem; }
 
 .ep-pessoa__foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.92);
+  width: 100%; height: 100%; object-fit: cover;
 }
 
-.ep-pessoa__nome {
-  font-size: var(--ep-t-1);
-  margin: 0;
-}
+.ep-pessoa__nome { font-size: var(--ep-t-1); margin: 0; }
 
 .ep-pessoa__papel {
   font-size: 0.9rem;
-  color: var(--ep-folha);
+  font-weight: 600;
+  color: var(--ep-terracota);
   margin: 0.15rem 0 0.5rem;
 }
 
-.ep-pessoa__bio {
-  font-size: 0.92rem;
-  color: var(--ep-tinta-suave);
-  margin: 0;
-}
+.ep-pessoa__bio { font-size: 0.92rem; color: var(--ep-tinta-corpo); margin: 0; }
 
 /* ---------------------------------------------------------------
-   11. DEPOIMENTOS E NÚMEROS DO ANO
+   12. DEPOIMENTOS E NÚMEROS
    --------------------------------------------------------------- */
 
 .ep-depoimento {
   max-width: 52ch;
   margin-inline: auto;
   text-align: center;
+  background: rgba(252, 249, 240, 0.8);
+  border-radius: var(--ep-raio);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .ep-depoimento p {
-  font-family: "Fraunces", serif;
-  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 40;
+  font-family: "Fraunces", Georgia, serif;
   font-size: var(--ep-t-2);
   line-height: 1.35;
-  color: var(--ep-tinta);
+  color: var(--ep-terracota);
+  margin: 0;
 }
 
 .ep-depoimento footer {
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: var(--ep-tinta-suave);
+  color: var(--ep-tinta-corpo);
 }
 
 .ep-numeros {
@@ -738,32 +622,37 @@ body::before {
 
 .ep-numero__valor {
   display: block;
-  font-family: "Fraunces", serif;
-  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 60;
+  font-family: "Fraunces", Georgia, serif;
   font-size: var(--ep-t-4);
+  font-weight: 800;
   line-height: 1;
-  color: var(--ep-latossolo);
+  color: var(--ep-terracota);
 }
 
 .ep-numero__rotulo {
   display: block;
   margin-top: 0.4rem;
   font-size: 0.92rem;
-  color: var(--ep-tinta-suave);
+  color: var(--ep-tinta-corpo);
   max-width: 22ch;
 }
 
 /* ---------------------------------------------------------------
-   12. RODAPÉ
+   13. RODAPÉ
    --------------------------------------------------------------- */
 
 .ep-rodape {
-  position: relative;
-  z-index: 1;
   margin-top: var(--ep-secao);
   padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 5vw, 4rem);
-  background: rgba(90, 107, 74, 0.1);
-  border-top: 2px solid var(--ep-capim);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: linear-gradient(
+    180deg,
+    rgba(196, 185, 218, 0.3),
+    rgba(168, 210, 212, 0.35)
+  );
+  border-top: 3px solid var(--ep-pessego);
 }
 
 .ep-rodape__grade {
@@ -774,10 +663,7 @@ body::before {
   margin-inline: auto;
 }
 
-.ep-rodape h3 {
-  font-size: var(--ep-t-0);
-  margin-bottom: 0.6rem;
-}
+.ep-rodape h3 { font-size: var(--ep-t-1); margin-bottom: 0.6rem; }
 
 .ep-rodape a {
   color: var(--ep-tinta);
@@ -787,126 +673,349 @@ body::before {
   font-size: 0.95rem;
 }
 
-.ep-rodape a:hover {
-  color: var(--ep-latossolo);
-  text-decoration: underline;
-}
+.ep-rodape a:hover { color: var(--ep-terracota); text-decoration: underline; }
 
 /* ---------------------------------------------------------------
-   13. ACESSIBILIDADE E IMPRESSÃO
+   14. ACESSIBILIDADE E IMPRESSÃO
    --------------------------------------------------------------- */
 
-/* Foco sempre visível, na cor da terra */
 :focus-visible {
-  outline: 3px solid var(--ep-latossolo);
+  outline: 3px solid var(--ep-terracota);
   outline-offset: 3px;
 }
 
-/* Pular para o conteúdo */
-.ep-pular {
-  position: absolute;
-  left: -9999px;
-}
+.ep-pular { position: absolute; left: -9999px; }
 
 .ep-pular:focus {
-  left: 1rem;
-  top: 1rem;
-  z-index: 999;
-  background: var(--ep-papel-claro);
+  left: 1rem; top: 1rem; z-index: 999;
+  background: var(--ep-creme-claro);
+  border-radius: var(--ep-raio);
   padding: 0.75rem 1rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
 
-/* Em telas estreitas as máscaras pesam e a agenda aperta */
 @media (max-width: 480px) {
-  .ep-evento {
-    grid-template-columns: 4rem 1fr;
-    gap: 1rem;
-  }
-  .ep-galeria > *:nth-child(5n + 1) {
-    grid-column: span 1;
-  }
-  .ep-galeria > *:nth-child(5n + 1) img {
-    aspect-ratio: 1 / 1;
-  }
+  .ep-evento { grid-template-columns: 4rem 1fr; gap: 1rem; }
+  .ep-galeria > *:nth-child(5n + 1) { grid-column: span 1; }
+  .ep-galeria > *:nth-child(5n + 1) img { aspect-ratio: 1 / 1; }
+  .ep-marca__texto strong { font-size: 1.25rem; }
 }
 
 @media print {
-  body::before,
-  .ep-hero::after,
-  .ep-nav {
-    display: none;
-  }
-  .ep-pincel-1,
-  .ep-pincel-2,
-  .ep-pincel-3,
-  .ep-hero {
-    -webkit-mask-image: none;
-    mask-image: none;
+  body::before, body::after, .ep-hero::after, .ep-nav { display: none; }
+  .ep-pincel-1, .ep-pincel-2, .ep-pincel-3, .ep-hero {
+    -webkit-mask-image: none; mask-image: none;
   }
 }
 
 
 /* ---------------------------------------------------------------
-   HERO EM VÍDEO — adicionado pela Fase 3
+   MENU SUSPENSO (Fase 7)
+   CSS puro, sem JavaScript. Abre no :hover (mouse) e no
+   :focus-within (teclado) — assim funciona com Tab sem script.
+   No celular vira lista aninhada sempre visível, já que hover
+   não existe em toque.
    --------------------------------------------------------------- */
 
-.ep-hero__video {
+.ep-nav__lista {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ep-nav__item { position: relative; }
+
+.ep-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ep-tinta);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.ep-nav__link:hover,
+.ep-nav__link[aria-current="page"] {
+  border-bottom-color: var(--ep-pessego);
+  color: var(--ep-terracota);
+}
+
+.ep-nav__seta {
+  width: 10px;
+  height: 6px;
+  flex: none;
+  transition: transform 180ms ease;
+}
+
+.ep-nav__item--pai:hover .ep-nav__seta,
+.ep-nav__item--pai:focus-within .ep-nav__seta {
+  transform: rotate(180deg);
+}
+
+/* O painel do submenu */
+.ep-submenu {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
+  top: 100%;
+  left: 0;
+  z-index: 30;
+  min-width: 15rem;
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+
+  background: var(--ep-creme-claro);
+  border-radius: var(--ep-raio);
+  border: 2px solid rgba(246, 201, 168, 0.8);
+  box-shadow: 0 8px 28px -12px rgba(90, 58, 46, 0.35);
+
+  /* escondido por padrão, sem tirar do fluxo de acessibilidade */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms;
+}
+
+/* Ponte invisível: evita que o menu feche ao mover o mouse
+   do item pai até o painel (o vão de alguns pixels entre eles). */
+.ep-submenu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.ep-nav__item--pai:hover .ep-submenu,
+.ep-nav__item--pai:focus-within .ep-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ep-submenu a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: calc(var(--ep-raio) - 8px);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ep-tinta);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ep-submenu a:hover,
+.ep-submenu a[aria-current="page"] {
+  background: rgba(246, 201, 168, 0.45);
+  color: var(--ep-terracota);
+}
+
+/* Alinha o último submenu à direita para não sair da tela */
+.ep-nav__item--pai:last-of-type .ep-submenu { left: auto; right: 0; }
+
+/* ---- Celular / telas estreitas ---------------------------------
+   Sem hover: o submenu vira lista aninhada, sempre visível. */
+@media (max-width: 860px) {
+  .ep-cabecalho { flex-direction: column; align-items: flex-start; }
+
+  .ep-nav__lista {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .ep-nav__item { width: 100%; }
+
+  .ep-nav__seta { display: none; }
+
+  .ep-submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    min-width: 0;
+    width: 100%;
+    margin-top: 0.35rem;
+    margin-left: 0.75rem;
+    padding: 0.25rem 0 0.25rem 0.75rem;
+    background: none;
+    border: 0;
+    border-left: 2px solid rgba(246, 201, 168, 0.9);
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .ep-submenu::before { display: none; }
+
+  .ep-submenu a { padding: 0.35rem 0.5rem; font-weight: 400; }
 }
 
 /* ---------------------------------------------------------------
-   FULL-BLEED — escapa do container centralizado do Congo para
-   elementos que devem ocupar a largura inteira da janela.
+   TIPOGRAFIA — ajustes da Fraunces (Fase 8)
+   Reaplica os eixos variáveis que a Fase 6 havia removido ao
+   adotar a Baloo 2.
    --------------------------------------------------------------- */
 
-.ep-hero,
-.ep-cabecalho {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+h1, h2, h3, h4,
+.prose h1, .prose h2, .prose h3, .prose h4,
+.ep-display {
+  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 40;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+.ep-hero__texto h1 {
+  font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 72;
+  font-weight: 700;
+}
+
+.ep-marca__texto strong {
+  font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 36;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.ep-verso,
+.ep-depoimento p {
+  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 40;
+  font-style: italic;
+}
+
+.ep-numero__valor,
+.ep-evento__dia {
+  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 60;
+  font-weight: 700;
 }
 
 /* ---------------------------------------------------------------
-   CORREÇÃO — auto-fill criava colunas vazias e invisíveis quando
-   havia poucos itens (ex.: uma galeria com 1 só foto). auto-fit
-   faz os itens existentes esticarem para ocupar o espaço.
+   PALETA DA PROPOSTA (Fase 9) — sobrescreve o lazure da Fase 6.
+   Verde mata · terracota · marrom terra · areia · branco.
    --------------------------------------------------------------- */
 
-.ep-grade {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+:root {
+  --ep-creme: #f5f0e6;        /* areia */
+  --ep-creme-claro: #fdfbf7;  /* branco quente */
+  --ep-tinta: #342c23;        /* marrom escuro, títulos */
+  --ep-tinta-corpo: #5c4e3e;  /* marrom terra, texto */
+  --ep-terracota: #be592f;    /* acento */
+  --ep-telha: #833b1e;        /* acento escuro */
+  --ep-verde: #4a6f42;        /* verde mata */
+  --ep-verde-claro: #98b78d;  /* musgo claro */
+
+  /* usados pelas manchas e faixas */
+  --ep-pessego: #e4c4ae;
+  --ep-amarelo: #e8d9b0;
+  --ep-turquesa: #a9c4bb;
+  --ep-lavanda: #c3bcae;
 }
 
-.ep-galeria {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+/* Fundo: areia lisa com leve variação de verde e terracota,
+   no lugar do arco-íris pastel. */
+body::before {
+  background:
+    radial-gradient(ellipse 70% 45% at 10% 5%, rgba(152, 183, 141, 0.28), transparent 62%),
+    radial-gradient(ellipse 60% 40% at 92% 40%, rgba(228, 196, 174, 0.3), transparent 62%),
+    radial-gradient(ellipse 75% 45% at 45% 100%, rgba(74, 111, 66, 0.14), transparent 65%);
 }
 
-.ep-equipe {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+.ep-faixa {
+  background: linear-gradient(180deg, rgba(74, 111, 66, 0.12), rgba(228, 196, 174, 0.2));
 }
 
-/* ---------------------------------------------------------------
-   FULL-BLEED (Fase 5) — estende para a faixa da agenda e o rodapé,
-   que também ficavam presos no container do Congo.
-   --------------------------------------------------------------- */
-
-.ep-faixa,
 .ep-rodape {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  background: var(--ep-verde);
+  border-top: 0;
+  color: var(--ep-creme-claro);
+}
+
+.ep-nav a:hover,
+.ep-nav__link:hover,
+.ep-nav__link[aria-current="page"] { border-bottom-color: var(--ep-verde); }
+
+.ep-divisor { color: var(--ep-verde-claro); }
+
+.ep-pessoa__papel { color: var(--ep-verde); }
+
+/* ---------------------------------------------------------------
+   RODAPÉ E FORMULÁRIO (Fase 9)
+   --------------------------------------------------------------- */
+
+.ep-rodape h3,
+.ep-rodape p,
+.ep-rodape a,
+.ep-rodape label { color: var(--ep-creme-claro); }
+
+.ep-rodape p { font-size: 0.95rem; line-height: 1.6; }
+
+.ep-rodape a { text-decoration: none; }
+.ep-rodape a:hover { text-decoration: underline; color: var(--ep-creme-claro); }
+
+.ep-selo-fewb {
+  margin-top: 1.25rem;
+  padding: 0.6rem 0.9rem;
+  border: 2px solid rgba(253, 251, 247, 0.5);
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.ep-selo-fewb small { opacity: 0.8; font-size: 0.8rem; }
+
+.ep-form { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.ep-form label { font-size: 0.85rem; font-weight: 600; margin-top: 0.4rem; }
+
+.ep-form input,
+.ep-form textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.7rem;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(253, 251, 247, 0.92);
+  color: var(--ep-tinta);
+}
+
+.ep-form button { margin-top: 0.75rem; align-self: flex-start; }
+
+.ep-rodape__fim {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* Botão vazado, para a segunda chamada do hero */
+.ep-botao--vazado {
+  background: transparent;
+  border: 2px solid var(--ep-creme-claro);
+  color: var(--ep-creme-claro);
+}
+
+.ep-botao--vazado:hover {
+  background: var(--ep-creme-claro);
+  color: var(--ep-tinta);
+}
+
+.ep-hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
 }

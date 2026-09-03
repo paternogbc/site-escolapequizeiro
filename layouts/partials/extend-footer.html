@@ -1,9 +1,56 @@
 {{ with resources.Get "js/lightbox.js" }}
   {{ $js := . | minify | fingerprint }}
-  <script
-    src="{{ $js.RelPermalink }}"
-    integrity="{{ $js.Data.Integrity }}"
-    defer
-  ></script>
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 {{ end }}
+
+<footer class="ep-rodape">
+  <div class="ep-rodape__grade">
+
+    <div>
+      <h3>Escola Waldorf Rural Pequizeiro</h3>
+      <p>
+        Rua 24, Chácara 26 — Condomínio Mansões Itaipu<br />
+        Jardim Botânico, Brasília – DF
+      </p>
+      <p class="ep-selo-fewb">
+        Filiada à <strong>FEWB</strong><br />
+        <small>Federação das Escolas Waldorf no Brasil</small>
+      </p>
+    </div>
+
+    <div>
+      <h3>Fale com a gente</h3>
+      <a href="https://wa.me/55XXXXXXXXXXX">WhatsApp (61) XXXXX-XXXX</a>
+      <a href="mailto:contato@escolaruralpequizeiro.com.br">contato@escolaruralpequizeiro.com.br</a>
+      <a href="/visitas-e-matriculas/agende-uma-visita/">Agende uma visita</a>
+      <a href="/visitas-e-matriculas/matriculas/">Matrículas</a>
+    </div>
+
+    <div>
+      <h3>Deixe uma mensagem</h3>
+      <form name="contato" method="POST" data-netlify="true"
+            netlify-honeypot="bot-field" class="ep-form">
+        <input type="hidden" name="form-name" value="contato" />
+        <p hidden>
+          <label>Não preencha: <input name="bot-field" /></label>
+        </p>
+        <label for="f-nome">Nome</label>
+        <input id="f-nome" type="text" name="nome" required />
+
+        <label for="f-email">E-mail ou WhatsApp</label>
+        <input id="f-email" type="text" name="contato" required />
+
+        <label for="f-msg">Mensagem</label>
+        <textarea id="f-msg" name="mensagem" rows="3" required></textarea>
+
+        <button type="submit" class="ep-botao">Enviar</button>
+      </form>
+    </div>
+
+  </div>
+
+  <p class="ep-rodape__fim">
+    © {{ now.Year }} Escola Waldorf Rural Pequizeiro
+  </p>
+</footer>
 

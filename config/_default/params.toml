@@ -25,3 +25,9 @@ whatsapp = "https://wa.me/55XXXXXXXXXXX"
 [[author.links]]
 email = "mailto:contato@escolapequizeiro.com.br"
 
+
+[footer]
+showMenu = false
+showCopyright = false
+showThemeAttribution = false
+showScrollToTop = true

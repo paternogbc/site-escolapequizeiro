@@ -1,0 +1,15 @@
+{{ $fotos := .Resources.Match "galeria-*.jpg" }}
+{{ if $fotos }}
+  <div class="ep-galeria" data-galeria>
+    {{ range $i, $f := $fotos }}
+      {{ $mini := $f.Fill "600x600 Smart q80 webp" }}
+      {{ $grande := $f.Resize "1800x q85 webp" }}
+      <button type="button" data-grande="{{ $grande.RelPermalink }}"
+              data-legenda="Foto da escola" aria-label="Ampliar foto">
+        <img class="ep-pincel-{{ add 1 (mod $i 3) }}" src="{{ $mini.RelPermalink }}"
+             alt="" loading="lazy" />
+      </button>
+    {{ end }}
+  </div>
+{{ end }}
+

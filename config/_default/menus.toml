@@ -1,59 +1,118 @@
-# Nomes inspirados no Cerrado, mas legíveis para quem chega pela
-# primeira vez. Cada item diz o que a pessoa vai encontrar.
+# Mapa do site conforme a Proposta de Estrutura (agosto/2026).
+# Itens filhos usam `parent = "<identifier do pai>"`.
 
 [[main]]
-name = "Nossa terra"
-pageRef = "/nossa-terra"
+identifier = "a-escola"
+name = "A Escola"
+pageRef = "/a-escola"
 weight = 10
 
-[[main]]
-name = "Como aprendemos"
-pageRef = "/pedagogia"
-weight = 20
+  [[main]]
+  parent = "a-escola"
+  name = "Nossa História"
+  pageRef = "/a-escola/nossa-historia"
+  weight = 1
+
+  [[main]]
+  parent = "a-escola"
+  name = "Pedagogia Waldorf"
+  pageRef = "/a-escola/pedagogia-waldorf"
+  weight = 2
+
+  [[main]]
+  parent = "a-escola"
+  name = "Permacultura & Sustentabilidade"
+  pageRef = "/a-escola/permacultura"
+  weight = 3
 
 [[main]]
-name = "Projetos"
-pageRef = "/projetos"
+identifier = "ensino"
+name = "Ensino"
+pageRef = "/ensino"
+weight = 20
+
+  [[main]]
+  parent = "ensino"
+  name = "Berçário e Maternal"
+  pageRef = "/ensino/bercario-maternal"
+  weight = 1
+
+  [[main]]
+  parent = "ensino"
+  name = "Educação Infantil"
+  pageRef = "/ensino/educacao-infantil"
+  weight = 2
+
+  [[main]]
+  parent = "ensino"
+  name = "Ensino Fundamental I"
+  pageRef = "/ensino/fundamental-1"
+  weight = 3
+
+[[main]]
+identifier = "vida-no-pequi"
+name = "Vida no Pequi"
+pageRef = "/vida-no-pequi"
 weight = 30
 
 [[main]]
-name = "Nosso quintal"
-pageRef = "/quintal"
+identifier = "quem-faz"
+name = "Quem faz a escola"
+pageRef = "/quem-faz-a-escola"
 weight = 40
 
+  [[main]]
+  parent = "quem-faz"
+  name = "Depoimentos"
+  pageRef = "/quem-faz-a-escola/depoimentos"
+  weight = 1
+
+  [[main]]
+  parent = "quem-faz"
+  name = "Nossa Equipe"
+  pageRef = "/equipe"
+  weight = 2
+
+  [[main]]
+  parent = "quem-faz"
+  name = "Gestão Colaborativa"
+  pageRef = "/quem-faz-a-escola/gestao-colaborativa"
+  weight = 3
+
+  [[main]]
+  parent = "quem-faz"
+  name = "Vem trabalhar no Pequizeiro"
+  pageRef = "/quem-faz-a-escola/trabalhe-conosco"
+  weight = 4
+
 [[main]]
-name = "Agenda"
-pageRef = "/agenda"
+identifier = "noticias"
+name = "Notícias"
+pageRef = "/noticias"
 weight = 50
 
 [[main]]
-name = "Notícias"
-pageRef = "/noticias"
+identifier = "visitas"
+name = "Visitas e Matrículas"
+pageRef = "/visitas-e-matriculas"
 weight = 60
-
-[[main]]
-name = "Gente"
-pageRef = "/gente"
-weight = 70
-
-[[main]]
-name = "Visite a escola"
-pageRef = "/visite"
-weight = 80
 params = { destaque = true }
 
-[[footer]]
-name = "Matrículas"
-pageRef = "/visite"
-weight = 10
+  [[main]]
+  parent = "visitas"
+  name = "Agende uma visita"
+  pageRef = "/visitas-e-matriculas/agende-uma-visita"
+  weight = 1
 
-[[footer]]
-name = "Trabalhe conosco"
-pageRef = "/trabalhe-conosco"
-weight = 20
+  [[main]]
+  parent = "visitas"
+  name = "Matrículas"
+  pageRef = "/visitas-e-matriculas/matriculas"
+  weight = 2
 
-[[footer]]
-name = "Contato"
-pageRef = "/visite"
-weight = 30
+  [[main]]
+  parent = "visitas"
+  name = "Contato"
+  pageRef = "/visitas-e-matriculas/contato"
+  weight = 3
 
