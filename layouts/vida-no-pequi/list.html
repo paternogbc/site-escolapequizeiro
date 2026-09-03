@@ -1,12 +1,12 @@
 {{ define "main" }}
-  <main id="conteudo" class="ep-secao ep-secao--estreita">
+  <main id="conteudo" class="ep-secao ep-pagina">
     <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+
     <div class="prose">{{ .Content }}</div>
 
-    {{/* Agenda de festas, vinda da seção "eventos" */}}
     {{ $proximos := where (where .Site.RegularPages "Section" "eventos") "Params.data_evento" "ge" now }}
     {{ if $proximos }}
-      <ul class="ep-agenda">
+      <ul class="ep-agenda" style="margin-top:2rem;">
         {{ range $proximos.ByParam "data_evento" }}
           {{ partial "evento-item.html" . }}
         {{ end }}

@@ -1,6 +1,5 @@
 +++
 title = "Ensino"
-layout = "simple"
 description = "Do Berçário ao Ensino Fundamental I, respeitando o tempo de cada fase."
 +++
 

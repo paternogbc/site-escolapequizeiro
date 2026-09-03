@@ -1,6 +1,5 @@
 +++
 title = "Contato"
-layout = "simple"
 description = "Fale com a gente pelo canal que preferir."
 +++
 

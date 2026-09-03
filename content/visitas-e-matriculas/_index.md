@@ -1,6 +1,5 @@
 +++
 title = "Visitas e Matrículas"
-layout = "simple"
 description = "Conhecer a Pequi começa com uma visita."
 +++
 

@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <article class="ep-secao ep-pagina">
+    {{ if eq .Section "noticias" }}
+      <time class="ep-data" datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "02 de January de 2006" }}
+      </time>
+    {{ end }}
+
+    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+
+    {{ with .Params.faixa }}
+      <p class="ep-pagina__faixa">{{ . }}</p>
+    {{ end }}
+
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
+

@@ -1,6 +1,5 @@
 +++
 title = "Agende uma visita"
-layout = "simple"
 description = "Venha sentir o ritmo da escola antes de decidir."
 +++
 

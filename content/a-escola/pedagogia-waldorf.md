@@ -1,6 +1,5 @@
 +++
 title = "Pedagogia Waldorf"
-layout = "simple"
 description = "Os princípios que orientam nosso trabalho pedagógico."
 +++
 

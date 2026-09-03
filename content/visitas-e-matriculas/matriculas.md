@@ -1,6 +1,5 @@
 +++
 title = "Matrículas"
-layout = "simple"
 description = "Faixas etárias, documentação e como se matricular."
 +++
 

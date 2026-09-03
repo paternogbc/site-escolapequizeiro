@@ -1,6 +1,5 @@
 +++
 title = "Depoimentos"
-layout = "simple"
 description = "A voz de quem já vive a escola."
 +++
 

@@ -1,6 +1,5 @@
 +++
 title = "Nossa História"
-layout = "simple"
 description = "Como a Pequi nasceu, em 2014, de um desejo coletivo."
 +++
 

@@ -1,13 +1,16 @@
 {{/* Cabeçalho próprio — ativado por header.layout = "custom".
-      Suporta menus de dois níveis: itens com filhos viram
-      dropdown (CSS puro, sem JavaScript). */}}
+      Usa só o ícone da árvore (sem o nome desenhado dentro do
+      arquivo) porque texto raster fica ilegível pequeno; o nome
+      da escola é escrito aqui como HTML de verdade. */}}
 
 <a class="ep-pular" href="#conteudo">Pular para o conteúdo</a>
 
 <header class="ep-cabecalho">
   <a class="ep-marca" href="{{ .Site.Home.RelPermalink }}">
-    {{ with resources.Get "img/logo-pequizeiro.svg" }}
-      <img src="{{ .RelPermalink }}" alt="" width="52" height="52" />
+    {{ with resources.Get "img/logo-pequizeiro-arvore.png" }}
+      {{ $icone := . }}
+      <img class="ep-logo-icone" src="{{ $icone.RelPermalink }}"
+           alt="" width="36" height="{{ div (mul 36 $icone.Height) $icone.Width }}" />
     {{ end }}
     <span class="ep-marca__texto">
       <small>Escola Waldorf Rural</small>
@@ -24,11 +27,8 @@
           </li>
         {{ else if .HasChildren }}
           <li class="ep-nav__item ep-nav__item--pai">
-            <a
-              class="ep-nav__link"
-              href="{{ .URL }}"
-              {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}
-            >
+            <a class="ep-nav__link" href="{{ .URL }}"
+               {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}>
               {{ .Name }}
               <svg class="ep-nav__seta" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
                 <path d="M1,1 L5,5 L9,1" fill="none" stroke="currentColor"
@@ -38,23 +38,16 @@
             <ul class="ep-submenu">
               {{ range .Children }}
                 <li>
-                  <a
-                    href="{{ .URL }}"
-                    {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}
-                    >{{ .Name }}</a
-                  >
+                  <a href="{{ .URL }}"
+                     {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}>{{ .Name }}</a>
                 </li>
               {{ end }}
             </ul>
           </li>
         {{ else }}
           <li class="ep-nav__item">
-            <a
-              class="ep-nav__link"
-              href="{{ .URL }}"
-              {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}
-              >{{ .Name }}</a
-            >
+            <a class="ep-nav__link" href="{{ .URL }}"
+               {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}>{{ .Name }}</a>
           </li>
         {{ end }}
       {{ end }}

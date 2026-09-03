@@ -1,6 +1,5 @@
 +++
 title = "Vem trabalhar no Pequizeiro"
-layout = "simple"
 description = "Vagas abertas e como enviar seu currículo."
 +++
 

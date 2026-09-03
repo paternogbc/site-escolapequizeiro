@@ -1,6 +1,5 @@
 +++
 title = "A Escola"
-layout = "simple"
 description = "Nossa história, a Pedagogia Waldorf e a permacultura no cotidiano."
 +++
 

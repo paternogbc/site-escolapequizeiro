@@ -1019,3 +1019,320 @@ body::before {
   gap: 0.75rem;
   margin-top: 1.75rem;
 }
+
+/* ---------------------------------------------------------------
+   SUBMENU — versão simplificada (Fase 10)
+   Sem borda, sombra discreta, menos peso visual.
+   --------------------------------------------------------------- */
+
+.ep-submenu {
+  min-width: 13rem;
+  padding: 0.4rem;
+
+  background: rgba(253, 251, 247, 0.97);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px -10px rgba(52, 44, 35, 0.22);
+
+  backdrop-filter: blur(6px);
+}
+
+.ep-submenu a {
+  padding: 0.42rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 400;
+  color: var(--ep-tinta-corpo);
+}
+
+.ep-submenu a:hover,
+.ep-submenu a[aria-current="page"] {
+  background: transparent;
+  color: var(--ep-terracota);
+}
+
+/* No celular o submenu já é lista aninhada: deixa ainda mais leve,
+   trocando a barra lateral grossa por um traço fino. */
+@media (max-width: 860px) {
+  .ep-submenu {
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    border-left: 1px solid rgba(92, 78, 62, 0.25);
+  }
+}
+
+/* ---------------------------------------------------------------
+   LARGURA CONSISTENTE (Fase 11)
+
+   Um container só em todo o site (.ep-secao, 1180px). O texto
+   corrido dentro dele fica limitado a ~66 caracteres por linha,
+   que é a medida confortável de leitura. Fotos, galerias, tabelas
+   e a agenda usam a largura toda.
+   --------------------------------------------------------------- */
+
+.ep-pagina .prose > p,
+.ep-pagina .prose > ul,
+.ep-pagina .prose > ol,
+.ep-pagina .prose > blockquote,
+.ep-pagina .prose > h2,
+.ep-pagina .prose > h3,
+.ep-pagina .prose > h4 {
+  max-width: 66ch;
+}
+
+/* Estes escapam da medida de texto e ocupam o container inteiro */
+.ep-pagina .prose > figure,
+.ep-pagina .prose > .ep-galeria,
+.ep-pagina .prose > table,
+.ep-pagina .prose img {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Imagens no meio do texto: bordas de pincel, como nos cartões */
+.ep-pagina .prose img {
+  border-radius: 0;
+  margin-block: 2rem;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C18,1 34,4 52,2 C70,0 86,3 98,7 C99,25 100,48 98,70 C99,86 97,94 96,98 C78,99 60,96 42,98 C26,100 12,97 3,95 C1,76 0,54 2,32 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C18,1 34,4 52,2 C70,0 86,3 98,7 C99,25 100,48 98,70 C99,86 97,94 96,98 C78,99 60,96 42,98 C26,100 12,97 3,95 C1,76 0,54 2,32 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+/* Faixa etária, sob o título das páginas de Ensino */
+.ep-pagina__faixa {
+  font-size: var(--ep-t-1);
+  font-weight: 600;
+  color: var(--ep-terracota);
+  margin: 0 0 1.5rem;
+}
+
+/* A agenda também usa a largura toda */
+.ep-pagina .ep-agenda { max-width: 100%; }
+
+/* ---------------------------------------------------------------
+   LOGO (Fase 12)
+   --------------------------------------------------------------- */
+
+.ep-logo {
+  display: block;
+  width: auto;
+  flex: none;
+}
+
+/* Filtros de emergência, para quando existe só UMA versão do
+   arquivo. Funcionam bem em logo de uma cor só; em logo colorido
+   distorcem as cores — nesse caso, peça as duas versões. */
+
+.ep-logo--forcar-escuro {
+  /* arquivo branco sendo usado sobre fundo claro */
+  filter: brightness(0) saturate(100%) invert(17%) sepia(12%)
+          saturate(1100%) hue-rotate(350deg) brightness(95%) contrast(90%);
+}
+
+.ep-logo--forcar-claro {
+  /* arquivo escuro sendo usado sobre fundo verde */
+  filter: brightness(0) invert(1);
+}
+
+/* Marca no rodapé */
+.ep-rodape__marca {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.ep-rodape__marca h3 {
+  margin: 0;
+  font-size: var(--ep-t-1);
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .ep-rodape__marca { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------------------------------------------------------------
+   LOGO (Fase 12)
+   --------------------------------------------------------------- */
+
+.ep-logo {
+  display: block;
+  width: auto;
+  flex: none;
+}
+
+/* Filtros de emergência, para quando existe só UMA versão do
+   arquivo. Funcionam bem em logo de uma cor só; em logo colorido
+   distorcem as cores — nesse caso, peça as duas versões. */
+
+.ep-logo--forcar-escuro {
+  /* arquivo branco sendo usado sobre fundo claro */
+  filter: brightness(0) saturate(100%) invert(17%) sepia(12%)
+          saturate(1100%) hue-rotate(350deg) brightness(95%) contrast(90%);
+}
+
+.ep-logo--forcar-claro {
+  /* arquivo escuro sendo usado sobre fundo verde */
+  filter: brightness(0) invert(1);
+}
+
+/* Marca no rodapé */
+.ep-rodape__marca {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.ep-rodape__marca h3 {
+  margin: 0;
+  font-size: var(--ep-t-1);
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .ep-rodape__marca { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------------------------------------------------------------
+   LOGO (Fase 12)
+   --------------------------------------------------------------- */
+
+.ep-logo {
+  display: block;
+  width: auto;
+  flex: none;
+}
+
+/* Filtros de emergência, para quando existe só UMA versão do
+   arquivo. Funcionam bem em logo de uma cor só; em logo colorido
+   distorcem as cores — nesse caso, peça as duas versões. */
+
+.ep-logo--forcar-escuro {
+  /* arquivo branco sendo usado sobre fundo claro */
+  filter: brightness(0) saturate(100%) invert(17%) sepia(12%)
+          saturate(1100%) hue-rotate(350deg) brightness(95%) contrast(90%);
+}
+
+.ep-logo--forcar-claro {
+  /* arquivo escuro sendo usado sobre fundo verde */
+  filter: brightness(0) invert(1);
+}
+
+/* Marca no rodapé */
+.ep-rodape__marca {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.ep-rodape__marca h3 {
+  margin: 0;
+  font-size: var(--ep-t-1);
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .ep-rodape__marca { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------------------------------------------------------------
+   LOGO REAL (Fase 13) — ajustes finos
+   --------------------------------------------------------------- */
+
+.ep-marca { gap: 0; }
+
+.ep-rodape__marca {
+  margin-bottom: 1.1rem;
+}
+
+/* Sem texto ao lado, o link do cabeçalho vira só a imagem —
+   garante uma área de toque confortável mesmo assim */
+.ep-marca {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ---------------------------------------------------------------
+   LOGO REAL (Fase 13) — ajustes finos
+   --------------------------------------------------------------- */
+
+.ep-marca { gap: 0; }
+
+.ep-rodape__marca {
+  margin-bottom: 1.1rem;
+}
+
+/* Sem texto ao lado, o link do cabeçalho vira só a imagem —
+   garante uma área de toque confortável mesmo assim */
+.ep-marca {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ---------------------------------------------------------------
+   HERO MENOR (Fase 14) — sobrescreve a altura definida antes,
+   para ficar mais próximo da escala das faixas de conteúdo.
+   --------------------------------------------------------------- */
+
+.ep-hero {
+  min-height: min(46vh, 420px);
+}
+
+@media (max-width: 640px) {
+  .ep-hero {
+    min-height: min(52vh, 380px);
+  }
+}
+
+/* ---------------------------------------------------------------
+   MARCA DO CABEÇALHO (Fase 15) — ícone + texto real
+   --------------------------------------------------------------- */
+
+.ep-marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 44px;
+  color: var(--ep-tinta);
+  text-decoration: none;
+}
+
+.ep-logo-icone {
+  display: block;
+  flex: none;
+}
+
+.ep-marca__texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.ep-marca__texto small {
+  font-family: "Karla", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ep-tinta-corpo);
+}
+
+.ep-marca__texto strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 30;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ep-tinta);
+}
+
+@media (max-width: 480px) {
+  .ep-marca__texto strong { font-size: 1.1rem; }
+}

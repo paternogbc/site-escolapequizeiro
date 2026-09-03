@@ -1,6 +1,5 @@
 +++
 title = "Educação Infantil"
-layout = "simple"
 faixa = "4 a 6 anos"
 description = "O brincar como linguagem principal."
 +++

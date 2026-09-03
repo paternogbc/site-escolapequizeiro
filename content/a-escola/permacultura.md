@@ -1,6 +1,5 @@
 +++
 title = "Permacultura & Sustentabilidade"
-layout = "simple"
 description = "Princípios que atravessam o cotidiano, não temas de aula."
 +++
 

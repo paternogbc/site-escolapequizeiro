@@ -1,6 +1,5 @@
 +++
 title = "Ensino Fundamental I"
-layout = "simple"
 faixa = "7 a 10/11 anos"
 description = "Currículo entrelaçado à arte, ao trabalho manual e à natureza."
 +++

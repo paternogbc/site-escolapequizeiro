@@ -1,6 +1,5 @@
 +++
 title = "Berçário e Maternal"
-layout = "simple"
 faixa = "1 ano e 6 meses a 3 anos e 11 meses"
 description = "Acolhimento e ritmo como eixos da descoberta."
 +++

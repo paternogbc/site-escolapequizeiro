@@ -1,0 +1,34 @@
+{{ define "main" }}
+  <section class="ep-secao ep-pagina">
+    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+
+    <div class="prose">
+      {{ .Content }}
+    </div>
+
+    {{/* Se a seção tiver páginas filhas, lista em grade */}}
+    {{ $filhas := .Pages }}
+    {{ if $filhas }}
+      <div class="ep-grade" style="margin-top:3rem;">
+        {{ range $filhas }}
+          <article class="ep-item">
+            {{ with .Resources.GetMatch "capa.*" }}
+              {{ $c := .Fill "800x600 Smart q82 webp" }}
+              <div class="ep-item__foto">
+                <img class="ep-pincel-1" src="{{ $c.RelPermalink }}" alt="" loading="lazy" />
+              </div>
+            {{ end }}
+            <h3 class="ep-item__titulo">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            {{ with .Params.faixa }}<p class="ep-data">{{ . }}</p>{{ end }}
+            <p class="ep-item__resumo">
+              {{ .Params.description | default .Summary }}
+            </p>
+          </article>
+        {{ end }}
+      </div>
+    {{ end }}
+  </section>
+{{ end }}
+

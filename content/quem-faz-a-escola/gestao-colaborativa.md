@@ -1,6 +1,5 @@
 +++
 title = "Gestão Colaborativa"
-layout = "simple"
 description = "Como famílias e educadores dividem a responsabilidade pela escola."
 +++
 

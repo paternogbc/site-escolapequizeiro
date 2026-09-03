@@ -1,0 +1,54 @@
+{{/*
+  Logo da escola.
+
+  Parâmetros:
+    variante — "escuro" (padrão, para o cabeçalho creme)
+               "claro"  (para o rodapé verde)
+    altura   — altura em px (padrão 52)
+
+  Procura os arquivos em assets/img/, nesta ordem de preferência:
+    logo-pequizeiro[-branco].svg / .png / .webp
+  Usa o primeiro que existir.
+*/}}
+
+{{ $variante := .variante | default "escuro" }}
+{{ $altura := .altura | default 52 }}
+
+{{/* Bases a procurar, na ordem de preferência para cada variante */}}
+{{ $bases := slice "img/logo-pequizeiro" "img/logo-pequizeiro-branco" }}
+{{ if eq $variante "claro" }}
+  {{ $bases = slice "img/logo-pequizeiro-branco" "img/logo-pequizeiro" }}
+{{ end }}
+
+{{ $arquivo := "" }}
+{{ $encontrado := "" }}
+{{ range $b := $bases }}
+  {{ range $ext := slice ".svg" ".png" ".webp" }}
+    {{ if not $arquivo }}
+      {{ with resources.Get (print $b $ext) }}
+        {{ $arquivo = . }}
+        {{ $encontrado = $b }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if $arquivo }}
+  {{/* Precisa de filtro? Só quando a variante pedida não bate
+       com o arquivo que foi realmente encontrado. */}}
+  {{ $classe := "ep-logo" }}
+  {{ if and (eq $variante "claro") (eq $encontrado "img/logo-pequizeiro") }}
+    {{ $classe = "ep-logo ep-logo--forcar-claro" }}
+  {{ end }}
+  {{ if and (eq $variante "escuro") (eq $encontrado "img/logo-pequizeiro-branco") }}
+    {{ $classe = "ep-logo ep-logo--forcar-escuro" }}
+  {{ end }}
+
+  <img
+    class="{{ $classe }}"
+    src="{{ $arquivo.RelPermalink }}"
+    alt="Escola Waldorf Rural Pequizeiro"
+    style="height: {{ $altura }}px; width: auto;"
+  />
+{{ end }}
+

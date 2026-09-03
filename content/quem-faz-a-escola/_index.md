@@ -1,6 +1,5 @@
 +++
 title = "Quem faz a escola"
-layout = "simple"
 description = "Famílias e educadores que constroem a Pequi juntos."
 +++
 
