@@ -49,47 +49,47 @@ weight = 20
   pageRef = "/ensino/fundamental-1"
   weight = 3
 
-[[main]]
-identifier = "vida-no-pequi"
-name = "Vida no Pequi"
-pageRef = "/vida-no-pequi"
-weight = 30
+#[[main]]
+#identifier = "vida-no-pequi"
+#name = "Vida no Pequi"
+#pageRef = "/vida-no-pequi"
+#weight = 30
 
-[[main]]
-identifier = "quem-faz"
-name = "Quem faz a escola"
-pageRef = "/quem-faz-a-escola"
-weight = 40
+#[[main]]
+#identifier = "quem-faz"
+#name = "Quem faz a escola"
+#pageRef = "/quem-faz-a-escola"
+#weight = 40
 
-  [[main]]
-  parent = "quem-faz"
-  name = "Depoimentos"
-  pageRef = "/quem-faz-a-escola/depoimentos"
-  weight = 1
+#  [[main]]
+#  parent = "quem-faz"
+#  name = "Depoimentos"
+#  pageRef = "/quem-faz-a-escola/depoimentos"
+#  weight = 1
 
-  [[main]]
-  parent = "quem-faz"
-  name = "Nossa Equipe"
-  pageRef = "/equipe"
-  weight = 2
+#  [[main]]
+#  parent = "quem-faz"
+#  name = "Nossa Equipe"
+#  pageRef = "/equipe"
+#  weight = 2
 
-  [[main]]
-  parent = "quem-faz"
-  name = "Gestão Colaborativa"
-  pageRef = "/quem-faz-a-escola/gestao-colaborativa"
-  weight = 3
+#  [[main]]
+#  parent = "quem-faz"
+#  name = "Gestão Colaborativa"
+#  pageRef = "/quem-faz-a-escola/gestao-colaborativa"
+#  weight = 3
 
-  [[main]]
-  parent = "quem-faz"
-  name = "Vem trabalhar no Pequizeiro"
-  pageRef = "/quem-faz-a-escola/trabalhe-conosco"
-  weight = 4
+#  [[main]]
+#  parent = "quem-faz"
+#  name = "Vem trabalhar no Pequizeiro"
+#  pageRef = "/quem-faz-a-escola/trabalhe-conosco"
+#  weight = 4
 
-[[main]]
-identifier = "noticias"
-name = "Notícias"
-pageRef = "/noticias"
-weight = 50
+#[[main]]
+#identifier = "noticias"
+#name = "Notícias"
+#pageRef = "/noticias"
+#weight = 50
 
 [[main]]
 identifier = "visitas"
