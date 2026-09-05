@@ -3,10 +3,10 @@ title = "Pedagogia Waldorf"
 description = "Os princípios que orientam nosso trabalho pedagógico."
 +++
 
-A Pedagogia Waldorf nasceu há mais de 100 anos da compreensão de que educar
+A **Pedagogia Waldorf** nasceu há mais de 100 anos da compreensão de que educar
 é acompanhar o desenvolvimento do ser humano por inteiro — pensar, sentir e agir.
 
-![Materiais pedagógicos feitos à mão](waldorf.jpg)
+![](pw1.png)
 
 Organizamos o olhar sobre cada criança a partir dos setênios: ciclos de sete
 anos em que as necessidades de aprendizagem se transformam. Por isso a rotina,
@@ -24,6 +24,3 @@ Nosso trabalho também é guiado pelos direitos de aprendizagem que sustentam
 a educação infantil: brincar, conviver, participar, explorar, expressar-se e
 conhecer-se.
 
-> Espaço reservado para o vídeo de 2–3 min com a coordenação pedagógica
-> explicando a proposta Waldorf. Quando gravarem, salve o .mp4 nesta pasta
-> e use: `{{</* video src="coordenacao.mp4" titulo="..." */>}}`

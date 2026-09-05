@@ -28,17 +28,19 @@
     </div>
   </section>
 
-  {{/* ---------- POR QUE A PEQUI ---------- */}}
+  {{/* ---------- POR QUE O PEQUI ---------- */}}
   <section id="conteudo" class="ep-secao">
     <h2 class="ep-secao__titulo">Por que a Pequi</h2>
     <div class="ep-grade">
       {{ range .Site.Data.porque_pequi.cards }}
         <article class="ep-item">
-          {{ with resources.Get (printf "img/%s" .imagem) }}
-            {{ $c := .Fill "800x600 Smart q82 webp" }}
-            <div class="ep-item__foto">
-              <img class="ep-pincel-1" src="{{ $c.RelPermalink }}" alt="" loading="lazy" />
-            </div>
+          {{ with $.Site.GetPage .link }}
+            {{ with .Resources.GetMatch "capa.*" }}
+              {{ $c := .Fill "800x600 Smart q82 webp" }}
+              <div class="ep-item__foto">
+                <img class="ep-pincel-1" src="{{ $c.RelPermalink }}" alt="" loading="lazy" />
+              </div>
+            {{ end }}
           {{ end }}
           <h3 class="ep-item__titulo"><a href="{{ .link }}">{{ .titulo }}</a></h3>
           <p class="ep-item__resumo">{{ .texto }}</p>
@@ -57,8 +59,14 @@
         Cada fase tem seu ritmo, seus materiais e sua forma de aprender.
       </p>
       <div class="ep-grade">
-        {{ range where .Site.RegularPages "Section" "ensino" }}
+        {{ range (where .Site.RegularPages "Section" "ensino").ByParam "weight" }}
           <article class="ep-item">
+            {{ with .Resources.GetMatch "capa.*" }}
+              {{ $c := .Fill "800x600 Smart q82 webp" }}
+              <div class="ep-item__foto">
+                <img class="ep-pincel-2" src="{{ $c.RelPermalink }}" alt="" loading="lazy" />
+              </div>
+            {{ end }}
             <h3 class="ep-item__titulo"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
             {{ with .Params.faixa }}<p class="ep-data">{{ . }}</p>{{ end }}
             <p class="ep-item__resumo">{{ .Params.description }}</p>
