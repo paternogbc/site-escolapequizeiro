@@ -3,6 +3,11 @@
   <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 {{ end }}
 
+{{ with resources.Get "js/menu-ancora.js" }}
+  {{ $js := . | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}
+
 <footer class="ep-rodape">
   <div class="ep-rodape__grade">
 

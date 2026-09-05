@@ -28,6 +28,7 @@
         {{ else if .HasChildren }}
           <li class="ep-nav__item ep-nav__item--pai">
             <a class="ep-nav__link" href="{{ .URL }}"
+               {{ if eq .Identifier "ensino" }}data-ancora="ensino"{{ end }}
                {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}>
               {{ .Name }}
               <svg class="ep-nav__seta" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
