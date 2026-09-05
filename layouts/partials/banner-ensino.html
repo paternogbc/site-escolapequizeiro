@@ -1,0 +1,28 @@
+{{/*
+  Banner "Do Maternal ao Fundamental I" — usado idêntico na home
+  e em /ensino/. Qualquer mudança aqui aparece nos dois lugares.
+*/}}
+<section class="ep-faixa">
+  <div class="ep-secao">
+    <h2 class="ep-secao__titulo">Do Maternal ao Fundamental I</h2>
+    <p class="ep-secao__resumo">
+      Cada fase tem seu ritmo, seus materiais e sua forma de aprender.
+    </p>
+    <div class="ep-grade">
+      {{ range (where .Site.RegularPages "Section" "ensino").ByParam "weight" }}
+        <article class="ep-item">
+          {{ with .Resources.GetMatch "capa.*" }}
+            {{ $c := .Fill "800x600 Smart q82 webp" }}
+            <div class="ep-item__foto">
+              <img class="ep-pincel-2" src="{{ $c.RelPermalink }}" alt="" loading="lazy" />
+            </div>
+          {{ end }}
+          <h3 class="ep-item__titulo"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.faixa }}<p class="ep-data">{{ . }}</p>{{ end }}
+          <p class="ep-item__resumo">{{ .Params.description }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+

@@ -4,20 +4,7 @@
     <div class="prose">{{ .Content }}</div>
   </article>
 
-  {{/* ---------- 1. Cartões de texto, estilo da home ---------- */}}
-  <section class="ep-faixa">
-    <div class="ep-secao">
-      <div class="ep-grade">
-        {{ range .Pages.ByParam "weight" }}
-          <article class="ep-item">
-            <h3 class="ep-item__titulo"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            {{ with .Params.faixa }}<p class="ep-data">{{ . }}</p>{{ end }}
-            <p class="ep-item__resumo">{{ .Params.description }}</p>
-          </article>
-        {{ end }}
-      </div>
-    </div>
-  </section>
+  {{ partial "banner-ensino.html" . }}
 
   {{/* ---------- 2. Navegação visual: foto + link ---------- */}}
   <section class="ep-secao">
