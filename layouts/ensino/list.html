@@ -1,27 +1,9 @@
 {{ define "main" }}
-  <article class="ep-secao">
+  <article class="ep-secao ep-pagina ep-secao--sem-vao-embaixo">
     <h1 class="ep-secao__titulo">{{ .Title }}</h1>
     <div class="prose">{{ .Content }}</div>
   </article>
 
   {{ partial "banner-ensino.html" . }}
-
-  {{/* ---------- 2. Navegação visual: foto + link ---------- */}}
-  <section class="ep-secao">
-    <h2 class="ep-secao__titulo">Conheça cada fase</h2>
-    <div class="ep-grade">
-      {{ range .Pages.ByParam "weight" }}
-        <a class="ep-nav-foto" href="{{ .RelPermalink }}">
-          {{ with .Resources.GetMatch "capa.*" }}
-            {{ $c := .Fill "800x600 Smart q82 webp" }}
-            <div class="ep-item__foto">
-              <img class="ep-pincel-2" src="{{ $c.RelPermalink }}" alt="" loading="lazy" />
-            </div>
-          {{ end }}
-          <span class="ep-nav-foto__titulo">{{ .Title }}</span>
-        </a>
-      {{ end }}
-    </div>
-  </section>
 {{ end }}
 

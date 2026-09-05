@@ -1498,3 +1498,14 @@ body::before {
 .ep-nav-foto:hover .ep-nav-foto__titulo { color: var(--ep-terracota); }
 
 .ep-nav-foto:hover .ep-item__foto img { transform: scale(1.03); }
+
+/* ---------------------------------------------------------------
+   ESPAÇO ENTRE TEXTO E BANNER — /ensino/ (Fase 27)
+   Remove o padding de baixo do bloco de texto introdutório, já
+   que o banner logo abaixo tem seu próprio espaço em cima — os
+   dois juntos dobravam o vão.
+   --------------------------------------------------------------- */
+
+.ep-secao--sem-vao-embaixo {
+  padding-bottom: 0;
+}
