@@ -1,5 +1,5 @@
 +++
-title = "XXX"
+title = "Noticia XXXX"
 date = 2026-09-04
 categorias = ["Eventos"]
 draft = false

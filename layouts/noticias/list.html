@@ -25,7 +25,7 @@
           <h3 class="ep-item__titulo">
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
           </h3>
-          <p class="ep-item__resumo">{{ .Summary }}</p>
+          <p class="ep-item__resumo">{{ .Summary | plainify }}</p>
         </article>
       {{ end }}
     </div>
