@@ -54,15 +54,18 @@
   {{/* ---------- SEGMENTOS DE ENSINO ---------- */}}
   {{ partial "banner-ensino.html" . }}
 
-  {{/* ---------- DEPOIMENTO ---------- */}}
+  {{/* ---------- DEPOIMENTOS ---------- */}}
   <section class="ep-secao">
-    {{ with .Site.Data.depoimento_destaque }}
-      <blockquote class="ep-depoimento">
-        <p>{{ .texto }}</p>
-        <footer>{{ .quem }}</footer>
-      </blockquote>
-    {{ end }}
-    <p style="text-align:center; margin-top:1.5rem;">
+    <h2 class="ep-secao__titulo" style="text-align:center;">O que as famílias dizem</h2>
+    <div class="ep-depoimentos-grade">
+      {{ range .Site.Data.depoimentos_home }}
+        <blockquote class="ep-depoimento ep-depoimento--card">
+          <p>{{ .texto }}</p>
+          <footer>{{ .quem }}</footer>
+        </blockquote>
+      {{ end }}
+    </div>
+    <p style="text-align:center; margin-top:2rem;">
       <a href="/quem-faz-a-escola/depoimentos/">Ler mais depoimentos</a>
     </p>
   </section>

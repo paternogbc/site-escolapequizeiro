@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <section class="ep-split-depoimentos">
+    <div class="ep-split-depoimentos__foto">
+      {{ with .Resources.GetMatch "foto.*" }}
+        {{ $f := .Fill "1200x1500 Smart q82 webp" }}
+        <img src="{{ $f.RelPermalink }}" alt="" loading="lazy" />
+      {{ else }}
+        <div class="ep-split-depoimentos__foto--vazio" aria-hidden="true"></div>
+      {{ end }}
+    </div>
+    <div class="ep-split-depoimentos__texto">
+      <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+      {{ range .Params.depoimentos }}
+        <blockquote class="ep-frase-solta">
+          <p>&ldquo;{{ .texto }}&rdquo;</p>
+          {{ with .quem }}<footer>{{ . }}</footer>{{ end }}
+        </blockquote>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+

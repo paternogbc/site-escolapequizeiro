@@ -1,21 +1,20 @@
 {{/* Cabeçalho próprio — ativado por header.layout = "custom".
-      Usa só o ícone da árvore (sem o nome desenhado dentro do
-      arquivo) porque texto raster fica ilegível pequeno; o nome
-      da escola é escrito aqui como HTML de verdade. */}}
+      A imagem em assets/img/logo-pequizeiro-arvore.png já tem o
+      nome da escola desenhado com tamanho legível — por isso não
+      escrevemos mais texto HTML ao lado (Fase 29; antes disso, a
+      Fase 15 usava ícone pequeno + texto HTML porque a versão
+      anterior do arquivo tinha o texto ilegível em tamanho de
+      cabeçalho). */}}
 
 <a class="ep-pular" href="#conteudo">Pular para o conteúdo</a>
 
 <header class="ep-cabecalho">
-  <a class="ep-marca" href="{{ .Site.Home.RelPermalink }}">
+  <a class="ep-marca" href="{{ .Site.Home.RelPermalink }}" aria-label="Página inicial">
     {{ with resources.Get "img/logo-pequizeiro-arvore.png" }}
-      {{ $icone := . }}
-      <img class="ep-logo-icone" src="{{ $icone.RelPermalink }}"
-           alt="" width="36" height="{{ div (mul 36 $icone.Height) $icone.Width }}" />
+      <img class="ep-logo" src="{{ .RelPermalink }}"
+           alt="Escola Waldorf Rural Pequizeiro"
+           style="height: 64px; width: auto;" />
     {{ end }}
-    <span class="ep-marca__texto">
-      <small>Escola Waldorf Rural</small>
-      <strong>Pequizeiro</strong>
-    </span>
   </a>
 
   <nav class="ep-nav" aria-label="Navegação principal">

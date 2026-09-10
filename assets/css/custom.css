@@ -1522,3 +1522,278 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ---------------------------------------------------------------
+   PALETA REAL DO LOGO (Fase 29) — redefine as variáveis por cima
+   de qualquer definição anterior. Como o resto do CSS já usa
+   var(--ep-terracota) etc., a troca aplica em todo o site sem
+   precisar editar cada regra.
+
+   --ep-tinta     agora é o VERMELHO do logo (#9f3535)
+                  -> títulos (H1-H4), nome da marca
+   --ep-terracota agora é o LARANJA do logo (#e5931b)
+                  -> links, botões, acentos interativos
+   --ep-telha     também o vermelho (#9f3535) — mesma família do título
+   --ep-verde     agora o VERDE SÁLVIA do logo (#8a9669)
+                  -> rodapé, hover de menu, selos
+
+   --ep-tinta-corpo NÃO muda — o texto corrido continua no marrom
+   neutro de antes, por pedido explícito (só títulos/destaques
+   ficam vermelhos, não o parágrafo inteiro).
+   --------------------------------------------------------------- */
+
+:root {
+  --ep-tinta: #9f3535;
+  --ep-terracota: #e5931b;
+  --ep-telha: #9f3535;
+  --ep-verde: #8a9669;
+  --ep-verde-claro: #a9b48c;
+}
+
+/* Correção: o campo de texto do formulário de contato usava a
+   variável de título para a cor do texto digitado — sem isso, o
+   texto que a pessoa digita apareceria vermelho. Volta a um
+   neutro escuro de leitura. */
+.ep-form input,
+.ep-form textarea {
+  color: #342c23;
+}
+
+/* ---------------------------------------------------------------
+   PALETA REAL DO LOGO (Fase 29) — redefine as variáveis por cima
+   de qualquer definição anterior. Como o resto do CSS já usa
+   var(--ep-terracota) etc., a troca aplica em todo o site sem
+   precisar editar cada regra.
+
+   --ep-tinta     agora é o VERMELHO do logo (#9f3535)
+                  -> títulos (H1-H4), nome da marca
+   --ep-terracota agora é o LARANJA do logo (#e5931b)
+                  -> links, botões, acentos interativos
+   --ep-telha     também o vermelho (#9f3535) — mesma família do título
+   --ep-verde     agora o VERDE SÁLVIA do logo (#8a9669)
+                  -> rodapé, hover de menu, selos
+
+   --ep-tinta-corpo NÃO muda — o texto corrido continua no marrom
+   neutro de antes, por pedido explícito (só títulos/destaques
+   ficam vermelhos, não o parágrafo inteiro).
+   --------------------------------------------------------------- */
+
+:root {
+  --ep-tinta: #9f3535;
+  --ep-terracota: #e5931b;
+  --ep-telha: #9f3535;
+  --ep-verde: #8a9669;
+  --ep-verde-claro: #a9b48c;
+}
+
+/* Correção: o campo de texto do formulário de contato usava a
+   variável de título para a cor do texto digitado — sem isso, o
+   texto que a pessoa digita apareceria vermelho. Volta a um
+   neutro escuro de leitura. */
+.ep-form input,
+.ep-form textarea {
+  color: #342c23;
+}
+
+/* ---------------------------------------------------------------
+   DEPOIMENTOS EM GRADE — home (Fase 30)
+   .ep-depoimento (base) continua igual, usada sozinha em outros
+   lugares. .ep-depoimento--card é uma versão compacta, para caber
+   3 lado a lado sem ficar gigante.
+   --------------------------------------------------------------- */
+
+.ep-depoimentos-grade {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.ep-depoimento--card {
+  margin: 0;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ep-depoimento--card p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.ep-depoimento--card footer {
+  margin-top: 1.25rem;
+}
+
+/* ---------------------------------------------------------------
+   PÁGINA DE DEPOIMENTOS (Fase 31)
+   Reaproveita a mesma grade de 3 colunas da home (Fase 30), agora
+   por seletor de contexto — não precisa de classe extra no
+   shortcode, só de estar dentro de .ep-depoimentos-grade.
+   --------------------------------------------------------------- */
+
+.ep-depoimentos-grade .ep-depoimento {
+  position: relative;
+  margin: 0;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 3.75rem;
+}
+
+.ep-depoimentos-grade .ep-depoimento p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.ep-depoimentos-grade .ep-depoimento footer {
+  margin-top: 1.25rem;
+}
+
+/* Avatar com a inicial do nome — círculo colorido, não é foto */
+.ep-depoimento__avatar {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ep-verde);
+  color: var(--ep-creme-claro);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------
+   DEPOIMENTOS — sem avatar (Fase 32)
+   Remove o padding-top que reservava espaço para o círculo de
+   inicial, e a inicial em si deixa de aparecer (o shortcode não
+   gera mais o elemento).
+   --------------------------------------------------------------- */
+
+.ep-depoimentos-grade .ep-depoimento {
+  padding-top: 0;
+}
+
+.ep-depoimento__avatar {
+  display: none;
+}
+
+/* ---------------------------------------------------------------
+   DEPOIMENTOS — foto + citações soltas (Fase 33)
+   Full-bleed, inspirado numa referência enviada pela escola,
+   usando o verde sálvia da nossa paleta em vez das cores originais
+   da referência.
+   --------------------------------------------------------------- */
+
+.ep-split-depoimentos {
+  display: grid;
+  grid-template-columns: minmax(280px, 42%) 1fr;
+  min-height: 78vh;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.ep-split-depoimentos__foto {
+  position: relative;
+  overflow: hidden;
+}
+
+.ep-split-depoimentos__foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ep-split-depoimentos__foto--vazio {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  background: linear-gradient(160deg, var(--ep-verde), var(--ep-creme));
+}
+
+.ep-split-depoimentos__texto {
+  background: rgba(138, 150, 105, 0.14);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.75rem;
+  padding: clamp(2rem, 6vw, 5rem);
+}
+
+.ep-split-depoimentos__texto .ep-secao__titulo {
+  margin: 0 0 0.5rem;
+}
+
+.ep-frase-solta {
+  margin: 0;
+  max-width: 46ch;
+}
+
+.ep-frase-solta p {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: var(--ep-t-2);
+  line-height: 1.35;
+  color: var(--ep-verde);
+  margin: 0 0 0.6rem;
+}
+
+.ep-frase-solta footer {
+  font-size: 0.95rem;
+  color: var(--ep-tinta-corpo);
+  opacity: 0.75;
+}
+
+@media (max-width: 860px) {
+  .ep-split-depoimentos {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .ep-split-depoimentos__foto {
+    min-height: 40vh;
+  }
+  .ep-split-depoimentos__texto {
+    gap: 2rem;
+  }
+}
+
+/* ---------------------------------------------------------------
+   CITAÇÕES DE /depoimentos/ — mesma tipografia do card da home
+   (Fase 34). Sobrescreve a versão grande/negrito/verde da Fase 33.
+   --------------------------------------------------------------- */
+
+.ep-frase-solta p {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ep-terracota);
+}
+
+.ep-frase-solta footer {
+  font-size: 0.9rem;
+  color: var(--ep-tinta-corpo);
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------
+   CITAÇÕES DE /depoimentos/ — tamanho maior (Fase 35)
+   --------------------------------------------------------------- */
+
+.ep-frase-solta p {
+  font-size: var(--ep-t-1);
+}
