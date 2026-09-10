@@ -1,8 +1,18 @@
 {{ define "main" }}
-  <article class="ep-secao ep-pagina ep-secao--sem-vao-embaixo">
-    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
-    <div class="prose">{{ .Content }}</div>
-  </article>
+  <section class="ep-pagina-split">
+    <div class="ep-pagina-split__foto">
+      {{ with .Resources.GetMatch "foto.*" }}
+        {{ $f := .Fill "1200x1400 Smart q82 webp" }}
+        <img src="{{ $f.RelPermalink }}" alt="" loading="lazy" />
+      {{ else }}
+        <div class="ep-pagina-split__foto--vazio" aria-hidden="true"></div>
+      {{ end }}
+    </div>
+    <div class="ep-pagina-split__texto">
+      <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+      <div class="prose">{{ .Content }}</div>
+    </div>
+  </section>
 
   {{ partial "banner-ensino.html" . }}
 {{ end }}

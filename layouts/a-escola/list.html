@@ -1,0 +1,29 @@
+{{ define "main" }}
+  {{ partial "banner-a-escola.html" (dict "pagina" . "tag" "h1") }}
+
+  {{/* Grade de subpáginas — igual ao layout padrão, sem alteração */}}
+  {{ $filhas := .Pages }}
+  {{ if $filhas }}
+    <section class="ep-secao">
+      <div class="ep-grade ep-grade--fixa-3">
+        {{ range $filhas }}
+          <article class="ep-item">
+            {{ with .Resources.GetMatch "capa.*" }}
+              {{ $c := .Fill "800x600 Smart q82 webp" }}
+              <div class="ep-item__foto">
+                <img class="ep-pincel-1" src="{{ $c.RelPermalink }}" alt="" loading="lazy" />
+              </div>
+            {{ end }}
+            <h3 class="ep-item__titulo">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            <p class="ep-item__resumo">
+              {{ .Params.description | default .Summary }}
+            </p>
+          </article>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
+

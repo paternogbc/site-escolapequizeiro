@@ -58,3 +58,14 @@
   <p class="ep-rodape__fim">© {{ now.Year }} Escola Waldorf Rural Pequizeiro</p>
 </footer>
 
+
+<button id="ep-topo" class="ep-topo" type="button" aria-label="Voltar ao topo">
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+    <path d="M12,5 L19,13 L16.5,13 L12,8 L7.5,13 L5,13 Z" fill="currentColor"/>
+  </svg>
+</button>
+
+{{ with resources.Get "js/voltar-topo.js" }}
+  {{ $js := . | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}

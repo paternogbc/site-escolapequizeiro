@@ -1,0 +1,32 @@
+{{/*
+  Seção "A Escola": foto + texto + botões — compartilhada entre a
+  home e a própria página /a-escola/.
+
+  Uso:
+    {{ partial "banner-a-escola.html" (dict "pagina" . "tag" "h1") }}
+    {{ partial "banner-a-escola.html" (dict "pagina" (.Site.GetPage "/a-escola") "tag" "h2") }}
+
+  "tag" controla o nível do título (h1 na página própria, h2 na
+  home, que já tem seu h1 no hero).
+*/}}
+{{ $p := .pagina }}
+{{ $tag := .tag | default "h2" }}
+<section class="ep-pagina-split">
+  <div class="ep-pagina-split__foto">
+    {{ with $p.Resources.GetMatch "foto.*" }}
+      {{ $f := .Fill "1200x1400 Smart q82 webp" }}
+      <img src="{{ $f.RelPermalink }}" alt="" loading="lazy" />
+    {{ else }}
+      <div class="ep-pagina-split__foto--vazio" aria-hidden="true"></div>
+    {{ end }}
+  </div>
+  <div class="ep-pagina-split__texto">
+    {{ if eq $tag "h1" }}
+      <h1 class="ep-secao__titulo">{{ $p.Title }}</h1>
+    {{ else }}
+      <h2 class="ep-secao__titulo">{{ $p.Title }}</h2>
+    {{ end }}
+    <div class="prose">{{ $p.Content }}</div>
+  </div>
+</section>
+

@@ -1797,3 +1797,190 @@ html {
 .ep-frase-solta p {
   font-size: var(--ep-t-1);
 }
+
+/* ---------------------------------------------------------------
+   CITAÇÕES DE /depoimentos/ — tamanho maior (Fase 35)
+   --------------------------------------------------------------- */
+
+.ep-frase-solta p {
+  font-size: var(--ep-t-1);
+}
+
+/* ---------------------------------------------------------------
+   TESTE: foto + texto em páginas (Fase 36) — usado em /a-escola/
+   Classes independentes de .ep-split-depoimentos (Fase 33): mexer
+   aqui não afeta a página de depoimentos, e vice-versa.
+   --------------------------------------------------------------- */
+
+.ep-pagina-split {
+  display: grid;
+  grid-template-columns: minmax(280px, 42%) 1fr;
+  min-height: 60vh;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.ep-pagina-split__foto {
+  position: relative;
+  overflow: hidden;
+}
+
+.ep-pagina-split__foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ep-pagina-split__foto--vazio {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  background: linear-gradient(160deg, var(--ep-verde), var(--ep-creme));
+}
+
+.ep-pagina-split__texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: clamp(2rem, 6vw, 5rem);
+}
+
+.ep-pagina-split__texto .ep-secao__titulo {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .ep-pagina-split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .ep-pagina-split__foto {
+    min-height: 40vh;
+  }
+}
+
+/* ---------------------------------------------------------------
+   GRUPO DE BOTÕES (Fase 38) — reaproveita .ep-botao (já existente,
+   usado em "Agende uma visita" etc.), só organiza o espaçamento
+   quando há vários lado a lado.
+   --------------------------------------------------------------- */
+
+.ep-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+
+/* ---------------------------------------------------------------
+   BOTÃO — remove máscara antiga, tamanho menor (Fase 39)
+   Desliga de vez qualquer mask-image herdada de versões antigas
+   do site (Fase 6): botão fica só com border-radius, que nunca
+   distorce, seja qual for a largura do texto.
+   --------------------------------------------------------------- */
+
+.ep-botao,
+.ep-botao:hover,
+.ep-botao:focus,
+.ep-botao:active {
+  -webkit-mask-image: none;
+  mask-image: none;
+  border-radius: 999px;
+}
+
+.ep-botao {
+  font-size: 0.88rem;
+  padding: 0.45rem 1.05rem;
+}
+
+/* ---------------------------------------------------------------
+   NAVEGAÇÃO NO FIM DA PÁGINA (Fase 40)
+   --------------------------------------------------------------- */
+
+.ep-continue {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(138, 150, 105, 0.3);
+}
+
+.ep-continue__titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ep-tinta);
+  margin: 0 0 1rem;
+}
+
+/* Botão vazado — para não competir visualmente com um botão de
+   ação principal (tipo "Agende uma visita") que possa existir
+   na mesma página */
+.ep-botao--vazado {
+  background: transparent;
+  border: 2px solid var(--ep-terracota);
+  color: var(--ep-terracota);
+  padding: calc(0.45rem - 2px) calc(1.05rem - 2px);
+}
+
+.ep-botao--vazado:hover {
+  background: var(--ep-terracota);
+  color: var(--ep-creme-claro);
+}
+
+/* ---------------------------------------------------------------
+   BOTÃO FLUTUANTE "VOLTAR AO TOPO" (Fase 40)
+   --------------------------------------------------------------- */
+
+.ep-topo {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 40;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--ep-terracota);
+  color: var(--ep-creme-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease, background 150ms ease;
+  box-shadow: 0 8px 20px -8px rgba(52, 44, 35, 0.45);
+}
+
+.ep-topo--visivel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ep-topo:hover {
+  background: var(--ep-telha);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ep-topo { transition: opacity 1ms linear; }
+}
+
+/* ---------------------------------------------------------------
+   GRADE FIXA DE 3 COLUNAS — /a-escola/ (Fase 44)
+   Ao contrário de .ep-grade sozinha (elástica, decide o número de
+   colunas), esta força exatamente 3 iguais em telas largas.
+   --------------------------------------------------------------- */
+
+.ep-grade--fixa-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 860px) {
+  .ep-grade--fixa-3 {
+    grid-template-columns: 1fr;
+  }
+}

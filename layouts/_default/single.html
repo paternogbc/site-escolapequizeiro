@@ -15,6 +15,21 @@
     <div class="prose">
       {{ .Content }}
     </div>
+
+    {{/* Botões para páginas-irmãs — não aparece em Notícias */}}
+    {{ if ne .Section "noticias" }}
+      {{ $irmas := where .Parent.Pages "RelPermalink" "ne" .RelPermalink }}
+      {{ if gt (len $irmas) 0 }}
+        <nav class="ep-continue" aria-label="Outras páginas desta seção">
+          <p class="ep-continue__titulo">Continue por aqui</p>
+          <div class="ep-botoes">
+            {{ range $irmas }}
+              <a class="ep-botao ep-botao--vazado" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ end }}
+          </div>
+        </nav>
+      {{ end }}
+    {{ end }}
   </article>
 {{ end }}
 

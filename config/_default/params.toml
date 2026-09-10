@@ -11,9 +11,10 @@ layout = "custom"
 layout = "custom"
 
 [article]
+showPagination = false
 showDate = true
 showAuthor = false
-sharingLinks = ["whatsapp", "email"]
+sharingLinks = []
 
 [author]
 name = "Escola Waldorf Rural Pequizeiro"

@@ -51,6 +51,11 @@
 
   {{ partial "divisor.html" . }}
 
+  {{/* ---------- A ESCOLA ---------- */}}
+  {{ partial "banner-a-escola.html" (dict "pagina" (.Site.GetPage "/a-escola") "tag" "h2") }}
+
+  {{ partial "divisor.html" . }}
+
   {{/* ---------- SEGMENTOS DE ENSINO ---------- */}}
   {{ partial "banner-ensino.html" . }}
 
