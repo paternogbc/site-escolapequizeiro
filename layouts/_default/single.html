@@ -16,6 +16,13 @@
       {{ .Content }}
     </div>
 
+    {{/* Álbum de fotos — se a página tiver uma subpasta fotos/ */}}
+    {{ $fotos_pagina := .Resources.Match "fotos/*.{jpg,jpeg,JPG,JPEG,png,PNG,webp,WEBP}" }}
+    {{ if $fotos_pagina }}
+      <h2>Fotos</h2>
+      {{ partial "galeria-pasta.html" (dict "pagina" . "pasta" "fotos") }}
+    {{ end }}
+
     {{/* Botões para páginas-irmãs — não aparece em Notícias */}}
     {{ if ne .Section "noticias" }}
       {{ $irmas := where .Parent.Pages "RelPermalink" "ne" .RelPermalink }}

@@ -1,5 +1,5 @@
 +++
-title = "Berçário e Maternal"
+title = "Maternal"
 faixa = "1 ano e 6 meses a 3 anos e 11 meses"
 description = "Acolhimento e ritmo como eixos da descoberta."
 weight = 10
@@ -16,6 +16,7 @@ O dia começa com um acolhimento individual — cada criança é recebida por se
 
 #### Materiais e brinquedos
 
-![](b1.png)
+![](b3.png)
+
 Os materiais dessa fase são, de propósito, simples: madeira, lã, algodão, sementes, conchas — nada que já venha com uma função definida. Os bebês exploram cestos de tesouros, com pequenos objetos naturais do cotidiano para descobrir com as mãos e a boca; as crianças um pouco maiores brincam com panos e tecidos naturais, que viram tenda, capa ou ninho, e com bonecas de pano simples, feitas para acolher, não para impressionar.
 Não há brinquedos eletrônicos, telas ou sons pré-gravados. A ideia é que o brinquedo não determine de antemão a brincadeira — é a imaginação da criança que decide o que aquele pedaço de madeira vai ser.
