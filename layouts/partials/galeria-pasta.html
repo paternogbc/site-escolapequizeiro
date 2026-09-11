@@ -1,0 +1,27 @@
+{{/*
+  Galeria de fotos a partir de uma pasta dedicada (em vez de exigir
+  um prefixo no nome do arquivo, como "galeria-01.jpg").
+
+  Uso:
+    {{ partial "galeria-pasta.html" (dict "pagina" . "pasta" "fotos") }}
+
+  "pagina" é a página cujos recursos serão buscados (ex.: a home).
+  "pasta"  é o nome da subpasta dentro do bundle dessa página.
+*/}}
+{{ $p := .pagina }}
+{{ $pasta := .pasta | default "fotos" }}
+{{ $fotos := $p.Resources.Match (printf "%s/*.{jpg,jpeg,JPG,JPEG,png,PNG,webp,WEBP}" $pasta) }}
+{{ if $fotos }}
+  <div class="ep-galeria" data-galeria>
+    {{ range $i, $foto := $fotos }}
+      {{ $mini := $foto.Fill "600x600 Smart q80 webp" }}
+      {{ $grande := $foto.Resize "1800x q85 webp" }}
+      <button type="button" data-grande="{{ $grande.RelPermalink }}"
+              data-legenda="Foto da escola" aria-label="Ampliar foto">
+        <img class="ep-pincel-{{ add 1 (mod $i 3) }}"
+             src="{{ $mini.RelPermalink }}" alt="" loading="lazy" />
+      </button>
+    {{ end }}
+  </div>
+{{ end }}
+

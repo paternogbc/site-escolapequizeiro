@@ -14,3 +14,4 @@ Sustentabilidade, prosperidade e autonomia não são temas de aula na Pequi: sã
 #### Permacultura como ferramenta de ensino
 As crianças participam do cuidado com hortas e jardins, aprendem sobre o ciclo dos alimentos e, aos poucos, sobre o cuidado com a terra que também é cuidado consigo e com o outro. Não é uma disciplina isolada: é terra debaixo da unha, semente na mão, tempo de espera até a primeira colheita.
 
+![](3.png)

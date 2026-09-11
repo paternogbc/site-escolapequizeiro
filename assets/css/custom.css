@@ -2022,3 +2022,20 @@ html {
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
+
+/* ---------------------------------------------------------------
+   CARTÕES CLICÁVEIS POR INTEIRO (Fase 63)
+   Link "esticado": o link do título cobre todo o .ep-item, sem
+   precisar duplicar o link em volta da foto em cada template.
+   --------------------------------------------------------------- */
+
+.ep-item {
+  position: relative;
+}
+
+.ep-item__titulo a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}

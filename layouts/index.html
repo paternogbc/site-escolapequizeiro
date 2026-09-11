@@ -77,6 +77,20 @@
 
   {{ partial "divisor.html" . }}
 
+  {{/* ---------- FOTOS ---------- */}}
+  {{ $fotos_home := .Resources.Match "fotos/*.{jpg,jpeg,JPG,JPEG,png,PNG,webp,WEBP}" }}
+  {{ if $fotos_home }}
+    <section class="ep-secao">
+      <h2 class="ep-secao__titulo">Um álbum da escola</h2>
+      <p class="ep-secao__resumo">
+        Fotos do dia a dia — festas, trabalho na terra, e a vida na Pequi.
+      </p>
+      {{ partial "galeria-pasta.html" (dict "pagina" . "pasta" "fotos") }}
+    </section>
+
+    {{ partial "divisor.html" . }}
+  {{ end }}
+
   {{/* ---------- NOTÍCIAS ---------- */}}
   <section class="ep-secao">
     <h2 class="ep-secao__titulo">Últimas notícias</h2>
