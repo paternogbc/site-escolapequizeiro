@@ -1,26 +1,24 @@
 +++
-title = "Noticia XXXX"
+title = "Dona Fiota: Sabores e Saberes do Cerrado"
 date = 2026-09-04
 categorias = ["Eventos"]
 draft = false
 +++
 
-![](images/Untitled.jpg)
+![](images/capa.jpg)
 
 
-:cherry_blossom: Festa da Primavera \| Escola Waldorf Rural Pequizeiro
+Dona Fiota, referência viva da cultura quilombola e dos saberes ancestrais do território Kalunga, personifica a memória, as sementes e os sabores do Cerrado.
 
-No Cerrado, a Primavera tem seu próprio ritmo. Depois do tempo de estiagem, a paisagem começa a se transformar. A terra recebe novas águas, a vida desperta e, pouco a pouco, o mundo ao nosso redor volta a florescer.
+🔆 Amanhã ela estará em nosso Pequizeiro!
 
-Na pedagogia Waldorf, as festas do ano nos convidam a vivenciar esses ritmos da natureza e a perceber, através da experiência, os movimentos de recolhimento, despertar, crescimento e renovação que também fazem parte da vida.
+Venha conhecer seus produtos e se aproximar dos saberes ancestrais que ela guarda, cultiva e compartilha com sua Comunidade.
 
-A Primavera nos traz justamente essa imagem: o despertar da vida, a expansão e o florescimento de novas possibilidades.
+🤲🏽 Convide seus amigos, esse momento será aberto ao público externo!
 
-E neste ano, temos ainda mais uma razão para celebrar. No dia 18 de setembro, a Escola Waldorf Rural Pequizeiro completa mais um ano de sua história. :sparkles:
-
-No dia 19 de setembro, a partir das 9h, nos reuniremos para celebrar a Primavera e a vida da nossa Escola, em um dia de encontro, alegria, natureza e comunidade.
-
-:orange_heart: Nossa Escola estará de portas abertas!
-
-Convidamos as famílias que desejam conhecer nossa Escola para caminharem conosco por nossos espaços, sentir o ambiente e conhecer um pouco da beleza e da essência da pedagogia Waldorf. :round_pushpin:Visita guiada às 10h
-
+Com carinho,
+Escola Waldorf Rural Pequizeiro
+〰️〰️〰️
+Dona Fiota no Pequizeiro
+dia 11/09, sexta
+das 8h às 15h

@@ -3,21 +3,44 @@ title = "Nossa História"
 description = "Como a Pequi nasceu, em 2014, de um desejo coletivo."
 +++
 
-
-Como a Pequi nasceu, em 2014, de um desejo coletivo.
-A Escola Waldorf Rural Pequizeiro nasceu em 2014, do desejo de um grupo de famílias e educadoras de dar à infância um espaço onde ela pudesse ser vivida por inteiro — o corpo em movimento, as mãos em atividade, a imaginação em liberdade. Não existia, até então, em Brasília, uma escola que unisse a Pedagogia Waldorf ao contato diário com o Cerrado; a Pequi nasceu para preencher esse espaço.
+A Escola Pequizeiro é uma iniciativa de famílias e educadores que teve
+início em 2014, a partir da vontade coletiva de criar uma escola onde as
+crianças pudessem aprender vivendo; onde o corpo, a arte e o espírito
+fossem contemplados tanto quanto a razão; e onde se aprendesse a
+reconhecer os ciclos da natureza e a compreender o tempo das coisas.
 
 ![](nh2.png)
 
-Começamos pequenos: um grupo reduzido de crianças, um espaço adaptado, muita disposição para aprender fazendo. Ano após ano, a escola cresceu sem perder o que a fez nascer — o cuidado com cada criança e o compromisso com uma comunidade que educa em conjunto. Hoje reunimos famílias de diferentes regiões de Brasília, todas escolhendo para seus filhos uma infância com os pés na terra vermelha do Cerrado.
+Desejávamos uma escola em que o conhecimento não ficasse restrito ao
+funcionamento do mundo, mas que, sobretudo, nossas crianças
+conhecessem e se apropriassem das ferramentas para transformá-lo.
+Assim, diante da demanda concreta de encontrar um espaço educativo
+para os filhos onde a infância pudesse ser vivenciada, inspirados por
+outras iniciativas semelhantes que vinham surgindo em Brasília,
+norteados pela Pedagogia Waldorf e pela ética da permacultura e
+imbuídos de princípios como a sustentabilidade, a prosperidade e a
+comunidade, o grupo foi se formando e o projeto se configurando.
 
-Ao longo desse percurso, filiamo-nos à FEWB — Federação das Escolas Waldorf no Brasil —, o que aproxima nossa prática da rede de escolas Waldorf do país e reafirma o compromisso com os princípios que orientam essa pedagogia em solo brasileiro.
-Seguimos construindo, com as famílias, uma escola pensada para formar seres humanos livres — capazes de pensar por conta própria e de agir no mundo com responsabilidade e sensibilidade. Os mesmos valores que nos trouxeram até aqui continuam guiando cada decisão que tomamos hoje.
+Com o projeto em mãos, convidamos outras famílias e juntos passamos a
+estruturar a escola: encontrar educadores, solicitar doações de
+materiais, adequar o espaço disponível e organizar a sua administração.
 
-![](nh1.png)
+## Uma escola que cresce com as crianças
 
-Linha do tempo
-2014 — Fundação da escola, a partir da iniciativa de um grupo de famílias e educadoras.
-[ano] — Filiação à FEWB (Federação das Escolas Waldorf no Brasil).
-[ano] — Ampliação de turmas e estrutura.
+Em 2019, a Escola Pequizeiro deu um importante passo em sua jornada
+educacional com o nascimento do Ensino Fundamental, ampliando sua
+proposta pedagógica para atender crianças em uma fase mais avançada de
+seu desenvolvimento — mantendo os princípios da Pedagogia Waldorf,
+integrados ao cultivo da criatividade, da consciência ambiental e do
+respeito ao ritmo individual de cada aluno.
 
+Mais crianças foram chegando e nosso pé de Pequi cresceu. Em 2020, a
+primeira turma do Ensino Fundamental foi formada.
+
+Em 2023, a escola alcançou outro marco significativo ao ser
+oficialmente federada pela **Federação das Escolas Waldorf do Brasil
+(FEWB)**, reforçando sua identidade dentro do movimento Waldorf
+nacional.
+
+E, conforme as crianças avançam nos anos e nas fases, em 2025 nossa
+escola teve a alegria de florescer o quinto ano do Ensino Fundamental.
