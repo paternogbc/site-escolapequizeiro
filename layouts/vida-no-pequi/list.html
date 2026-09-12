@@ -4,15 +4,6 @@
 
     <div class="prose">{{ .Content }}</div>
 
-    {{ $proximos := where (where .Site.RegularPages "Section" "eventos") "Params.data_evento" "ge" now }}
-    {{ if $proximos }}
-      <ul class="ep-agenda" style="margin-top:2rem;">
-        {{ range $proximos.ByParam "data_evento" }}
-          {{ partial "evento-item.html" . }}
-        {{ end }}
-      </ul>
-    {{ end }}
-
   </main>
 {{ end }}
 

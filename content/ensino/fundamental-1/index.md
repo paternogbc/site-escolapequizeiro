@@ -18,8 +18,10 @@ As primeiras horas da manhã são dedicadas à aula principal — o período em 
 
 ### As épocas
 
-![](fotos/ff5.png)
+![](f3.png)
 
 
 O currículo do Fundamental I é organizado em épocas: blocos de três a quatro semanas em que uma única disciplina — matemática, língua portuguesa, história, geografia ou ciências — é aprofundada todas as manhãs, antes de dar lugar a outra. Em vez de fragmentar o dia em muitas matérias soltas, a turma mergulha de verdade em um assunto de cada vez.
 Ao longo dos anos, os mesmos temas voltam em ciclos, sempre com uma camada a mais de profundidade e abstração, acompanhando o amadurecimento da turma. E em vez do livro didático pronto, cada criança constrói seu próprio caderno de época — escrito e ilustrado à mão —, que se torna, ano após ano, um registro pessoal de tudo o que aprendeu.
+
+![](ff6.png)
