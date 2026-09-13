@@ -11,8 +11,9 @@ layout = "custom"
 layout = "custom"
 
 [article]
+showReadingTime = false
 showPagination = false
-showDate = true
+showDate = false
 showAuthor = false
 sharingLinks = []
 

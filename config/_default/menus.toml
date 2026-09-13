@@ -98,21 +98,6 @@ pageRef = "/visitas-e-matriculas"
 weight = 60
 params = { destaque = true }
 
-  [[main]]
-  parent = "visitas"
-  name = "Agende uma visita"
-  pageRef = "/visitas-e-matriculas/agende-uma-visita"
-  weight = 1
 
-  [[main]]
-  parent = "visitas"
-  name = "Matrículas"
-  pageRef = "/visitas-e-matriculas/matriculas"
-  weight = 2
 
-  [[main]]
-  parent = "visitas"
-  name = "Contato"
-  pageRef = "/visitas-e-matriculas/contato"
-  weight = 3
 

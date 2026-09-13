@@ -23,8 +23,26 @@
       {{ partial "galeria-pasta.html" (dict "pagina" . "pasta" "fotos") }}
     {{ end }}
 
-    {{/* Botões para páginas-irmãs — não aparece em Notícias */}}
-    {{ if ne .Section "noticias" }}
+    {{/* Botões para páginas-irmãs (ou notícia anterior/próxima, em
+         Notícias) — mesmo visual do "Continue por aqui" nos dois
+         casos, só muda de onde vêm os links. */}}
+    {{ if eq .Section "noticias" }}
+      {{ $anterior := .PrevInSection }}
+      {{ $proxima := .NextInSection }}
+      {{ if or $anterior $proxima }}
+        <nav class="ep-continue" aria-label="Outras notícias">
+          <p class="ep-continue__titulo">Continue por aqui</p>
+          <div class="ep-botoes">
+            {{ with $anterior }}
+              <a class="ep-botao ep-botao--vazado" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ end }}
+            {{ with $proxima }}
+              <a class="ep-botao ep-botao--vazado" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ end }}
+          </div>
+        </nav>
+      {{ end }}
+    {{ else }}
       {{ $irmas := where .Parent.Pages "RelPermalink" "ne" .RelPermalink }}
       {{ if gt (len $irmas) 0 }}
         <nav class="ep-continue" aria-label="Outras páginas desta seção">
