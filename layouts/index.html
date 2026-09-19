@@ -30,7 +30,7 @@
 
   {{/* ---------- POR QUE O PEQUI ---------- */}}
   <section id="conteudo" class="ep-secao">
-    <h2 class="ep-secao__titulo">Por que a Pequi</h2>
+    <h2 class="ep-secao__titulo">Por que o Pequi</h2>
     <div class="ep-grade">
       {{ range .Site.Data.porque_pequi.cards }}
         <article class="ep-item">
@@ -62,14 +62,16 @@
   {{/* ---------- DEPOIMENTOS ---------- */}}
   <section class="ep-secao">
     <h2 class="ep-secao__titulo" style="text-align:center;">O que as famílias dizem</h2>
-    <div class="ep-depoimentos-grade">
-      {{ range .Site.Data.depoimentos_home }}
-        <blockquote class="ep-depoimento ep-depoimento--card">
-          <p>{{ .texto }}</p>
-          <footer>{{ .quem }}</footer>
-        </blockquote>
-      {{ end }}
-    </div>
+    {{ with .Site.GetPage "/quem-faz-a-escola/depoimentos" }}
+      <div class="ep-depoimentos-grade">
+        {{ range first 3 .Params.depoimentos }}
+          <blockquote class="ep-depoimento ep-depoimento--card">
+            <p>{{ .texto }}</p>
+            <footer>{{ .quem }}</footer>
+          </blockquote>
+        {{ end }}
+      </div>
+    {{ end }}
     <p style="text-align:center; margin-top:2rem;">
       <a href="/quem-faz-a-escola/depoimentos/">Ler mais depoimentos</a>
     </p>

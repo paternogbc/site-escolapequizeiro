@@ -10,7 +10,7 @@ trimembração social, em que a colaboração fortalece a comunidade
 escolar — para a Antroposofia, esse exercício é também um movimento de
 autoeducação.
 
-![Encontro da comunidade](capa.jpg)
+![Encontro da comunidade](gc1.png)
 
 ## As comissões
 
