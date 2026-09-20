@@ -2,7 +2,7 @@
   <article class="ep-secao ep-pagina">
     {{ if eq .Section "noticias" }}
       <time class="ep-data" datetime="{{ .Date.Format "2006-01-02" }}">
-        {{ .Date.Format "02 de January de 2006" }}
+        {{ .Date | time.Format "02 de January de 2006" }}
       </time>
     {{ end }}
 

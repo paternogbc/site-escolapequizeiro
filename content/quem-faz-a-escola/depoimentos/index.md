@@ -12,7 +12,7 @@ texto = "Uma das melhores escolhas que fiz na minha maternidade: não é só uma
 quem  = "Carol, mãe da Ágatha - Jardim Sabiá" 
 
 [[depoimentos]]
-texto = ""
+texto = "Uma escola onde as crianças vivem o Cerrado todos os dias"
 quem  = "Gustavo, pai de crianças do Primeiro ano e do Jardim Sabiá" 
 
 +++

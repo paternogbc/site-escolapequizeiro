@@ -37,6 +37,9 @@ respeito ao ritmo individual de cada aluno.
 Mais crianças foram chegando e nosso pé de Pequi cresceu. Em 2020, a
 primeira turma do Ensino Fundamental foi formada.
 
+{{< video src="escola_antigo.mp4" titulo="Como era a escola no início" >}}
+
+
 Em 2023, a escola alcançou outro marco significativo ao ser
 oficialmente federada pela **Federação das Escolas Waldorf do Brasil
 (FEWB)**, reforçando sua identidade dentro do movimento Waldorf

@@ -106,7 +106,7 @@
             </div>
           {{ end }}
           <time class="ep-data" datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format "02 de January de 2006" }}
+            {{ .Date | time.Format "02 de January de 2006" }}
           </time>
           <h3 class="ep-item__titulo"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
           <p class="ep-item__resumo">{{ .Summary | plainify }}</p>
