@@ -17,7 +17,19 @@
     {{ end }}
   </a>
 
-  <nav class="ep-nav" aria-label="Navegação principal">
+  {{ with resources.Get "audio/musica-fundo.mp3" }}
+  <audio id="ep-musica" src="{{ .RelPermalink }}" loop preload="none"></audio>
+  <button type="button" id="ep-botao-musica" class="ep-botao-musica"
+          aria-label="Tocar música de fundo" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+      <path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6.5" cy="18.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="16.5" cy="16.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </svg>
+  </button>
+{{ end }}
+
+<nav class="ep-nav" aria-label="Navegação principal">
     <ul class="ep-nav__lista">
       {{ range .Site.Menus.main }}
         {{ if .Params.destaque }}

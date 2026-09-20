@@ -8,12 +8,12 @@ texto = "Mais do que uma Escola, (que constrói educação para nossas crianças
 quem = "Tainá, mãe da Lara - 4º ano" 
 
 [[depoimentos]]
-texto = "O Pequizeiro é tudo o que uma família procura em uma escola: acolhimento, contato com a natureza e uma grade curricular que ensina, acima de tudo, humanidade."
-quem = "Ana Ribeiro, mãe da Clara — Turma Buriti"
+texto = "Uma das melhores escolhas que fiz na minha maternidade: não é só uma escola, é uma comunidade que se apoia, se cuida, se respeita e constrói o mundo que deseja!"
+quem  = "Carol, mãe da Ágatha - Jardim Sabiá" 
 
 [[depoimentos]]
-texto = "A Clara chegou aqui com medo de barro. Hoje ela sabe quando a chuva vem pelo cheiro."
-quem = "Pedro Alves, pai do Davi"
+texto = ""
+quem  = "Gustavo, pai de crianças do Primeiro ano e do Jardim Sabiá" 
 
 +++
 

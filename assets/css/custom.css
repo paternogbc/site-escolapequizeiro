@@ -2039,3 +2039,42 @@ html {
   inset: 0;
   z-index: 1;
 }
+
+/* ---------------------------------------------------------------
+   BOTÃO DE MÚSICA DE FUNDO (Fase 74)
+   --------------------------------------------------------------- */
+
+.ep-botao-musica {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--ep-terracota);
+  background: transparent;
+  color: var(--ep-terracota);
+  cursor: pointer;
+  margin-right: 0.75rem;
+  transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.ep-botao-musica:hover {
+  background: var(--ep-terracota);
+  color: var(--ep-creme-claro);
+}
+
+.ep-botao-musica--tocando {
+  background: var(--ep-terracota);
+  color: var(--ep-creme-claro);
+  animation: ep-musica-pulso 1.6s ease-in-out infinite;
+}
+
+@keyframes ep-musica-pulso {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ep-botao-musica--tocando { animation: none; }
+}
