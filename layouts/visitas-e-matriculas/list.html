@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{/* Página Visitas e Matrículas: o título da página aparece como
+        rótulo pequeno e a frase "chamada" (front matter) é o título
+        grande — assim não há dois títulos iguais em sequência. */}}
+  <section id="conteudo" class="ep-secao ep-pagina ep-visitas">
+    {{ with .Params.chamada }}
+      <p class="ep-sobretitulo">{{ $.Title }}</p>
+      <h1 class="ep-secao__titulo ep-visitas__titulo">{{ . }}</h1>
+    {{ else }}
+      <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+    {{ end }}
+
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </section>
+{{ end }}

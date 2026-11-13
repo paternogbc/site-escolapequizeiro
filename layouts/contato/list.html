@@ -1,0 +1,69 @@
+{{ define "main" }}
+  {{/* Página de contato: quatro cartões montados a partir do
+        front matter de content/contato/_index.md. */}}
+  <section id="conteudo" class="ep-secao ep-pagina">
+    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
+    {{ with .Description }}<p class="ep-secao__resumo">{{ . }}</p>{{ end }}
+
+    <div class="ep-contatos">
+
+      <article class="ep-contato">
+        <span class="ep-contato__icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h2.3a1 1 0 0 1 1 .8l.7 3.4a1 1 0 0 1-.5 1.1L7.6 10a12 12 0 0 0 6.4 6.4l.7-1.4a1 1 0 0 1 1.1-.5l3.4.7a1 1 0 0 1 .8 1v2.3a1.5 1.5 0 0 1-1.5 1.5A14.5 14.5 0 0 1 4 5.5Z"/></svg>
+        </span>
+        <h2 class="ep-contato__titulo">Secretaria escolar</h2>
+        <p class="ep-contato__destaque">{{ .Params.telefone }}</p>
+        <p>WhatsApp e telefone</p>
+        <p class="ep-contato__links">
+          <a href="{{ partial "whatsapp-url.html" dict }}" target="_blank" rel="noopener">Chamar no WhatsApp <span aria-hidden="true">→</span></a>
+          {{ with .Params.instagram }}
+            <a href="https://instagram.com/{{ . }}" target="_blank" rel="noopener">Instagram @{{ . }} <span aria-hidden="true">→</span></a>
+          {{ end }}
+        </p>
+      </article>
+
+      <article class="ep-contato">
+        <span class="ep-contato__icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        </span>
+        <h2 class="ep-contato__titulo">Endereço</h2>
+        <p>{{ range $i, $l := .Params.endereco }}{{ if $i }}<br />{{ end }}{{ $l }}{{ end }}</p>
+        {{ with .Params.mapa }}
+          <p class="ep-contato__links">
+            <a href="{{ . }}" target="_blank" rel="noopener">Ver no mapa <span aria-hidden="true">→</span></a>
+          </p>
+        {{ end }}
+      </article>
+
+      <article class="ep-contato">
+        <span class="ep-contato__icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></svg>
+        </span>
+        <h2 class="ep-contato__titulo">E-mails</h2>
+        <dl class="ep-contato__emails">
+          {{ range .Params.emails }}
+            <div>
+              <dt>{{ .rotulo }}</dt>
+              <dd><a href="mailto:{{ .email }}">{{ .email }}</a></dd>
+            </div>
+          {{ end }}
+        </dl>
+      </article>
+
+      <article class="ep-contato">
+        <span class="ep-contato__icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        </span>
+        <h2 class="ep-contato__titulo">Horário de atendimento</h2>
+        <p class="ep-contato__destaque">{{ .Params.horario }}</p>
+        {{ with .Params.horarioNota }}<p>{{ . }}</p>{{ end }}
+      </article>
+
+    </div>
+
+    <div class="ep-contatos__visita">
+      <p>Quer conhecer a escola de perto?</p>
+      <a class="ep-botao" href="/visitas-e-matriculas/">Agende uma visita</a>
+    </div>
+  </section>
+{{ end }}

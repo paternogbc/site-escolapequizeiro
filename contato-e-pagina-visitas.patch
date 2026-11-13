@@ -1,0 +1,376 @@
+diff --git a/assets/css/custom.css b/assets/css/custom.css
+index ad9031b..223f4b4 100644
+--- a/assets/css/custom.css
++++ b/assets/css/custom.css
+@@ -2449,3 +2449,153 @@ ol.ep-passos {
+     border-left: 2px dashed var(--ep-terracota);
+   }
+ }
++
++/* ---------------------------------------------------------------
++   TEXTO DAS PÁGINAS — tira o retângulo bege que aparecia atrás do
++   texto (a .prose herdava a cor de fundo do body).
++   --------------------------------------------------------------- */
++
++.prose { background-color: transparent; }
++
++/* ---------------------------------------------------------------
++   PÁGINA DE CONTATO — cartões (layouts/contato/list.html)
++   --------------------------------------------------------------- */
++
++.ep-contatos {
++  display: grid;
++  grid-template-columns: repeat(2, minmax(0, 1fr));
++  gap: 1.5rem;
++  margin-top: 2.5rem;
++  max-width: 920px;
++}
++
++.ep-contato {
++  background: var(--ep-creme-claro);
++  border: 1px solid rgba(138, 150, 105, 0.35);
++  border-radius: var(--ep-raio);
++  padding: 1.6rem 1.75rem 1.75rem;
++  box-shadow: 0 14px 30px -24px rgba(52, 44, 35, 0.45);
++}
++
++.ep-contato__icone {
++  display: inline-flex;
++  align-items: center;
++  justify-content: center;
++  width: 2.75rem;
++  height: 2.75rem;
++  border-radius: 52% 48% 50% 50% / 48% 52% 48% 52%;
++  background: rgba(246, 201, 168, 0.55);
++  color: var(--ep-tinta);
++}
++
++.ep-contato__icone svg {
++  width: 1.4rem;
++  height: 1.4rem;
++  fill: none;
++  stroke: currentColor;
++  stroke-width: 1.7;
++  stroke-linecap: round;
++  stroke-linejoin: round;
++}
++
++.ep-contato__titulo {
++  font-size: 1.2rem;
++  line-height: 1.25;
++  color: var(--ep-tinta);
++  margin: 0.9rem 0 0.5rem;
++}
++
++.ep-contato p {
++  margin: 0;
++  font-size: 0.98rem;
++  line-height: 1.6;
++  color: var(--ep-tinta-corpo);
++}
++
++.ep-contato .ep-contato__destaque {
++  font-family: "Fraunces", Georgia, serif;
++  font-size: 1.45rem;
++  font-weight: 700;
++  line-height: 1.2;
++  color: var(--ep-tinta-corpo);
++  margin-bottom: 0.25rem;
++}
++
++.ep-contato .ep-contato__links {
++  display: flex;
++  flex-direction: column;
++  align-items: flex-start;
++  gap: 0.3rem;
++  margin-top: 0.9rem;
++}
++
++.ep-contato a {
++  color: #a35f08;
++  font-weight: 600;
++  text-decoration: underline;
++  text-decoration-color: rgba(163, 95, 8, 0.35);
++  text-underline-offset: 3px;
++  overflow-wrap: anywhere;
++}
++
++.ep-contato a:hover { color: var(--ep-tinta); text-decoration-color: currentColor; }
++
++.ep-contato__emails { margin: 0; display: grid; gap: 0.7rem; }
++
++.ep-contato__emails dt {
++  font-size: 0.82rem;
++  color: var(--ep-tinta-corpo);
++  opacity: 0.85;
++}
++
++.ep-contato__emails dd { margin: 0; font-size: 0.98rem; }
++
++.ep-contatos__visita {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 0.75rem 1.25rem;
++  margin-top: 2.5rem;
++}
++
++.ep-contatos__visita p {
++  margin: 0;
++  font-family: "Fraunces", Georgia, serif;
++  font-size: 1.2rem;
++  font-weight: 600;
++  color: var(--ep-tinta);
++}
++
++@media (max-width: 700px) {
++  .ep-contatos { grid-template-columns: 1fr; }
++}
++
++/* ---------------------------------------------------------------
++   PÁGINA VISITAS E MATRÍCULAS — rótulo pequeno + título grande
++   (layouts/visitas-e-matriculas/list.html)
++   --------------------------------------------------------------- */
++
++.ep-sobretitulo {
++  font-family: "Fraunces", Georgia, serif;
++  font-weight: 700;
++  font-size: 0.9rem;
++  letter-spacing: 0.12em;
++  text-transform: uppercase;
++  color: #a35f08;
++  margin: 0 0 0.6rem;
++}
++
++.ep-visitas__titulo {
++  font-size: clamp(2rem, 4.5vw, var(--ep-t-5));
++  line-height: 1.1;
++  max-width: 18ch;
++  margin-bottom: 1.5rem;
++}
++
++/* primeira frase da página como texto de abertura, um pouco maior */
++.ep-visitas .prose > p:first-child {
++  font-size: 1.2rem;
++  line-height: 1.6;
++}
++
++.ep-visitas .prose > h2 { margin-top: 1.5em; }
+diff --git a/config/_default/menus.toml b/config/_default/menus.toml
+index 6ad0543..6e3dbf9 100644
+--- a/config/_default/menus.toml
++++ b/config/_default/menus.toml
+@@ -91,6 +91,12 @@ weight = 20
+ #pageRef = "/noticias"
+ #weight = 50
+ 
++[[main]]
++identifier = "contato"
++name = "Contato"
++pageRef = "/contato"
++weight = 55
++
+ [[main]]
+ identifier = "visitas"
+ name = "Visitas e Matrículas"
+diff --git a/content/contato/_index.md b/content/contato/_index.md
+new file mode 100644
+index 0000000..c7c86e0
+--- /dev/null
++++ b/content/contato/_index.md
+@@ -0,0 +1,33 @@
+++++
++title = "Contato"
++description = "Fale com a secretaria, escreva para a gente ou venha até a escola."
++
++# Os cartões desta página são montados com os dados abaixo
++# (layout em layouts/contato/list.html). O número do WhatsApp vem
++# de config/_default/params.toml, seção [contato].
++
++telefone = "(61) 9.9816-2015"
++instagram = "escolapequizeiro"
++
++endereco = [
++  "Rua 24, Chácara 26",
++  "Condomínio Mansões Itaipu",
++  "Jardim Botânico, Brasília – DF",
++]
++mapa = "https://www.google.com/maps/search/?api=1&query=Escola+Waldorf+Rural+Pequizeiro+Jardim+Bot%C3%A2nico+Bras%C3%ADlia"
++
++horario = "Das 7h45 às 18h"
++horarioNota = "Os professores não respondem mensagens durante os horários de aula. Em caso de urgência, fale com a secretaria escolar."
++
++[[emails]]
++rotulo = "Secretaria"
++email = "secretaria@escolapequizeiro.com.br"
++
++[[emails]]
++rotulo = "Diretoria (financeiro e administrativo)"
++email = "diretoria@escolapequizeiro.com.br"
++
++[[emails]]
++rotulo = "Conselho Pedagógico"
++email = "conselhopedagogicopequi@gmail.com"
+++++
+diff --git a/content/visitas-e-matriculas/_index.md b/content/visitas-e-matriculas/_index.md
+index 29d205b..8fb4499 100644
+--- a/content/visitas-e-matriculas/_index.md
++++ b/content/visitas-e-matriculas/_index.md
+@@ -1,15 +1,17 @@
+ +++
+ title = "Visitas e Matrículas"
+ description = "Conhecer a Pequi começa com uma visita."
++# Frase grande do topo da página (o título acima vira um rótulo pequeno)
++chamada = "Conhecer a Pequi começa com uma visita"
+ +++
+ 
+-## Agende uma visita
+-
+ Que bom ter você por aqui! Para agendar sua visita, é só falar com a
+ gente pelo WhatsApp ou e-mail — vamos combinar juntos o melhor horário.
+ 
+ {{< passos-matricula >}}
+ 
++## Como é a visita
++
+ Na visita, você conhece nossa pedagogia, o ritmo do dia a dia e os
+ espaços da escola — da sala de aula ao quintal. A partir desse
+ encontro, enviamos as informações gerais, de investimento e tiramos
+@@ -22,25 +24,5 @@ na primeira visita.
+   <a class="ep-botao" href="https://docs.google.com/forms/d/e/1FAIpQLSfQgq1-RhG9bVwf5kx0gIPdrotceEFPKZTrO4qu_cm5uD7mcQ/viewform" target="_blank" rel="noopener">Agendar visita</a>
+ </div>
+ 
+-## Contato
+-
+-**Endereço**  
+-Rua 24, Chácara 26 — Condomínio Mansões Itaipu  
+-Jardim Botânico, Brasília – DF
+-
+-**Secretaria escolar (WhatsApp e telefone)**  
+-(61) 9.9816-2015
+-
+-**E-mails**  
+-Secretaria: secretaria@escolapequizeiro.com.br  
+-Diretoria (assuntos financeiros e administrativos): diretoria@escolapequizeiro.com.br  
+-Conselho Pedagógico (assuntos pedagógicos): conselhopedagogicopequi@gmail.com
+-
+-**Instagram**  
+-[@escolapequizeiro](https://instagram.com/escolapequizeiro)
+-
+-**Horário de atendimento**  
+-Das 7h45 às 18h. Os professores não respondem mensagens durante os
+-horários de aula — em caso de urgência, entre em contato com a
+-secretaria escolar.
+-
++Prefere falar direto com a gente? Chame no WhatsApp pelo botão no
++canto da tela ou veja [todos os contatos](/contato/).
+diff --git a/layouts/contato/list.html b/layouts/contato/list.html
+new file mode 100644
+index 0000000..0961594
+--- /dev/null
++++ b/layouts/contato/list.html
+@@ -0,0 +1,69 @@
++{{ define "main" }}
++  {{/* Página de contato: quatro cartões montados a partir do
++        front matter de content/contato/_index.md. */}}
++  <section id="conteudo" class="ep-secao ep-pagina">
++    <h1 class="ep-secao__titulo">{{ .Title }}</h1>
++    {{ with .Description }}<p class="ep-secao__resumo">{{ . }}</p>{{ end }}
++
++    <div class="ep-contatos">
++
++      <article class="ep-contato">
++        <span class="ep-contato__icone" aria-hidden="true">
++          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h2.3a1 1 0 0 1 1 .8l.7 3.4a1 1 0 0 1-.5 1.1L7.6 10a12 12 0 0 0 6.4 6.4l.7-1.4a1 1 0 0 1 1.1-.5l3.4.7a1 1 0 0 1 .8 1v2.3a1.5 1.5 0 0 1-1.5 1.5A14.5 14.5 0 0 1 4 5.5Z"/></svg>
++        </span>
++        <h2 class="ep-contato__titulo">Secretaria escolar</h2>
++        <p class="ep-contato__destaque">{{ .Params.telefone }}</p>
++        <p>WhatsApp e telefone</p>
++        <p class="ep-contato__links">
++          <a href="{{ partial "whatsapp-url.html" dict }}" target="_blank" rel="noopener">Chamar no WhatsApp <span aria-hidden="true">→</span></a>
++          {{ with .Params.instagram }}
++            <a href="https://instagram.com/{{ . }}" target="_blank" rel="noopener">Instagram @{{ . }} <span aria-hidden="true">→</span></a>
++          {{ end }}
++        </p>
++      </article>
++
++      <article class="ep-contato">
++        <span class="ep-contato__icone" aria-hidden="true">
++          <svg viewBox="0 0 24 24" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
++        </span>
++        <h2 class="ep-contato__titulo">Endereço</h2>
++        <p>{{ range $i, $l := .Params.endereco }}{{ if $i }}<br />{{ end }}{{ $l }}{{ end }}</p>
++        {{ with .Params.mapa }}
++          <p class="ep-contato__links">
++            <a href="{{ . }}" target="_blank" rel="noopener">Ver no mapa <span aria-hidden="true">→</span></a>
++          </p>
++        {{ end }}
++      </article>
++
++      <article class="ep-contato">
++        <span class="ep-contato__icone" aria-hidden="true">
++          <svg viewBox="0 0 24 24" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></svg>
++        </span>
++        <h2 class="ep-contato__titulo">E-mails</h2>
++        <dl class="ep-contato__emails">
++          {{ range .Params.emails }}
++            <div>
++              <dt>{{ .rotulo }}</dt>
++              <dd><a href="mailto:{{ .email }}">{{ .email }}</a></dd>
++            </div>
++          {{ end }}
++        </dl>
++      </article>
++
++      <article class="ep-contato">
++        <span class="ep-contato__icone" aria-hidden="true">
++          <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
++        </span>
++        <h2 class="ep-contato__titulo">Horário de atendimento</h2>
++        <p class="ep-contato__destaque">{{ .Params.horario }}</p>
++        {{ with .Params.horarioNota }}<p>{{ . }}</p>{{ end }}
++      </article>
++
++    </div>
++
++    <div class="ep-contatos__visita">
++      <p>Quer conhecer a escola de perto?</p>
++      <a class="ep-botao" href="/visitas-e-matriculas/">Agende uma visita</a>
++    </div>
++  </section>
++{{ end }}
+diff --git a/layouts/partials/extend-footer.html b/layouts/partials/extend-footer.html
+index f1d65a5..e873635 100644
+--- a/layouts/partials/extend-footer.html
++++ b/layouts/partials/extend-footer.html
+@@ -31,6 +31,7 @@
+       <a href="https://instagram.com/escolapequizeiro">Instagram @escolapequizeiro</a>
+       <a href="mailto:secretaria@escolapequizeiro.com.br">secretaria@escolapequizeiro.com.br</a>
+       <a href="/visitas-e-matriculas/">Visitas e matrículas</a>
++      <a href="/contato/">Endereço e contatos</a>
+     </div>
+ 
+     <div class="ep-rodape__visita">
+diff --git a/layouts/visitas-e-matriculas/list.html b/layouts/visitas-e-matriculas/list.html
+new file mode 100644
+index 0000000..442eb52
+--- /dev/null
++++ b/layouts/visitas-e-matriculas/list.html
+@@ -0,0 +1,17 @@
++{{ define "main" }}
++  {{/* Página Visitas e Matrículas: o título da página aparece como
++        rótulo pequeno e a frase "chamada" (front matter) é o título
++        grande — assim não há dois títulos iguais em sequência. */}}
++  <section id="conteudo" class="ep-secao ep-pagina ep-visitas">
++    {{ with .Params.chamada }}
++      <p class="ep-sobretitulo">{{ $.Title }}</p>
++      <h1 class="ep-secao__titulo ep-visitas__titulo">{{ . }}</h1>
++    {{ else }}
++      <h1 class="ep-secao__titulo">{{ .Title }}</h1>
++    {{ end }}
++
++    <div class="prose">
++      {{ .Content }}
++    </div>
++  </section>
++{{ end }}

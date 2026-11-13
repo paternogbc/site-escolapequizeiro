@@ -2449,3 +2449,153 @@ ol.ep-passos {
     border-left: 2px dashed var(--ep-terracota);
   }
 }
+
+/* ---------------------------------------------------------------
+   TEXTO DAS PÁGINAS — tira o retângulo bege que aparecia atrás do
+   texto (a .prose herdava a cor de fundo do body).
+   --------------------------------------------------------------- */
+
+.prose { background-color: transparent; }
+
+/* ---------------------------------------------------------------
+   PÁGINA DE CONTATO — cartões (layouts/contato/list.html)
+   --------------------------------------------------------------- */
+
+.ep-contatos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  max-width: 920px;
+}
+
+.ep-contato {
+  background: var(--ep-creme-claro);
+  border: 1px solid rgba(138, 150, 105, 0.35);
+  border-radius: var(--ep-raio);
+  padding: 1.6rem 1.75rem 1.75rem;
+  box-shadow: 0 14px 30px -24px rgba(52, 44, 35, 0.45);
+}
+
+.ep-contato__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 52% 48% 50% 50% / 48% 52% 48% 52%;
+  background: rgba(246, 201, 168, 0.55);
+  color: var(--ep-tinta);
+}
+
+.ep-contato__icone svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ep-contato__titulo {
+  font-size: 1.2rem;
+  line-height: 1.25;
+  color: var(--ep-tinta);
+  margin: 0.9rem 0 0.5rem;
+}
+
+.ep-contato p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ep-tinta-corpo);
+}
+
+.ep-contato .ep-contato__destaque {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ep-tinta-corpo);
+  margin-bottom: 0.25rem;
+}
+
+.ep-contato .ep-contato__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  margin-top: 0.9rem;
+}
+
+.ep-contato a {
+  color: #a35f08;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(163, 95, 8, 0.35);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.ep-contato a:hover { color: var(--ep-tinta); text-decoration-color: currentColor; }
+
+.ep-contato__emails { margin: 0; display: grid; gap: 0.7rem; }
+
+.ep-contato__emails dt {
+  font-size: 0.82rem;
+  color: var(--ep-tinta-corpo);
+  opacity: 0.85;
+}
+
+.ep-contato__emails dd { margin: 0; font-size: 0.98rem; }
+
+.ep-contatos__visita {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.ep-contatos__visita p {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ep-tinta);
+}
+
+@media (max-width: 700px) {
+  .ep-contatos { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------
+   PÁGINA VISITAS E MATRÍCULAS — rótulo pequeno + título grande
+   (layouts/visitas-e-matriculas/list.html)
+   --------------------------------------------------------------- */
+
+.ep-sobretitulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a35f08;
+  margin: 0 0 0.6rem;
+}
+
+.ep-visitas__titulo {
+  font-size: clamp(2rem, 4.5vw, var(--ep-t-5));
+  line-height: 1.1;
+  max-width: 18ch;
+  margin-bottom: 1.5rem;
+}
+
+/* primeira frase da página como texto de abertura, um pouco maior */
+.ep-visitas .prose > p:first-child {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.ep-visitas .prose > h2 { margin-top: 1.5em; }

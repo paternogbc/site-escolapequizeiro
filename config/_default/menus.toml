@@ -92,6 +92,12 @@ weight = 20
 #weight = 50
 
 [[main]]
+identifier = "contato"
+name = "Contato"
+pageRef = "/contato"
+weight = 55
+
+[[main]]
 identifier = "visitas"
 name = "Visitas e Matrículas"
 pageRef = "/visitas-e-matriculas"
