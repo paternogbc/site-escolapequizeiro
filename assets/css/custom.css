@@ -2080,7 +2080,7 @@ html {
 }
 
 /* ---------------------------------------------------------------
-   WHATSAPP — botão flutuante, botão do cabeçalho e "Agendar visita"
+   WHATSAPP — botão flutuante
    O número e as mensagens ficam em config/_default/params.toml,
    na seção [contato].
    --------------------------------------------------------------- */
@@ -2095,22 +2095,6 @@ html {
 .ep-whats-icone svg {
   width: 100%;
   height: 100%;
-}
-
-/* Variante verde do .ep-botao (cabeçalho e página de visitas) */
-.ep-botao.ep-botao--whats {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: #1a7f4e;
-  color: #fff;
-  white-space: nowrap;
-}
-
-.ep-botao.ep-botao--whats:hover,
-.ep-botao.ep-botao--whats:focus-visible {
-  background: #14633d;
-  color: #fff;
 }
 
 /* Botão flutuante: fixo no canto inferior direito */
