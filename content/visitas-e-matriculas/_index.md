@@ -21,7 +21,7 @@ dura, em média, de 45 a 60 minutos. Não é necessário levar a criança
 na primeira visita.
 
 <div class="ep-botoes">
-  <a class="ep-botao" href="https://docs.google.com/forms/d/e/1FAIpQLSfQgq1-RhG9bVwf5kx0gIPdrotceEFPKZTrO4qu_cm5uD7mcQ/viewform" target="_blank" rel="noopener">Agendar visita</a>
+  <a class="ep-botao" href="https://docs.google.com/forms/d/e/1FAIpQLSfQgq1-RhG9bVwf5kx0gIPdrotceEFPKZTrO4qu_cm5uD7mcQ/viewform" target="_blank" rel="noopener">Formulário de visita</a>
 </div>
 
 Prefere falar direto com a gente? Chame no WhatsApp pelo botão no

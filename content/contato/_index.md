@@ -17,7 +17,6 @@ endereco = [
 mapa = "https://www.google.com/maps/search/?api=1&query=Escola+Waldorf+Rural+Pequizeiro+Jardim+Bot%C3%A2nico+Bras%C3%ADlia"
 
 horario = "Das 7h45 às 18h"
-horarioNota = "Os professores não respondem mensagens durante os horários de aula. Em caso de urgência, fale com a secretaria escolar."
 
 [[emails]]
 rotulo = "Secretaria"
