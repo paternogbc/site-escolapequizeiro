@@ -1,0 +1,18 @@
+{{/*
+  Álbum de fotos — aparece automaticamente se a página tiver uma
+  subpasta "fotos/" com imagens dentro. Sem fotos lá, não renderiza
+  nada (não aparece título "Fotos" vazio nem quebra a página).
+
+  Uso: {{ partial "album-fotos.html" . }}
+
+  Chamado nos 4 templates que mostram conteúdo de página:
+  _default/single.html, vida-no-pequi/list.html, ensino/list.html
+  e a-escola/list.html — qualquer página nova que use um desses
+  já nasce com o álbum automático.
+*/}}
+{{ $fotos_pagina := .Resources.Match "fotos/*.{jpg,jpeg,JPG,JPEG,png,PNG,webp,WEBP}" }}
+{{ if $fotos_pagina }}
+  <h2>Fotos</h2>
+  {{ partial "galeria-pasta.html" (dict "pagina" . "pasta" "fotos") }}
+{{ end }}
+
