@@ -1,0 +1,32 @@
+{{/*
+  Chamada de matrículas da página inicial: foto com borda de pincel
+  + título, texto e botões. Textos, ano e foto ficam em
+  config/_default/params.toml, seção [matriculas]. Com
+  ativo = false, a seção some e volta o divisor simples.
+*/}}
+{{ $m := site.Params.matriculas }}
+{{ if and $m $m.ativo }}
+<section id="matriculas" class="ep-matriculas">
+  <div class="ep-matriculas__grade">
+    {{ with site.Home.Resources.GetMatch $m.foto }}
+      {{ $f := .Fill "900x1000 Smart q82 webp" }}
+      <div class="ep-matriculas__foto">
+        <img class="ep-pincel-2" src="{{ $f.RelPermalink }}" alt="" loading="lazy"
+             width="{{ $f.Width }}" height="{{ $f.Height }}" />
+      </div>
+    {{ end }}
+    <div class="ep-matriculas__texto">
+      <p class="ep-matriculas__sobretitulo">Matrículas {{ $m.ano }}</p>
+      <h2 class="ep-matriculas__titulo">{{ $m.titulo }}</h2>
+      <p>{{ $m.texto }}</p>
+      <div class="ep-botoes">
+        <a class="ep-botao" href="{{ site.Params.contato.formularioVisita }}"
+           target="_blank" rel="noopener">Agendar visita</a>
+        <a class="ep-botao ep-botao--vazado" href="/visitas-e-matriculas/">Como funciona</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ else }}
+  {{ partial "divisor.html" . }}
+{{ end }}

@@ -2209,3 +2209,153 @@ html {
   background: #14633d;
   color: #fff;
 }
+
+/* ---------------------------------------------------------------
+   CHAMADA DE MATRÍCULAS — página inicial
+   (1) carimbo redondo sobre o vídeo  (2) seção com foto e botões.
+   Liga/desliga e textos: config/_default/params.toml, [matriculas].
+   --------------------------------------------------------------- */
+
+/* (1) Carimbo sobre o vídeo */
+.ep-carimbo {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1.25rem, 7vw, 6rem);
+  top: 50%;
+  width: clamp(8rem, 13vw, 10.5rem);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--ep-creme-claro);
+  color: var(--ep-tinta);
+  font-family: "Fraunces", Georgia, serif;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.05;
+  transform: translateY(-50%) rotate(-8deg);
+  box-shadow: 0 14px 30px -12px rgba(52, 44, 35, 0.6);
+  transition: transform 200ms ease;
+}
+
+.ep-carimbo::before {
+  content: "";
+  position: absolute;
+  inset: 0.4rem;
+  border: 2px dashed var(--ep-terracota);
+  border-radius: 50%;
+}
+
+.ep-carimbo:hover,
+.ep-carimbo:focus-visible {
+  color: var(--ep-tinta);
+  transform: translateY(-50%) rotate(-3deg) scale(1.04);
+}
+
+.ep-carimbo__topo,
+.ep-carimbo__base {
+  font-size: clamp(0.78rem, 1.15vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ep-carimbo__ano {
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  font-weight: 700;
+  color: var(--ep-terracota);
+  margin: 0.1rem 0 0.15rem;
+}
+
+@media (max-width: 640px) {
+  .ep-carimbo {
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 5.6rem;
+    transform: rotate(-8deg);
+  }
+  .ep-carimbo:hover,
+  .ep-carimbo:focus-visible { transform: rotate(-3deg) scale(1.04); }
+  .ep-carimbo::before { inset: 0.25rem; border-width: 1.5px; }
+  .ep-carimbo__topo,
+  .ep-carimbo__base { font-size: 0.56rem; }
+  .ep-carimbo__ano { font-size: 1.45rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ep-carimbo { transition: none; }
+}
+
+/* (2) Seção com foto e botões */
+.ep-matriculas {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(3rem, 7vw, 5.5rem) clamp(1rem, 5vw, 4rem);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 227, 168, 0.4),
+    rgba(246, 201, 168, 0.38)
+  );
+  scroll-margin-top: 1rem;
+}
+
+.ep-matriculas__grade {
+  display: grid;
+  grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  max-width: 1040px;
+  margin-inline: auto;
+}
+
+.ep-matriculas__foto { transform: rotate(-2deg); }
+
+.ep-matriculas__sobretitulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a35f08;
+  margin: 0 0 0.6rem;
+}
+
+.ep-matriculas__titulo {
+  font-size: clamp(1.9rem, 4vw, var(--ep-t-5));
+  line-height: 1.1;
+  color: var(--ep-tinta);
+  margin: 0 0 1rem;
+  max-width: 16ch;
+}
+
+.ep-matriculas__texto p:not(.ep-matriculas__sobretitulo) {
+  color: var(--ep-tinta-corpo);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  max-width: 46ch;
+  margin: 0;
+}
+
+.ep-matriculas .ep-botao {
+  font-size: 1rem;
+  padding: 0.6rem 1.4rem;
+}
+
+.ep-matriculas .ep-botao--vazado {
+  padding: calc(0.6rem - 2px) calc(1.4rem - 2px);
+  border-color: var(--ep-tinta);
+  color: var(--ep-tinta);
+}
+
+.ep-matriculas .ep-botao--vazado:hover {
+  background: var(--ep-tinta);
+  color: var(--ep-creme-claro);
+}
+
+@media (max-width: 760px) {
+  .ep-matriculas__grade { grid-template-columns: 1fr; }
+  .ep-matriculas__foto { max-width: 320px; }
+}

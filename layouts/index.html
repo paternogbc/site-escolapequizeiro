@@ -17,13 +17,26 @@
       <img class="ep-hero__foto" src="{{ $g.RelPermalink }}"
            alt="O Cerrado ao redor da escola" fetchpriority="high" />
     {{ end }}
+    {{ with site.Params.matriculas }}{{ if .ativo }}
+      <a class="ep-carimbo" href="#matriculas"
+         aria-label="Matrículas {{ .ano }} abertas — saiba mais">
+        <span class="ep-carimbo__topo">Matrículas</span>
+        <span class="ep-carimbo__ano">{{ .ano }}</span>
+        <span class="ep-carimbo__base">abertas</span>
+      </a>
+    {{ end }}{{ end }}
     <div class="ep-hero__texto">
       <h1>Infância com os pés na terra</h1>
       <p>
         No coração do Jardim Botânico de Brasília, unimos a Pedagogia Waldorf  à ética da permacultura
       </p>
       <p class="ep-hero__acoes">
-        <a class="ep-botao" href="/visitas-e-matriculas/">Agende uma visita</a>
+        {{ $m := site.Params.matriculas }}
+        {{ if and $m $m.ativo }}
+          <a class="ep-botao" href="/visitas-e-matriculas/">Matrículas {{ $m.ano }}: agende uma visita</a>
+        {{ else }}
+          <a class="ep-botao" href="/visitas-e-matriculas/">Agende uma visita</a>
+        {{ end }}
       </p>
     </div>
   </section>
@@ -49,7 +62,8 @@
     </div>
   </section>
 
-  {{ partial "divisor.html" . }}
+  {{/* ---------- CHAMADA DE MATRÍCULAS ---------- */}}
+  {{ partial "chamada-matriculas.html" . }}
 
   {{/* ---------- A ESCOLA ---------- */}}
   {{ partial "banner-a-escola.html" (dict "pagina" (.Site.GetPage "/a-escola") "tag" "h2") }}

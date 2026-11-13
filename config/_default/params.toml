@@ -12,6 +12,15 @@ formularioVisita = "https://docs.google.com/forms/d/e/1FAIpQLSfQgq1-RhG9bVwf5kx0
 whatsappMensagem = "Olá! Vim pelo site e gostaria de saber mais sobre a Escola Pequizeiro."
 whatsappMensagemVisita = "Olá! Vim pelo site e gostaria de agendar uma visita à Escola Pequizeiro."
 
+# Chamada de matrículas na página inicial (selo no vídeo + seção).
+# Para desligar tudo quando o período acabar: ativo = false
+[matriculas]
+ativo = true
+ano = "2027"
+titulo = "Tem lugar pra mais uma infância aqui"
+texto = "As matrículas para 2027 estão abertas, do Maternal ao Ensino Fundamental I. O primeiro passo é uma visita: venha passar uma manhã com a gente e conhecer a escola em atividade."
+foto = "fotos/roda.png"   # arquivo dentro de content/
+
 [homepage]
 layout = "custom"
 
