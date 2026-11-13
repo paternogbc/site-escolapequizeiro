@@ -1,0 +1,9 @@
+{{/* Botão que abre o WhatsApp da escola com mensagem pronta.
+      Parâmetros (opcionais): texto="..." e mensagem="...".
+      Sem "mensagem", usa a de visita definida em params.toml. */}}
+{{- $msg := .Get "mensagem" | default site.Params.contato.whatsappMensagemVisita -}}
+<div class="ep-botoes">
+  <a class="ep-botao ep-botao--whats" href="{{ partial "whatsapp-url.html" (dict "mensagem" $msg) }}" target="_blank" rel="noopener">
+    {{ partial "whatsapp-icone.html" . }}{{ .Get "texto" | default "Agendar visita" }}
+  </a>
+</div>

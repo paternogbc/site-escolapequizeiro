@@ -27,7 +27,7 @@
 
     <div>
       <h3>Fale com a gente</h3>
-      <a href="https://wa.me/5561998162015">WhatsApp (61) 9.9816-2015</a>
+      <a href="{{ partial "whatsapp-url.html" dict }}" target="_blank" rel="noopener">WhatsApp (61) 9.9816-2015</a>
       <a href="https://instagram.com/escolapequizeiro">Instagram @escolapequizeiro</a>
       <a href="mailto:secretaria@escolapequizeiro.com.br">secretaria@escolapequizeiro.com.br</a>
       <a href="/visitas-e-matriculas/">Agende uma visita</a>
@@ -59,6 +59,14 @@
   <p class="ep-rodape__fim">© {{ now.Year }} Escola Waldorf Rural Pequizeiro</p>
 </footer>
 
+
+{{/* Botão flutuante do WhatsApp — fica fixo no canto da tela e
+      acompanha a rolagem em todas as páginas. */}}
+<a class="ep-whats-flutuante" href="{{ partial "whatsapp-url.html" dict }}"
+   target="_blank" rel="noopener" aria-label="Conversar com a escola pelo WhatsApp">
+  {{ partial "whatsapp-icone.html" . }}
+  <span class="ep-whats-flutuante__texto">Fale com a gente</span>
+</a>
 
 <button id="ep-topo" class="ep-topo" type="button" aria-label="Voltar ao topo">
   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">

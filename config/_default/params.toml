@@ -4,6 +4,13 @@ autoSwitchAppearance = false
 enableSearch = true
 description = "Escola Waldorf rural no Cerrado. Educação que nasce da terra vermelha, da arte e da comunidade."
 
+# Contato por WhatsApp — usado pelo botão flutuante, pelo botão do
+# cabeçalho e pelo "Agendar visita". Só números: 55 + DDD + telefone.
+[contato]
+whatsapp = "5561998162015"
+whatsappMensagem = "Olá! Vim pelo site e gostaria de saber mais sobre a Escola Pequizeiro."
+whatsappMensagemVisita = "Olá! Vim pelo site e gostaria de agendar uma visita à Escola Pequizeiro."
+
 [homepage]
 layout = "custom"
 

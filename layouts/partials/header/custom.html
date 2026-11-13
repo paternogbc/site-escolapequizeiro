@@ -63,6 +63,12 @@
           </li>
         {{ end }}
       {{ end }}
+      <li class="ep-nav__item">
+        <a class="ep-botao ep-botao--whats" href="{{ partial "whatsapp-url.html" dict }}"
+           target="_blank" rel="noopener">
+          {{ partial "whatsapp-icone.html" . }}WhatsApp
+        </a>
+      </li>
     </ul>
   </nav>
 </header>

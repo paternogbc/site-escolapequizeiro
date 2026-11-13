@@ -1,0 +1,6 @@
+{{/* Monta o link do WhatsApp com mensagem já preenchida.
+      Uso: {{ partial "whatsapp-url.html" (dict "mensagem" "Olá!") }}
+      Sem "mensagem", usa a padrão de config/_default/params.toml. */}}
+{{- $c := site.Params.contato -}}
+{{- $msg := .mensagem | default $c.whatsappMensagem -}}
+{{- return (printf "https://wa.me/%s?text=%s" $c.whatsapp (replace (replace (querify "t" $msg) "t=" "" 1) "+" "%20")) -}}

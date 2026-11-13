@@ -16,9 +16,7 @@ as dúvidas que ainda ficarem. Recomendamos visitar pela manhã, quando
 dura, em média, de 45 a 60 minutos. Não é necessário levar a criança
 na primeira visita.
 
-<div class="ep-botoes">
-  <a class="ep-botao" href="https://forms.gle/HjtVowsXMqbDiCiS8" target="_blank" rel="noopener">Agendar visita</a>
-</div>
+{{< botao-whatsapp texto="Agendar visita pelo WhatsApp" >}}
 
 ## Contato
 

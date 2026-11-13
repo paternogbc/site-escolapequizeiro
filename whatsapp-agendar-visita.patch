@@ -1,0 +1,222 @@
+diff --git a/assets/css/custom.css b/assets/css/custom.css
+index 27761e1..e8f49fb 100644
+--- a/assets/css/custom.css
++++ b/assets/css/custom.css
+@@ -2078,3 +2078,103 @@ html {
+ @media (prefers-reduced-motion: reduce) {
+   .ep-botao-musica--tocando { animation: none; }
+ }
++
++/* ---------------------------------------------------------------
++   WHATSAPP — botão flutuante, botão do cabeçalho e "Agendar visita"
++   O número e as mensagens ficam em config/_default/params.toml,
++   na seção [contato].
++   --------------------------------------------------------------- */
++
++.ep-whats-icone {
++  display: inline-flex;
++  width: 1.15em;
++  height: 1.15em;
++  flex: none;
++}
++
++.ep-whats-icone svg {
++  width: 100%;
++  height: 100%;
++}
++
++/* Variante verde do .ep-botao (cabeçalho e página de visitas) */
++.ep-botao.ep-botao--whats {
++  display: inline-flex;
++  align-items: center;
++  gap: 0.45rem;
++  background: #1a7f4e;
++  color: #fff;
++  white-space: nowrap;
++}
++
++.ep-botao.ep-botao--whats:hover,
++.ep-botao.ep-botao--whats:focus-visible {
++  background: #14633d;
++  color: #fff;
++}
++
++/* Botão flutuante: fixo no canto inferior direito */
++.ep-whats-flutuante {
++  position: fixed;
++  right: 1.25rem;
++  bottom: 1.25rem;
++  z-index: 45;
++  display: inline-flex;
++  align-items: center;
++  gap: 0.55rem;
++  height: 3.5rem;
++  padding: 0 1.15rem 0 1rem;
++  border-radius: 999px;
++  background: #1a7f4e;
++  color: #fff;
++  font-family: "Fraunces", Georgia, serif;
++  font-weight: 700;
++  font-size: 0.95rem;
++  text-decoration: none;
++  box-shadow: 0 10px 24px -8px rgba(52, 44, 35, 0.55);
++  transition: background 150ms ease, transform 150ms ease;
++}
++
++.ep-whats-flutuante .ep-whats-icone {
++  width: 1.75rem;
++  height: 1.75rem;
++}
++
++.ep-whats-flutuante:hover,
++.ep-whats-flutuante:focus-visible {
++  background: #14633d;
++  color: #fff;
++  transform: translateY(-2px);
++}
++
++/* O "voltar ao topo" sobe para não ficar embaixo do WhatsApp */
++.ep-topo {
++  bottom: 5.5rem;
++  right: 1.65rem;
++}
++
++/* No celular o flutuante vira só o ícone, para não cobrir o texto */
++@media (max-width: 640px) {
++  .ep-whats-flutuante {
++    width: 3.5rem;
++    padding: 0;
++    justify-content: center;
++  }
++
++  .ep-whats-flutuante__texto {
++    position: absolute;
++    width: 1px;
++    height: 1px;
++    overflow: hidden;
++    clip-path: inset(50%);
++    white-space: nowrap;
++  }
++}
++
++@media (prefers-reduced-motion: reduce) {
++  .ep-whats-flutuante { transition: none; }
++}
++
++@media print {
++  .ep-whats-flutuante { display: none; }
++}
+diff --git a/config/_default/params.toml b/config/_default/params.toml
+index 1d723e0..5497286 100644
+--- a/config/_default/params.toml
++++ b/config/_default/params.toml
+@@ -4,6 +4,13 @@ autoSwitchAppearance = false
+ enableSearch = true
+ description = "Escola Waldorf rural no Cerrado. Educação que nasce da terra vermelha, da arte e da comunidade."
+ 
++# Contato por WhatsApp — usado pelo botão flutuante, pelo botão do
++# cabeçalho e pelo "Agendar visita". Só números: 55 + DDD + telefone.
++[contato]
++whatsapp = "5561998162015"
++whatsappMensagem = "Olá! Vim pelo site e gostaria de saber mais sobre a Escola Pequizeiro."
++whatsappMensagemVisita = "Olá! Vim pelo site e gostaria de agendar uma visita à Escola Pequizeiro."
++
+ [homepage]
+ layout = "custom"
+ 
+diff --git a/content/visitas-e-matriculas/_index.md b/content/visitas-e-matriculas/_index.md
+index 9f2f5af..c591f04 100644
+--- a/content/visitas-e-matriculas/_index.md
++++ b/content/visitas-e-matriculas/_index.md
+@@ -16,9 +16,7 @@ as dúvidas que ainda ficarem. Recomendamos visitar pela manhã, quando
+ dura, em média, de 45 a 60 minutos. Não é necessário levar a criança
+ na primeira visita.
+ 
+-<div class="ep-botoes">
+-  <a class="ep-botao" href="https://forms.gle/HjtVowsXMqbDiCiS8" target="_blank" rel="noopener">Agendar visita</a>
+-</div>
++{{< botao-whatsapp texto="Agendar visita pelo WhatsApp" >}}
+ 
+ ## Contato
+ 
+diff --git a/layouts/partials/extend-footer.html b/layouts/partials/extend-footer.html
+index 182e291..4613219 100644
+--- a/layouts/partials/extend-footer.html
++++ b/layouts/partials/extend-footer.html
+@@ -27,7 +27,7 @@
+ 
+     <div>
+       <h3>Fale com a gente</h3>
+-      <a href="https://wa.me/5561998162015">WhatsApp (61) 9.9816-2015</a>
++      <a href="{{ partial "whatsapp-url.html" dict }}" target="_blank" rel="noopener">WhatsApp (61) 9.9816-2015</a>
+       <a href="https://instagram.com/escolapequizeiro">Instagram @escolapequizeiro</a>
+       <a href="mailto:secretaria@escolapequizeiro.com.br">secretaria@escolapequizeiro.com.br</a>
+       <a href="/visitas-e-matriculas/">Agende uma visita</a>
+@@ -60,6 +60,14 @@
+ </footer>
+ 
+ 
++{{/* Botão flutuante do WhatsApp — fica fixo no canto da tela e
++      acompanha a rolagem em todas as páginas. */}}
++<a class="ep-whats-flutuante" href="{{ partial "whatsapp-url.html" dict }}"
++   target="_blank" rel="noopener" aria-label="Conversar com a escola pelo WhatsApp">
++  {{ partial "whatsapp-icone.html" . }}
++  <span class="ep-whats-flutuante__texto">Fale com a gente</span>
++</a>
++
+ <button id="ep-topo" class="ep-topo" type="button" aria-label="Voltar ao topo">
+   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+     <path d="M12,5 L19,13 L16.5,13 L12,8 L7.5,13 L5,13 Z" fill="currentColor"/>
+diff --git a/layouts/partials/header/custom.html b/layouts/partials/header/custom.html
+index 5200ead..0343c3e 100644
+--- a/layouts/partials/header/custom.html
++++ b/layouts/partials/header/custom.html
+@@ -63,6 +63,12 @@
+           </li>
+         {{ end }}
+       {{ end }}
++      <li class="ep-nav__item">
++        <a class="ep-botao ep-botao--whats" href="{{ partial "whatsapp-url.html" dict }}"
++           target="_blank" rel="noopener">
++          {{ partial "whatsapp-icone.html" . }}WhatsApp
++        </a>
++      </li>
+     </ul>
+   </nav>
+ </header>
+diff --git a/layouts/partials/whatsapp-icone.html b/layouts/partials/whatsapp-icone.html
+new file mode 100644
+index 0000000..172fe34
+--- /dev/null
++++ b/layouts/partials/whatsapp-icone.html
+@@ -0,0 +1,3 @@
++{{- with resources.Get "icons/whatsapp.svg" -}}
++<span class="ep-whats-icone" aria-hidden="true">{{ .Content | safeHTML }}</span>
++{{- end -}}
+diff --git a/layouts/partials/whatsapp-url.html b/layouts/partials/whatsapp-url.html
+new file mode 100644
+index 0000000..8b72fee
+--- /dev/null
++++ b/layouts/partials/whatsapp-url.html
+@@ -0,0 +1,6 @@
++{{/* Monta o link do WhatsApp com mensagem já preenchida.
++      Uso: {{ partial "whatsapp-url.html" (dict "mensagem" "Olá!") }}
++      Sem "mensagem", usa a padrão de config/_default/params.toml. */}}
++{{- $c := site.Params.contato -}}
++{{- $msg := .mensagem | default $c.whatsappMensagem -}}
++{{- return (printf "https://wa.me/%s?text=%s" $c.whatsapp (replace (replace (querify "t" $msg) "t=" "" 1) "+" "%20")) -}}
+diff --git a/layouts/shortcodes/botao-whatsapp.html b/layouts/shortcodes/botao-whatsapp.html
+new file mode 100644
+index 0000000..6c72ac6
+--- /dev/null
++++ b/layouts/shortcodes/botao-whatsapp.html
+@@ -0,0 +1,9 @@
++{{/* Botão que abre o WhatsApp da escola com mensagem pronta.
++      Parâmetros (opcionais): texto="..." e mensagem="...".
++      Sem "mensagem", usa a de visita definida em params.toml. */}}
++{{- $msg := .Get "mensagem" | default site.Params.contato.whatsappMensagemVisita -}}
++<div class="ep-botoes">
++  <a class="ep-botao ep-botao--whats" href="{{ partial "whatsapp-url.html" (dict "mensagem" $msg) }}" target="_blank" rel="noopener">
++    {{ partial "whatsapp-icone.html" . }}{{ .Get "texto" | default "Agendar visita" }}
++  </a>
++</div>

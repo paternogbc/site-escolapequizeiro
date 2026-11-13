@@ -2078,3 +2078,103 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .ep-botao-musica--tocando { animation: none; }
 }
+
+/* ---------------------------------------------------------------
+   WHATSAPP — botão flutuante, botão do cabeçalho e "Agendar visita"
+   O número e as mensagens ficam em config/_default/params.toml,
+   na seção [contato].
+   --------------------------------------------------------------- */
+
+.ep-whats-icone {
+  display: inline-flex;
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+.ep-whats-icone svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Variante verde do .ep-botao (cabeçalho e página de visitas) */
+.ep-botao.ep-botao--whats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #1a7f4e;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.ep-botao.ep-botao--whats:hover,
+.ep-botao.ep-botao--whats:focus-visible {
+  background: #14633d;
+  color: #fff;
+}
+
+/* Botão flutuante: fixo no canto inferior direito */
+.ep-whats-flutuante {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 3.5rem;
+  padding: 0 1.15rem 0 1rem;
+  border-radius: 999px;
+  background: #1a7f4e;
+  color: #fff;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -8px rgba(52, 44, 35, 0.55);
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.ep-whats-flutuante .ep-whats-icone {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.ep-whats-flutuante:hover,
+.ep-whats-flutuante:focus-visible {
+  background: #14633d;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* O "voltar ao topo" sobe para não ficar embaixo do WhatsApp */
+.ep-topo {
+  bottom: 5.5rem;
+  right: 1.65rem;
+}
+
+/* No celular o flutuante vira só o ícone, para não cobrir o texto */
+@media (max-width: 640px) {
+  .ep-whats-flutuante {
+    width: 3.5rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .ep-whats-flutuante__texto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ep-whats-flutuante { transition: none; }
+}
+
+@media print {
+  .ep-whats-flutuante { display: none; }
+}
