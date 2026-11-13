@@ -1,0 +1,17 @@
+{{/*
+  Caminho da matrícula em passos numerados — lidos de
+  data/passos_matricula.yaml.
+
+  Uso: {{< passos-matricula >}}
+*/}}
+{{ with site.Data.passos_matricula }}
+<ol id="como-funciona" class="ep-passos" aria-label="Como funciona a matrícula">
+  {{ range $i, $p := .passos }}
+    <li class="ep-passo">
+      <span class="ep-passo__numero" aria-hidden="true">{{ add $i 1 }}</span>
+      <h3 class="ep-passo__titulo">{{ $p.titulo }}</h3>
+      <p class="ep-passo__texto">{{ $p.texto }}</p>
+    </li>
+  {{ end }}
+</ol>
+{{ end }}

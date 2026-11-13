@@ -1,0 +1,9 @@
+# Caminho da matrícula em três passos — aparece na página
+# Visitas e Matrículas com o shortcode {{< passos-matricula >}}
+passos:
+  - titulo: "Agende uma visita"
+    texto: "Preencha o formulário ou chame a gente no WhatsApp para combinar o melhor dia."
+  - titulo: "Conheça a escola"
+    texto: "Uma manhã com a gente, de 45 a 60 minutos, para ver o dia a dia das crianças."
+  - titulo: "Matrícula"
+    texto: "Enviamos as informações gerais e os formulários de matrícula, e ficamos à disposição para tirar dúvidas."

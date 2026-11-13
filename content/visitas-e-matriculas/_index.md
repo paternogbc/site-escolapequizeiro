@@ -8,6 +8,8 @@ description = "Conhecer a Pequi começa com uma visita."
 Que bom ter você por aqui! Para agendar sua visita, é só falar com a
 gente pelo WhatsApp ou e-mail — vamos combinar juntos o melhor horário.
 
+{{< passos-matricula >}}
+
 Na visita, você conhece nossa pedagogia, o ritmo do dia a dia e os
 espaços da escola — da sala de aula ao quintal. A partir desse
 encontro, enviamos as informações gerais, de investimento e tiramos
