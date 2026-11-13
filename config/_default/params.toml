@@ -8,6 +8,7 @@ description = "Escola Waldorf rural no Cerrado. Educação que nasce da terra ve
 # cabeçalho e pelo "Agendar visita". Só números: 55 + DDD + telefone.
 [contato]
 whatsapp = "5561998162015"
+formularioVisita = "https://docs.google.com/forms/d/e/1FAIpQLSfQgq1-RhG9bVwf5kx0gIPdrotceEFPKZTrO4qu_cm5uD7mcQ/viewform"
 whatsappMensagem = "Olá! Vim pelo site e gostaria de saber mais sobre a Escola Pequizeiro."
 whatsappMensagemVisita = "Olá! Vim pelo site e gostaria de agendar uma visita à Escola Pequizeiro."
 

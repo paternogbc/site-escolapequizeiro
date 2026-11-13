@@ -2162,3 +2162,26 @@ html {
 @media print {
   .ep-whats-flutuante { display: none; }
 }
+
+/* ---------------------------------------------------------------
+   RODAPÉ — convite para visita (substitui o formulário
+   "Deixe uma mensagem"). O link do formulário de visita fica em
+   config/_default/params.toml, seção [contato].
+   --------------------------------------------------------------- */
+
+.ep-rodape__visita p { margin: 0 0 1rem; max-width: 32ch; }
+
+.ep-rodape a.ep-botao {
+  display: inline-block;
+  padding: 0.55rem 1.3rem;
+  font-size: 0.95rem;
+  color: var(--ep-creme-claro);
+}
+
+.ep-rodape a.ep-botao:hover { text-decoration: none; }
+
+.ep-rodape .ep-rodape__horario {
+  margin: 1.1rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
